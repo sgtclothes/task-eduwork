@@ -1,0 +1,9 @@
+RELASI PADA DATABASE APOTEK
+- Karyawan dan Transaksi: One to One
+  Alasan : karena satu transaksi dibuat oleh satu karyawan 
+
+- Karyawan dan Obat: One to Many
+  reason : karena satu karyawan dapat menjual lebih dari satu obat
+
+- Obat dan Pembeli: Many to Many
+  reason : karena setiap pembeli dapat membeli banyak obat dan setiap obat dapat dibeli banyak pembeli
