@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Instagram</title>
+    <style>
+      .container {
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      .flex {
+        display: flex;
+        gap: 5;
+      }
+
+      .card {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(182, 176, 176);
+        padding: 15px;
+        border-radius: 1%;
+      }
+
+      .card-dua {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(182, 176, 176);
+        padding: 0px;
+        border-radius: 1%;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        background-color: rgb(236, 236, 236);
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        -webkit-transition: 0.5s;
+        border-radius: 5px;
+        transition: 0.5s;
+        outline: none;
+      }
+
+      input[type="text"]:focus {
+        border: 1px solid #555;
+        border-radius: 5px;
+        background-color: white;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #3578e5;
+        color: white;
+        padding: 8px 20px;
+        margin: 8px 0;
+        border: none;
+        font-size: large;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .garis {
+        transform: rotate(90deg);
+        height: 120px;
+        margin-top: -35px;
+        color: gray !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="flex">
+        <div class="image">
+          <img src="hp.png" alt="" width="400" />
+        </div>
+        <div>
+          <div class="card">
+            <div style="display: flex; justify-content: center">
+              <img src="judul.PNG" alt="" width="150" />
+            </div>
+
+            <form action="#">
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Nomor telepon, nama pengguna, atau email"
+              />
+              <input
+                type="text"
+                id="password"
+                name="password"
+                placeholder="Kata Sandi"
+              />
+
+              <input type="submit" value="Masuk" />
+            </form>
+            <div style="display: flex">
+              <hr class="garis" />
+              <p style="color: rgb(69, 68, 68)">ATAU</p>
+              <hr class="garis" />
+            </div>
+
+            <div
+              style="display: flex; margin-top: -50px; justify-content: center"
+            >
+              <img src="icon.png" alt="" width="30" />
+              <h8 style="color: #144696; margin-top: 6px; margin-left: 10px">
+                Masuk dengan Facebook
+              </h8>
+            </div>
+            <div style="display: flex; justify-content: center">
+              <p style="color: #00376b; font-size: small">Lupa kata sandi ?</p>
+            </div>
+          </div>
+          <br />
+          <div class="card-dua">
+            <p style="display: flex; justify-content: center">
+              Tidak punya akun ? &nbsp;
+              <a href="" style="color: #3578e5">Buat Akun</a>
+            </p>
+          </div>
+          <p style="text-align: center">Dapatkan Aplikasi</p>
+
+          <div style="display: flex">
+            <img
+              src="appstore.png"
+              alt=""
+              width="200"
+              style="margin-right: 10px"
+            />
+            <img
+              src="google.png"
+              alt=""
+              width="200"
+              style="margin-left: 10px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
