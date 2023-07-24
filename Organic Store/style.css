@@ -1,0 +1,62 @@
+*,html,body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hero-description {
+    background-image: url('/assets/leave.png');
+    background-position: right bottom;
+    background-repeat: no-repeat;
+}
+
+.text-nav {
+    color: #535047;
+}
+
+.text-nav-left {
+    margin-right: 1rem;
+}
+
+
+.card-badge {
+    background-color: #737D4B;
+    border: none;    
+}
+
+.hero-description .img-description {
+    width: 25%;
+}
+
+.hero-description h1 {
+    font-weight: 700;
+    font-size: 1rem;
+    filter: none !important;
+    margin-top: 1.5rem;
+}
+
+.hero-description h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-top: 1rem;
+     color: #292C0F;
+}
+
+.hero-description p {
+    font-weight: 200;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #737D4B;
+}
+
+.hero-description .btn-shop-now {
+    background-color: #737D4B;
+    border: none;
+}
+
+.hero-description .btn-shop-now:focus {
+    background-color: #8d995c;
+    border: none;
+}
+
