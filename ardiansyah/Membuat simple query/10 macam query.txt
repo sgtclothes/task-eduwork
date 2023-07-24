@@ -1,0 +1,13 @@
+1. SELECT * FROM transaksi -> menampilkan semua kolom pada tabel transaksi
+2. SELECT id_transaksi, id_pembeli FROM transaksi -> menampilkan kolom id_transaksi dan id_pembeli pada tabel transaksi
+3. SELECT * FROM `transaksi` WHERE total < 10000 -> menampilkan semua kolom pada tabel transaki namun dimana total < 10000
+4. SELECT * FROM karyawan -> menampilkan semua kolom pada tabel karyawan
+5. SELECT id_karyawan FROM transaksi -> menampilkan kolom id_karyawan pada tabel karyawan
+6. SELECT * FROM obat -> menampilkan semua kolom pada tabel obat
+7. SELECT * FROM nama_obat -> menampilkan kolom obat pada tabel obat
+8. SELECT * FROM `obat` WHERE harga < 5000 -> menampilkan semua kolom pada tabel obat namun dimana harga < 5000
+9. SELECT * FROM pembeli -> menampilkan semua kolom pada tabel pembeli
+10. SELECT * FROM `pembeli` WHERE umur < 50 -> menampilkan semua kolom pada tabel pembeli namun dimana umur < 50
+
+
+
