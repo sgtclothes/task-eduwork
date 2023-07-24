@@ -1,0 +1,5 @@
+UPDATE `obat` SET `nama_obat` = 'Mixagrip' WHERE `id_obat` = 1
+UPDATE `karyawan` SET `no_telp` = '08563330639' WHERE `id_karyawan` = 3
+UPDATE `obat` SET `harga` = '5000' WHERE `id_obat` = 5
+DELETE FROM `karyawan` WHERE `id_karyawan` = 2
+DELETE FROM `karyawan` WHERE `nama_karyawan` = 'susi'
