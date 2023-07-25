@@ -1,0 +1,2 @@
+Direpository eduwork saya sudah upload fie index.html didalam folder laravel_vue.
+Untuk lebih jelasnya bisa dilihat di link berikut : https://github.com/ayubazhari101/eduwork.git

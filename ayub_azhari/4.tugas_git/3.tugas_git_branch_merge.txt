@@ -1,0 +1,2 @@
+Sebelumnya hanya ada branch main, kemudian saya tambahkan branch ayub dan branch azhari.
+Untuk lebih jelasnya bisa dilihat di link berikut : https://github.com/ayubazhari101/eduwork.git

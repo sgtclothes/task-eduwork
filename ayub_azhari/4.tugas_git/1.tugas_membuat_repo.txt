@@ -1,0 +1,2 @@
+Saya sudah membuat repository dengan nama eduwork, visibilitynya saya set public.
+Untuk lebih jelasnya bisa dilihat di link github berikut : https://github.com/ayubazhari101/eduwork.git
