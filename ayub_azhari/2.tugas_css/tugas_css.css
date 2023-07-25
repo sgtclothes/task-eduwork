@@ -1,0 +1,67 @@
+.container {
+    height: 1000px;
+    text-align: center;
+    padding-top: 300px;
+}
+
+table {
+    margin: auto;
+    width: 650px;
+    height: 500px;
+}
+
+.left {
+    width: 300px;
+    height: 500px;
+    padding: 10px;
+}
+
+.right {
+    width: 300px;
+    height: 470px;
+    padding: 10px;
+}
+
+.top {
+    width: 300px;
+    height: 270px;
+    border: 1px solid rgb(230, 217, 217);
+    border-radius: 5px;
+}
+
+h1 {
+    font-family: Segoe Script;
+}
+
+input {
+    width: 210px ;
+    padding: 10px;
+}
+
+button {
+    width: 235px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(56, 208, 228);
+    border: none;
+    border-radius: 5px;
+}
+
+.middle {
+    width: 300px;
+    height: 60px;
+    border: 1px solid rgb(230, 217, 217);
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bottom {
+    width: 300px;
+    height: 100px;
+    padding-bottom: 20px;
+    border: none;
+}
+
