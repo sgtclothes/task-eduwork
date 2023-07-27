@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" width="50" height="50" src="https://img.icons8.com/ios/50/apple-calculator.png" 
+            alt="apple-calculator" type="image/x-icon ">
+        <title>Simple Calculator</title>
+        <style>
+            .container {
+                border: 1px solid black;
+                width: 220px;
+            }
+
+            .input-calc {
+                margin: 5px;
+                margin-top: 10px;
+                width: -webkit-fill-available;
+                height: 30px
+            }
+
+            .table-calculator button {
+                width: 50px;
+                height: 30px;
+                font-size: 15px;
+            }
+
+            .btn-enter {
+                width: 100px;
+            }
+
+            .table-calcu .kelas-1 {
+                border : 1px solid black
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div>
+                <input id="input-calculator" type="text" class="input-calc" readonly>
+            </div>
+            <table class="table-calculator">
+                <thread></thread>
+                <tbody>
+                    <tr>
+                        <td><button id="btn-backspace">C</button></td>
+                        <td><button></button></td>
+                        <td><button id="in-7">7</button></td>
+                        <td><button id="in-8">8</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="in-9">9</button></td>
+                        <td><button>/</button></td>
+                        <td><button id="in-4">4</button></td>
+                        <td><button id="in-5">5</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="in-6">6</button></td>
+                        <td><button>*</button></td>
+                        <td><button id="in-1">1</button></td>
+                        <td><button id="in-2">2</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="in-3">3</button></td>
+                        <td><button>-</button></td>
+                        <td><button id="in-0">0</button></td>
+                        <td><button>.</button></td>
+                    </tr>
+                    <tr>
+                        <td><button>=</button></td>
+                        <td><button>+</button></td>
+                        <td colspan="2"><button id="btn-clear" style="width: 100%;">ENTER</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            inputCalc = document.getElementById("input-calculator ")
+            inputCalc.value = 1;
+
+            function clickNumber() {
+                console.log("Anda telah klik sebuah tombol");
+            };
+
+            function addNumber(a, b) {
+                return a + b
+            }
+
+            function substractNumber(a, b) {
+                return a - b
+            }
+
+            function multiplytNumber(a, b) {
+                return a * b
+            }
+
+            function divideNumber(a, b) {
+                return a / b
+            }
+
+            console.log(addNumber(10, 30))
+            console.log(substractNumber (20, 60))
+            console.log(multiplytNumber(20, 60))
+            console.log(divideNumber(20,60))
+
+            inputCalculator = document.getElementById("input-calculator")
+            inputCalculator.value = 200
+            console.log(inputCalculator)
+            
+            button1 = document.getElementById("in-1")
+            button2 = document.getElementById("in-2")
+            button3 = document.getElementById("in-3")
+            button4 = document.getElementById("in-4")
+            button5 = document.getElementById("in-5")
+            button6 = document.getElementById("in-6")
+            button7 = document.getElementById("in-7")
+            button8 = document.getElementById("in-8")
+            button9 = document.getElementById("in-9")
+            
+            button1.addEventListener("click", function() {
+                inputCalculator.value += '1'
+            })
+            button2.addEventListener("click", function() {
+                inputCalculator.value += '2'
+            })
+            button3.addEventListener("click", function() {
+                inputCalculator.value += '3'
+            })
+            button4.addEventListener("click", function() {
+                inputCalculator.value += '4'
+            })
+            button5.addEventListener("click", function() {
+                inputCalculator.value += '5'
+            })
+            button6.addEventListener("click", function() {
+                inputCalculator.value += '6'
+            })
+            button7.addEventListener("click", function() {
+                inputCalculator.value += '7'
+            })
+            button8.addEventListener("click", function() {
+                inputCalculator.value += '8'
+            })
+            button9.addEventListener("click", function() {
+                inputCalculator.value += '9'
+            })
+            document.getElementById("in-0").addEventListener("click",function() {
+                inputCalculator.value += '0'
+            })
+            document.getElementById("btn-clear").addEventListener("click",function() {
+                inputCalculator.value += ''
+            })
+            document.getElementById("btn-backspace").addEventListener("click",function() {
+                inputCalculator.value += ''
+            })
+        </script>
+    </body>
+
+</html>

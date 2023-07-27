@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .navigation {
+              text-align: center;
+            }
+            
+            .navigation ul {
+              list-style-type: none;
+              padding: 0;
+            }
+            
+            .navigation li {
+              display: inline-block;
+              margin: 0 50px;
+              font-size: 15px;
+
+            }
+            
+            .navigation a {
+              text-decoration: none;
+              color: black;
+            }
+
+           .colored-box {
+              display: flex;
+              width: auto;
+              height: 400px;
+              background-color: #d4bcd2;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .box-text {
+              font-size: 20px;
+              color: #000;
+            }
+
+            h1 {
+              text-align: left;
+              margin-left: 150px;
+            }
+
+            hr.custom-line {
+              margin-left: 150px;
+              height: 3px;
+              background-color: palevioletred;
+              width: 200px; 
+            }
+
+            .content {
+              display: flex; 
+              margin-bottom: 50px;
+            }
+
+            .paragraph {
+              flex: 1;
+              font-size: 15px;
+              text-align: justify;
+              margin-left: 150px; 
+              margin-right: 60px;
+              line-height: 2.5; 
+            }
+          
+            .side-box {
+              display: flex;
+              width: 300px;
+              height: 300px;
+              margin-right: 150px;
+              background-color: #dcdcda;
+              float: right;
+              justify-content: center;
+              align-items: center;
+            }
+
+            .side-box-text {
+              font-size: 20px;
+              color: #000;
+            }
+
+            .footer {
+              font-size: 15px;
+              text-align: center;
+              background-color: #d4bcd2;
+              padding: 1px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="colored-box">
+            <p class="box-text">Gambar Header</p>
+        </div>
+        <div>
+            <h1>Title</h1>
+            <hr class="custom-line">
+            <!-- <div class="custom-line"></div> -->
+            <div class="content">
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                    quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+                    sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                    recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
+                    minima vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem.
+                  <div class="side-box">
+                    <p class="side-box-text">Side Bar</p>
+                  </div>
+            </div>
+          </div>
+          <div class="footer">
+              <p>Footer</p>
+          </div>
+    </body>
+</html>
