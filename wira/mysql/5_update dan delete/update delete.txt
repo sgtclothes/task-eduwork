@@ -1,0 +1,5 @@
+1. UPDATE `apoteker` SET nama='Thor word' where id=1
+2. UPDATE `apoteker` SET keahlian='Pembuat obat' where id=9
+3. UPDATE `apoteker` SET id_lulusan=1 where id=15
+4. DELETE FROM pasien WHERE id=11
+5. DELETE FROM pasien WHERE nama='Ipsum'
