@@ -2,7 +2,7 @@
 
 $nama = "tama";
 $berat_badan = 90;
-$tinggi_badan = 1.65;
+$tinggi_badan = 2.15;
 $bmi = round($berat_badan / ($tinggi_badan * $tinggi_badan), 2);
 
 if ($bmi < 18.5) {
