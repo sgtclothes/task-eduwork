@@ -19,3 +19,17 @@ function tabung($jari,$tinggi)
 }
 
 echo "volume tabung: " . tabung(10,90) . "<br>";
+
+function kerucut($jari,$tinggi)
+{
+    return floor((pi() * pow($jari,2) * $tinggi)/3);
+}
+
+echo "volume kerucut: " . kerucut(10,90) . "<br>";
+
+function bola($jari)
+{
+    return floor((pi() * pow($jari,3) * (4/3) ));
+}
+
+echo "volume bola: " . bola(20) . "<br>";
