@@ -26,19 +26,16 @@ $no = 1;
                 <?php
                 $sql = "SELECT * FROM anggota";
                 $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-
+                while ($row = $result->fetch_assoc()) {
                 ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $row['nama']; ?></td>
-                            <td><?= $row['username']; ?></td>
-                        </tr>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $row['nama']; ?></td>
+                        <td><?= $row['username']; ?></td>
+                    </tr>
                 <?php
-                    }
                 }
+
                 ?>
             </tbody>
         </table>
