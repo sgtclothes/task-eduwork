@@ -1,0 +1,12 @@
+
+Relasi One to One
+Dari table obat ke table detail_obat
+Karena setiap table obat memili relasi ke table detail_obat
+
+Relasi One to Many
+Dari table pasien ke table transaksi
+Karena setiap pasien akan melakukan beberapa transaksi
+
+Relasi Many ke Many
+Dari Table detail_transkasi ke table transaksi dan obat
+Karena table detail_obat memiliki relasi ke table transaksi dan obat
