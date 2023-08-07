@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Component Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="count++">
+        count : {{ count }}
+      </button>
+
+      <div style="margin-top: 20px;">
+          <button @click="greet">
+            click it
+          </button>
+
+      </div>
+
+      <div style="margin-top: 20px;">
+          <button @click="say('Hello')">
+            hello
+          </button>
+
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            count: 0,
+            name : 'wira'
+          };
+        },
+        methods: {
+            greet(event) {
+                alert(`hi ${this.name}`) 
+                if(event) {
+                    alert(event.target.tagName)
+                }
+            },
+
+            say(message) {
+                alert(message)
+            }
+
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

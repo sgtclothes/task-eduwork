@@ -83,7 +83,7 @@ if (isset($_POST['update'])) {
                 <select name="id_penerbit" class="form-control">
                     <?php
                     while ($row = mysqli_fetch_assoc($penerbit)) {
-                        echo "<option " . ($row['id_penerbit'] == $id_penerbit ? 'selected' : '') . " value='" . $row['id_penerbit'] . "'>" . $row['nama_penerbit'] . "</option>";
+                        echo "<option " . ($row['id_penerbit'] == $id_penerbit ? 'selected' : '') . " value='" . $row['id_penerbit'] . "'> " . $row['nama_penerbit'] . " </option>";
                     }
                     ?>
 
