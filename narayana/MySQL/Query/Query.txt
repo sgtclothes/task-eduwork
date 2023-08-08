@@ -1,0 +1,22 @@
+- SELECT * FROM `transaksi` WHERE total_kembalian > 5000
+
+- SELECT * FROM `detail_obat` WHERE stock > 100
+
+- SELECT * FROM `pasien` ORDER BY alamat DESC
+
+- SELECT * FROM `pasien` ORDER BY nama ASC
+
+- SELECT nama, umur FROM pasien;
+
+- SELECT * FROM `obat` WHERE harga < 20000
+
+- SELECT DISTINCT harga,jenis,nama FROM obat;
+
+- SELECT * FROM pasien
+WHERE umur='11';
+
+- SELECT * FROM transaksi
+WHERE id_pasien=1;
+
+- SELECT nama, alamat FROM pasien
+ORDER BY nama ASC, alamat DESC;
