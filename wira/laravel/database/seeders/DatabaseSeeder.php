@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             // AuthorSeeder::class,
             // CatalogSeeder::class,
             // publisherSeeder::class
-            BookSeeder::class
+            // BookSeeder::class,
+            MemberSeeder::class
         ]);
     }
 }

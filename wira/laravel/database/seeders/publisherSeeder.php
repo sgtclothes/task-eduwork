@@ -16,13 +16,13 @@ class publisherSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 0; $i <= 20; $i++) {
-            $author = new Publisher();
-            $author->name = $faker->name;
-            $author->email = $faker->email;
-            $author->phone_number = '0851' .  $faker->randomNumber(8);
-            $author->address = $faker->address;
+            $publisher = new Publisher();
+            $publisher->name = $faker->name;
+            $publisher->email = $faker->email;
+            $publisher->phone_number = '0851' .  $faker->randomNumber(8);
+            $publisher->address = $faker->address;
 
-            $author->save();
+            $publisher->save();
         }
     }
 }

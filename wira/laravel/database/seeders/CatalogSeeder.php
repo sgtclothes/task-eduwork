@@ -16,10 +16,10 @@ class CatalogSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 0; $i <= 20; $i++) {
-            $author = new Catalog();
-            $author->name = $faker->name;
+            $catalog = new Catalog();
+            $catalog->name = $faker->name;
 
-            $author->save();
+            $catalog->save();
         }
     }
 }
