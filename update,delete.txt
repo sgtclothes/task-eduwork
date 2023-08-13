@@ -1,0 +1,10 @@
+1.Menampilkan daftar nama dan stok obat yang harganya lebih dari 20:
+SELECT nama_obat, stok FROM obat WHERE harga > 20.00;
+2.Mengupdate jumlah stok obat berdasarkan id_obat tertentu:
+UPDATE obat SET stok = stok - 5 WHERE id_obat = 201;
+3.Menghapus detail transaksi berdasarkan id_transaksi tertentu:
+DELETE FROM detail_transaksi WHERE id_transaksi = 101;
+4.Menampilkan daftar transaksi yang dilakukan pada tanggal tertentu:
+SELECT * FROM transaksi WHERE tanggal = '2023-08-10';
+5.Mengupdate alamat pelanggan berdasarkan id_pelanggan tertentu:
+UPDATE pelanggan SET alamat = 'Jl. Baru No. 456' WHERE id_pelanggan = 301;
