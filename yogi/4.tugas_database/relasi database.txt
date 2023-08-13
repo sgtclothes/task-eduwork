@@ -1,0 +1,10 @@
+Relasi pada database apotek:
+
+jual detail dan transaksi : One to One
+krna : knra satu penjualan dilakukan satu transaksi
+
+one to many: obat dan jual detail
+krna: setiap obat dapat memiliki lebih dari beberapa detail
+
+many to many : transaksi dan pelanggan
+krna : karena setiap transaksi dapat dilakukan banyak pelanggan dan setiap pelanggan dapat melakukan banyak transaksi
