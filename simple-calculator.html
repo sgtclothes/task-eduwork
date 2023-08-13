@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href = "assets/icon-calculator.png" type = "image/x-icon">
+    <title>Simple Calculator</title>
+    <style>
+        .container {
+            border: 1px solid black; 
+            width: 220px;
+        }
+        .input-calc {
+            height: 30px; 
+            margin: 5px; 
+            margin-top: 10px; 
+            width: -webkit-fill-available;
+        }
+        .table-calculator button{
+            width: 50px; 
+            height: 30px; 
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <input id="input-calculator" type="text" class="input-calc" readonly>  
+        </div>
+        <table class="table-calculator">
+            <th></th>
+            <tbody>
+                <tr>
+                    <td><button>C</button></td>
+                    <td><button></button></td>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                </tr>
+                <tr>
+                    <td><button>9</button></td>
+                    <td><button>/</button></td>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                </tr>
+                <tr>
+                    <td><button>6</button></td>
+                    <td><button>*</button></td>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                </tr>
+                <tr>
+                    <td><button>3</button></td>
+                    <td><button>-</button></td>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                </tr>
+                <tr>
+                    <td><button>=</button></td>
+                    <td><button>+</button></td>
+                    <td colspan="2"><button style="width: 100%;">ENTER</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        inputCalc = document.getElementById("input-calculator")
+        inputCalc.value = 1;
+
+        function clickNumber(){
+            console.log("Anda telah klik sebuah tombol")
+        };
+        function addkNumber(a, b){
+            console.log(a + b)
+        };
+        function substrackNumber(a, b){
+            console.log(a - b)
+        };
+        clickNumber();
+        addkNumber(10,20);
+        substrackNumber(10,20);
+        // console.log(valueInputCalc)
+        // a = "Hello World"
+        // b = 2;
+        // c = " Programing"
+        // console.log(b);
+        // console.log(a + b);
+        // console.log(a - b);
+        // console.log(a * b);
+        // console.log(a / b);
+    </script>
+</body>
+</html>
