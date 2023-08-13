@@ -12,7 +12,7 @@
 	<h1>Tugas Menghitung Nilai BMI</h1>
 
 	<form action="kategori.php" method="post">
-		<table wid>
+		<table>
 			<tr>
 				<td>Masukkan Nama Anda</td>
 				<td>: <input type="text" name="nama"></td>

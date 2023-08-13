@@ -40,8 +40,8 @@ echo "<br><br>";
 // 3. Luas Segitiga
 // Rumus:
 //  L = ½ x a x t
-$a = 10;
-$t = 5;
+$a = 5;
+$t = 10;
 echo "3. Menghitung Luas Segitiga <br>"; 
 echo "Rumus: <br>"; 
 echo "L = 1/2 x a (alas) × t (tinggi)";
