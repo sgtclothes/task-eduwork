@@ -1,0 +1,25 @@
+1.Menampilkan semua data obat:
+SELECT * FROM obat;
+2.Menampilkan nama dan alamat semua pelanggan:
+SELECT nama_pelanggan, alamat FROM pelanggan;
+3.Menampilkan jumlah_pembayaran dan tanggal pembayaran dari tabel pembayaran untuk metode pembayaran "Cash":
+SELECT jumlah_pembayaran, tanggal_pembayaran FROM pembayaran WHERE metode_pembayaran = 'Cash';
+4.Menghitung jumlah total stok obat yang tersedia:
+SELECT SUM(stok) AS total_stok FROM obat;
+5.Menampilkan daftar nama pegawai dan detailnya:
+SELECT p.nama_pegawai, dp.domisili, dp.agama, dp.email FROM pegawai p
+JOIN detail_pegawai dp ON p.id_pegawai = dp.id_detail;
+6.Menampilkan transaksi yang memiliki total harga di atas 50
+SELECT * FROM transaksi WHERE total_harga > 100.00;
+7.Menampilkan obat-obat yang stoknya lebih dari 25:
+SELECT * FROM obat WHERE stok > 25;
+8.Menampilkan obat-obat yang stoknya kurang dari 25:
+SELECT * FROM obat WHERE stok < 25;
+9.Menampilkan rata-rata jumlah pembayaran menggunakan kartu kredit:
+SELECT AVG(jumlah_pembayaran) AS rata_jumlah_pembayaran FROM pembayaran WHERE metode_pembayaran = 'Credit Card';
+10.Menampilkan detail transaksi, termasuk nama obat dan nama pelanggan, untuk semua transaksi:
+SELECT dt.id_detail, t.id_transaksi, o.nama_obat, p.nama_pelanggan
+FROM detail_transaksi dt
+JOIN transaksi t ON dt.id_transaksi = t.id_transaksi
+JOIN obat o ON dt.id_obat = o.id_obat
+JOIN pelanggan p ON dt.id_pelanggan = p.id_pelanggan;
