@@ -8,7 +8,7 @@ $pengarang = mysqli_query($mysqli, "SELECT * FROM pengarang
 
 <head>
     <title>Pengarang</title>
-
+    
 </head>
 
 <body>

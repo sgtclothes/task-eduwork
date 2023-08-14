@@ -8,7 +8,7 @@ $penerbit = mysqli_query($mysqli, "SELECT * FROM penerbit
 
 <head>
     <title>Penerbit</title>
-
+    
 </head>
 
 <body>

@@ -8,7 +8,7 @@ $katalog = mysqli_query($mysqli, "SELECT * FROM katalog
 
 <head>
     <title>Katalog</title>
-
+    
 </head>
 
 <body>
