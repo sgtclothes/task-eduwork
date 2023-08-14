@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas Even Handling - Mohamad Ardiansyah Rofii</title>
+  </head>
+  <body>
+    <h1>Tugas Even Handling</h1>
+    <div id="app">
+      <button @click="count++">
+        Berhitung : {{ count }}
+      </button>
+
+      <div style="margin-top: 20px;">
+          <button @click="greet">
+            Klik aku dong!
+          </button>
+
+      </div>
+
+      <div style="margin-top: 20px;">
+          <button @click="say('Selamat datang para tamu undangan')">
+            Absen dulu yuk
+          </button>
+
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            count: 0,
+            name : 'kolesterol'
+          };
+        },
+        methods: {
+            greet(event) {
+                alert(`Hallo ${this.name}`) 
+            },
+
+            say(message) {
+                alert(message)
+            }
+
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
