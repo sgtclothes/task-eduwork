@@ -16,10 +16,39 @@
   
 </head>
 <body>
-    
-    
-    @yield('content')
+     <div id="app">
 
+       <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+        <!-- Menu -->
+
+        @include('includes.sidebar')
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+         @include('includes.navbar')
+
+          <!-- / Navbar -->
+
+    
+        @yield('content')
+
+           @include('includes.footer')
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+      </div>
+    </div>
     @include('includes.script')
 </body>
 </html>
