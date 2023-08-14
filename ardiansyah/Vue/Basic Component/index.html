@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas Vue - Mohamad Ardiansyah Rofii</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <div v-if="status == 'tampilkan' ">
+            <label v-for="user in user">Name : 
+                {{ user.name }}, Umur {{ user.age }} tahun <br>
+            </label>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            setup() {
+                return {
+                    message: "Hello Vue!",
+                    status: "tampilkan",
+                    user: [
+                        {
+                            name: "Mohamad",
+                            age: 25,
+                        },
+                        {
+                            name: "Ardiansyah",
+                            age: 26,
+                        },
+                        {
+                            name: "Rofii",
+                            age: 27,
+                        },
+                    ],
+                };
+            },
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
