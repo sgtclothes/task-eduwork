@@ -1,0 +1,5 @@
+UPDATE obat SET nama_obat = 'molexflu' WHERE id_obat='4'
+UPDATE obat SET harga_jual = '120000' WHERE id_obat='1'
+UPDATE pembelian SET total='50000' WHERE no_faktur='1'
+DELETE FROM obat WHERE nama_obat='paracetamol'
+DELETE FROM pembelian WHERE total='5000'
