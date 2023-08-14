@@ -36,7 +36,7 @@
           data-size="large"
           data-show-count="true"
           aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-          >Star</a
+          >{{ auth()->user()->name }}</a
         >
       </li>
 

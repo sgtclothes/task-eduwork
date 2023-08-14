@@ -12,7 +12,10 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('pages.member');
+        $member = Member::with('user')->latest()->get();
+        
+        return $member;
+        // return view('pages.member');
     }
 
     /**
