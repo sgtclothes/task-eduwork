@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduwork</title>
+    <link rel = "icon" href = "assets/icon-calculator.png" type = "image/x-icon">
+    <link rel="stylesheet" href="./task-eduwork/styles/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <h1 id="heading1" class="headingclass">Ini adalah heading 1</h1>
+    <h2 id="heading2">Ini adalah heading 2</h2>
+    <h3 id="heading3">Ini adalah heading 3</h3>
+    <button id="btn-alert-primary" type="button" class="btn btn-primary">Primary</button>
+    <button id="btn-alert-secondary" type="button" class="btn btn-secondary">Secondary</button>
+    <button id="btn-alert-success" type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-link">Link</button>
+
+    <div>
+        <table class="table-siswa">
+            <thead>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Gender</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Agus</td>
+                    <td>LK</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Budi</td>
+                    <td>LK</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Candra</td>
+                    <td>LK</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dedi</td>
+                    <td>LK</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Elas</td>
+                    <td>PR</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addNumber(nomor1, nomor2, nomor3) {
+            a = 20
+            b = 'Hello World'
+            c = 100
+            d = a + c
+            console.log(nomor1 + nomor2)
+            console.log("Eduwork")
+            console.log(nomor1 - nomor3)
+            return a
+        }
+        function substrackNumber(nomor1, nomor2){
+            return nomor1 - nomor2
+        }
+        addNumber (4,9,1)
+        e = addNumber(2,10,5)
+        console.log(e)
+
+        buttonPrimary = document.getElementById('btn-alert-primary')
+        buttonPrimary.addEventListener("click", function(){
+            headingOne = document.getElementById("heading1")
+            headingOne.style.color = "blue"
+        })
+        buttonSecondary = document.getElementById('btn-alert-secondary')
+        buttonSecondary.addEventListener("click", function(){
+            headingTwo = document.getElementById("heading2")
+            headingTwo.style.color = "grey"
+        })
+        buttonSuccess = document.getElementById('btn-alert-success')
+        buttonSuccess.addEventListener("click", function(){
+            headingThree = document.getElementById("heading3")
+            headingThree.style.color = "green"
+        })
+        console.log(Date())
+    </script>
+</body>
+</html>
