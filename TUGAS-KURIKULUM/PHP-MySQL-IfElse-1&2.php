@@ -35,18 +35,6 @@ if ($menu == 1) {
     echo $bilangan1 / $bilangan2;
 }
 
-echo "<br>";
-
-
-    $bil1= 2;
-    for($a=1;$a<=$bil1;$a++)
-    {
-        for($b=1;$b<=$bil1;$b++)
-        {
-        $total=$a*$b;
-        echo "<p> $a x $b=$total";
-        }
-    }
 ?>
 
 

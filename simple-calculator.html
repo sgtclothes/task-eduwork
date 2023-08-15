@@ -32,62 +32,112 @@
             <th></th>
             <tbody>
                 <tr>
-                    <td><button>C</button></td>
+                    <td><button id="btn-backspase"><</button></td>
                     <td><button></button></td>
-                    <td><button>7</button></td>
-                    <td><button>8</button></td>
+                    <td><button id="in-7">7</button></td>
+                    <td><button id="in-8">8</button></td>
                 </tr>
                 <tr>
-                    <td><button>9</button></td>
+                    <td><button id="in-9">9</button></td>
                     <td><button>/</button></td>
-                    <td><button>4</button></td>
-                    <td><button>5</button></td>
+                    <td><button id="in-4">4</button></td>
+                    <td><button id="in-5">5</button></td>
                 </tr>
                 <tr>
-                    <td><button>6</button></td>
+                    <td><button id="in-6">6</button></td>
                     <td><button>*</button></td>
-                    <td><button>1</button></td>
-                    <td><button>2</button></td>
+                    <td><button id="in-1">1</button></td>
+                    <td><button id="in-2">2</button></td>
                 </tr>
                 <tr>
-                    <td><button>3</button></td>
+                    <td><button id="in-3">3</button></td>
                     <td><button>-</button></td>
-                    <td><button>0</button></td>
+                    <td><button id="in-0">0</button></td>
                     <td><button>.</button></td>
                 </tr>
                 <tr>
                     <td><button>=</button></td>
                     <td><button>+</button></td>
-                    <td colspan="2"><button style="width: 100%;">ENTER</button></td>
+                    <td colspan="2" id="btn-clear"><button style="width: 100%;">CLEAR</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <script>
-        inputCalc = document.getElementById("input-calculator")
-        inputCalc.value = 1;
+        c = 1
+        d = 2
+        function addNumber(a, b) {
+            return a + b
+        } 
+        function substrackNumber(a, b) {
+            return a - b
+        } 
+        function multiplyNumber(a, b) {
+            return a * b
+        } 
+        function divideNumber(a, b) {
+            return a / b
+        } 
+        console.log(addNumber(10, 40));
+        console.log(substrackNumber(60, 40));
+        console.log(multiplyNumber(60, 40));
+        console.log(divideNumber(60, 40));
 
-        function clickNumber(){
-            console.log("Anda telah klik sebuah tombol")
-        };
-        function addkNumber(a, b){
-            console.log(a + b)
-        };
-        function substrackNumber(a, b){
-            console.log(a - b)
-        };
-        clickNumber();
-        addkNumber(10,20);
-        substrackNumber(10,20);
-        // console.log(valueInputCalc)
-        // a = "Hello World"
-        // b = 2;
-        // c = " Programing"
-        // console.log(b);
-        // console.log(a + b);
-        // console.log(a - b);
-        // console.log(a * b);
-        // console.log(a / b);
+        inputCalculator = document.getElementById("input-calculator")
+
+        button1 = document.getElementById("in-1")
+        button2 = document.getElementById("in-2")
+        button3 = document.getElementById("in-3")
+        button4 = document.getElementById("in-4")
+        button5 = document.getElementById("in-5")
+        button6 = document.getElementById("in-6")
+        button7 = document.getElementById("in-7")
+        button8 = document.getElementById("in-8")
+        button9 = document.getElementById("in-9")
+
+        button1.addEventListener("click", function(){
+            inputCalculator.value += '1'
+        })
+        button2.addEventListener("click", function(){
+            inputCalculator.value += '2'
+        })
+        button3.addEventListener("click", function(){
+            inputCalculator.value += '3'
+        })
+        button4.addEventListener("click", function(){
+            inputCalculator.value += '4'
+        })
+        button5.addEventListener("click", function(){
+            inputCalculator.value += '5'
+        })
+        button6.addEventListener("click", function(){
+            inputCalculator.value += '6'
+        })
+        button7.addEventListener("click", function(){
+            inputCalculator.value += '7'
+        })
+        button8.addEventListener("click", function(){
+            inputCalculator.value += '8'
+        })
+        button9.addEventListener("click", function(){
+            inputCalculator.value += '9'
+        })
+        document.getElementById("in-0").addEventListener("click", function(){
+            inputCalculator.value += '0'
+        })
+        document.getElementById('btn-clear').addEventListener("click", function(){
+            inputCalculator.value = ''
+        })
+        document.getElementById('btn-backspase').addEventListener("click", function(){
+            inputCalculator.value = ''
+        })
+
+        a = 'Hello World'
+        // b = a[a.length -1]
+        b = a.slice(0, -1)
+        console.log(a.length)
+        console.log(b)
+
     </script>
 </body>
 </html>
