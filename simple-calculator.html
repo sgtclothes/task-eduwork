@@ -39,25 +39,25 @@
                 </tr>
                 <tr>
                     <td><button id="in-9">9</button></td>
-                    <td><button>/</button></td>
+                    <td><button id="bagi">/</button></td>
                     <td><button id="in-4">4</button></td>
                     <td><button id="in-5">5</button></td>
                 </tr>
                 <tr>
                     <td><button id="in-6">6</button></td>
-                    <td><button>*</button></td>
+                    <td><button id="kali">*</button></td>
                     <td><button id="in-1">1</button></td>
                     <td><button id="in-2">2</button></td>
                 </tr>
                 <tr>
                     <td><button id="in-3">3</button></td>
-                    <td><button>-</button></td>
+                    <td><button id="kurang">-</button></td>
                     <td><button id="in-0">0</button></td>
-                    <td><button>.</button></td>
+                    <td><button id="koma">.</button></td>
                 </tr>
                 <tr>
-                    <td><button>=</button></td>
-                    <td><button>+</button></td>
+                    <td><button id="equals">=</button></td>
+                    <td><button id="tambah">+</button></td>
                     <td colspan="2" id="btn-clear"><button style="width: 100%;">CLEAR</button></td>
                 </tr>
             </tbody>
@@ -94,6 +94,12 @@
         button7 = document.getElementById("in-7")
         button8 = document.getElementById("in-8")
         button9 = document.getElementById("in-9")
+        buttonTambah = document.getElementById("tambah")
+        buttonKurang = document.getElementById("kurang")
+        buttonBagi = document.getElementById("bagi")
+        buttonkali = document.getElementById("kali")
+        buttonEquals = document.getElementById("equals")
+        buttonKoma = document.getElementById("koma")
 
         button1.addEventListener("click", function(){
             inputCalculator.value += '1'
@@ -129,14 +135,32 @@
             inputCalculator.value = ''
         })
         document.getElementById('btn-backspase').addEventListener("click", function(){
-            inputCalculator.value = ''
+            inputCalculator.value = inputCalculator.value.slice(0, -1)
+        })
+        buttonTambah.addEventListener("click", function(){
+            inputCalculator.value += '+'
+        })
+        buttonKurang.addEventListener("click", function(){
+            inputCalculator.value += '-'
+        })
+        buttonBagi.addEventListener("click", function(){
+            inputCalculator.value += '/'
+        })
+        buttonkali.addEventListener("click", function(){
+            inputCalculator.value += '*'
+        })
+        buttonKoma.addEventListener("click", function(){
+            inputCalculator.value += '.'
+        })
+        buttonEquals.addEventListener("click", function(){
+            inputCalculator.value = eval(inputCalculator.value)
         })
 
-        a = 'Hello World'
-        // b = a[a.length -1]
-        b = a.slice(0, -1)
-        console.log(a.length)
-        console.log(b)
+        // a = 'Hello World'
+        // // b = a[a.length -1]
+        // b = a.slice(0, -1)
+        // console.log(a.length)
+        // console.log(b)
 
     </script>
 </body>
