@@ -1,0 +1,10 @@
+1. SELECT * FROM `transaksi`;
+2. SELECT total_pembelian FROM `transaksi` WHERE total_pembelian >= 10000;
+3. SELECT nama_suplier, no_tlp FROM `suplier`;
+4. SELECT id, nama_suplier, alamat FROM `suplier` WHERE id > 6;
+5. SELECT nama, no_hp FROM `pembeli` WHERE id < 4;
+6. SELECT nama_obat, tanggal_kadaluwarsa FROM `obat`;
+7. SELECT nama_obat, kegunaan FROM `obat`;
+8. SELECT id_obat, harga_obat FROM `detail_transaksi` WHERE harga_obat < 10000;
+9. SELECT id_obat, id_transaksi FROM `detail_transaksi` WHERE harga_obat > 10000;
+10. SELECT nama_PT, alamat FROM `detail_suplier` WHERE id_suplier >= 5;
