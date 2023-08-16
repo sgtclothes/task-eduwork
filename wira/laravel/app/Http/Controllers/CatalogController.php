@@ -12,7 +12,9 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        $catalogs = Catalog::all();
+        $catalogs = Catalog::with('book_catalog')->get();
+
+        // return $catalogs;
         return view('pages.catalog', [
             'catalogs' => $catalogs
         ]);

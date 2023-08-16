@@ -14,6 +14,8 @@
                       <tr>
                         <th>No</th>
                         <th>Name</th>
+                        <th>Book</th>
+                        <th>Created At</th>
                         <th>Actions</th>
                        
                       </tr>
@@ -24,6 +26,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $catalog->name }}</td>
+                        <td>{{ count($catalog->book_catalog) }}</td>
+                        <td>{{ date('d-m-Y' ,strtotime($catalog->created_at)) }}</td>
                         <td>
                           <a href="" class="btn btn-primary">edit</a>
                           <a href="" class="btn btn-danger" onclick="alert('are you sure')">delete</a>
