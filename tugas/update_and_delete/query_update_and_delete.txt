@@ -1,0 +1,5 @@
+1. UPDATE `obat` SET `id`='7' WHERE 'nama _obat' ='BODREX'
+2. UPDATE `obat` SET `Harga`='700' WHERE 'nama _obat' ='DECOLGEN'
+3. UPDATE `obat` SET `jenis`='sirup' WHERE 'nama _obat' ='MIXAGRA'
+4. DELETE FROM `obat` WHERE Harga = '1000'
+5. DELETE FROM `obat` WHERE jenis = 'serbuk'
