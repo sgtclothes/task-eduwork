@@ -12,7 +12,10 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view('pages.catalog');
+        $catalogs = Catalog::all();
+        return view('pages.catalog', [
+            'catalogs' => $catalogs
+        ]);
     }
 
     /**
