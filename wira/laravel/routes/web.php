@@ -26,10 +26,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-Route::get('/author',[AuthorController::class,'index'])->name('author');
-Route::get('/catalog',[CatalogController::class,'index'])->name('catalog');
-Route::get('/publisher',[PublisherController::class,'index'])->name('publisher');
-Route::get('/book',[BookController::class,'index'])->name('book');
-Route::get('/member',[MemberController::class,'index'])->name('member');
+    Route::get('/author', [AuthorController::class, 'index'])->name('author');
+
+    Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');
+    Route::get('/catalog/create', [CatalogController::class, 'create'])->name('catalog-create');
+    Route::post('/catalog/store', [CatalogController::class, 'store'])->name('catalog-store');
+    Route::get('/catalog/edit/{id}', [CatalogController::class, 'edit'])->name('catalog-edit');
+    Route::post('/catalog/update/{id}', [CatalogController::class, 'update'])->name('catalog-update');
+    Route::delete('/catalog/destroy/{id}', [CatalogController::class, 'destroy'])->name('catalog-delete');
+
+    Route::resource('publisher', PublisherController::class);
+
+    Route::get('/book', [BookController::class, 'index'])->name('book');
+    Route::get('/member', [MemberController::class, 'index'])->name('member');
+
+});

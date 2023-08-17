@@ -91,15 +91,15 @@
           </a>
         </li>
 
-        <li class="menu-item {{ request()->is('catalog') ? 'active' : '' }}">
+        <li class="menu-item {{ request()->is('catalog*') ? 'active' : '' }}">
           <a href="{{ route('catalog') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-layout"></i>
             <div data-i18n="Basic">Catalog</div>
           </a>
         </li>
 
-        <li class="menu-item {{ request()->is('publisher') ? 'active' : '' }}">
-          <a href="{{ route('publisher') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('publisher*') ? 'active' : '' }}">
+          <a href="{{ url('publisher') }}" class="menu-link">
             <i class='menu-icon bx bxs-user-check'></i>
             <div data-i18n="Basic">Publisher</div>
           </a>

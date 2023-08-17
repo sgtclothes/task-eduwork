@@ -9,6 +9,7 @@ class Catalog extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
     public function book_catalog()
     {
         return $this->hasMany(Book::class, 'catalog_id');
