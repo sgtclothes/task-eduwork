@@ -1,0 +1,26 @@
+.headingclass {
+    color: black;
+}
+
+.table-siswa {
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.table-siswa th {
+    border: 1px solid black;
+}
+
+.table-siswa tr {
+    border: 1px solid black;
+}
+.table-siswa td {
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: green;
+    color: white;
+}
