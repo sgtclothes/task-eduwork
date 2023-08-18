@@ -228,6 +228,70 @@
           
         }
 
+        // let value = "hello world"
+        let value = 3
+        if (value == 1) {
+          console.log("Value adalah angka 1")
+        } else if (value == 2) {
+          console.log("value adalah angka 2")
+        } else if (value == 3) {
+          console.log("value adalah angka 3")
+        } else {
+          console.log("value bukan angka 1 maupun 2")
+        }
+
+        //ini contoh array
+        let array_one = [1,2,3,4,5,6,7,8,9,10]
+        for (let index = 0; index < array_one.length; index++) {
+          if (array_one[index] % 2 == 1) {
+              console.log(array_one[index])
+          }
+          
+        }
+
+        //ini contoh objek
+        let object_one = {
+          nama : "adit",
+          gender : "Laki-Laki",
+          tinggi : 178,
+          alamat : "lampung",
+          bisnis : {
+            herbal : {
+              nama :"natur",
+              alamat : "lampung",
+            },
+            kaos : {
+              nama : "baju",
+              alamat : "lampung",
+            },
+          },
+          hobby :[
+            {
+              nama : "main game",
+              jenis : ['rpg', 'sport'],
+            }, 
+            {
+              nama : "renang",
+              jenis : ['renang katak', 'renang gaya bebas'],
+            },
+          ]
+        }
+      
+
+        for (const key in object_one) {
+          console.log(object_one[key])
+        }
+
+        console.log(object_one)
+        console.log(object_one['nama'])
+        console.log(object_one.gender)
+        console.log(object_one.tinggi)
+        // console.log(array_one[0])
+        // console.log(array_one[2])
+        // console.log(array_one[4])
+        // console.log(array_one[6])
+        // console.log(array_one[8])
+
         function addNumber(nomor1, nomor2, nomor3) {
             a = 20
             b = 'Hello World'
