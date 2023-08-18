@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+      .table-product {
+          border: 2px solid black;
+          width: 100%;
+      }
+
+      .table-product th {
+          border: 2px solid black;
+      }
+
+      .table-product tr {
+          border: 2px solid black;
+      }
+
+      .table-product td {
+          border: 2px solid black;
+      }
+  </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -94,16 +112,130 @@
             </tbody>
         </table>
     </div>
+    <div style="margin: 100px;">
+      <div class="input-group">
+          <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon"></select>
+          <input type="number" id="input-qty">
+          <button id="btn-insert" class="btn btn-outline-secondary" type="button">Insert</button>
+      </div>
+    </div>
+
+    <div style="margin: 100px;">
+      <table id="table-product" class="table-product">
+        <thead>
+          <th>NO</th>
+          <th>Nama Produk</th>
+          <th>Harga Produk</th>
+          <th>Qty</th>
+        </thead>
+        <tbody id="table-product-body">
+
+        </tbody>
+      </table>
+    </div>
+
+    <div id="total">0</div>
+
 
     <script>
+        let a = {
+          nim : 1,
+          nama_siswa : "agus",
+          kelas : "Laravel",
+          detail : {
+            alamat: "Surabaya",
+            gender : "laki-laki",
+          }
+        };
+        console.log(a['nama_siswa'])
+        console.log(a['detail']['gender'])
+        let b = ["agus", {
+          nama : "budi",
+        }, "candra"];
+        console.log(b)
+        console.log(b[1])
+
+        let items = [
+          {
+            id : 1,
+            kode_barang : "A4",
+            nama_barang: "kertas A4",
+            merk: "ABC",
+            harga: 10000
+          },
+          
+          {
+            id : 2,
+            kode_barang : "A3",
+            nama_barang: "kertas A3",
+            merk: "XYZ",
+            harga: 10000
+          },
+          {
+            id : 3,
+            kode_barang : "A2",
+            nama_barang: "kertas A2",
+            merk: "XYZ",
+            harga: 20000
+          },
+          {
+            id : 4,
+            kode_barang : "A3+",
+            nama_barang: "kertas A3+",
+            merk: "ABC",
+            harga: 30000
+          },
+
+        ]
+        // console.log(items[index]);
+        let str = '';
+        items.forEach((i)=> {
+          str += '<option value="' + i.kode_barang +'">' + i.nama_barang + '</option>';
+        });
+        // console.log(str);
+
+        let number = 1;
+        let inputselect = document.getElementById("inputGroupSelect04");
+        inputselect.insertAdjacentHTML('beforeend', str);
+
+        let buttonInsert = document.getElementById("btn-insert");
+        let inputQuantity = document.getElementById("input-qty");
+
+        buttonInsert.addEventListener("click", function(){
+          let value = inputselect.value;
+          let index = items.findIndex(item => item.kode_barang == value);
+          let tableProductBody = document.getElementById("table-product-body");
+          let strTable = "<tr>";
+          console.log(items[index])
+          strTable += '<td>'+ number + '</td>';
+          strTable += '<td>'+ items[index]['nama_barang'] + '</td>';
+          strTable += '<td>'+ items[index]['harga'] + '</td>';
+          strTable += '<td>'+ inputQuantity.value + '</td>';
+          strTable += '</tr>'
+          let tempTotal = Number(items[index]['harga']) * Number(inputQuantity.value);
+          tableProductBody.insertAdjacentHTML('beforeend', strTable);
+          number++;
+          let divTotal = document.getElementById("total");
+          let total = Number(divTotal.innerHTML) + tempTotal;
+          divTotal.innerHTML = total;
+        });
+
+        console.log(items.length)
+
+        for (let index = 0; index < items.length; index++) {
+          const element = items[index];
+          console.log(element)
+          
+        }
+
         function addNumber(nomor1, nomor2, nomor3) {
             a = 20
             b = 'Hello World'
             c = 100
             d = a + c
-            console.log(nomor1 + nomor2)
-            console.log("Eduwork")
-            console.log(nomor1 - nomor3)
+            // console.log(nomor1 + nomor2)
+            // console.log("Eduwork")
+            // console.log(nomor1 - nomor3)
             return a
         }
         function substrackNumber(nomor1, nomor2){
@@ -111,7 +243,7 @@
         }
         addNumber (4,9,1)
         e = addNumber(2,10,5)
-        console.log(e)
+        // console.log(e)
 
         buttonPrimary = document.getElementById('btn-alert-primary')
         buttonPrimary.addEventListener("click", function(){
@@ -128,7 +260,7 @@
             headingThree = document.getElementById("heading3")
             headingThree.style.color = "green"
         })
-        console.log(Date())
+        // console.log(Date())
     </script>
 </body>
 </html>
