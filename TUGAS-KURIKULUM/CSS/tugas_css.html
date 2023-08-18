@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas CSS</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+    <style>
+            .box {
+                width: 200px;
+                border: 1px solid black;
+                padding: 50px;
+                padding-top: 0%;
+                height: 300px;
+            }
+
+            #wrapper {
+            height: 100%;
+            overflow: hidden;
+            border: 0px solid #000;
+            }
+
+            .main-content {
+            width: 250px;
+            height: 40%;
+            margin: 10px auto;
+            background-color: #fff;
+            border: 2px solid #e6e6e6;
+            padding: 40px 50px;
+            }
+
+            .header {
+            border: 0px solid #000;
+            margin-bottom: 5px;
+            }
+
+            .header img {
+            height: 50px;
+            width: 175px;
+            margin: auto;
+            position: relative;
+            left: 40px;
+            }
+
+            .input-1,
+            .input-2 {
+            width: 100%;
+            font-size: 10px;
+            margin-bottom: 5px;
+            padding: 8px 12px;
+            border: 1px solid #dbdbdb;
+            box-sizing: border-box;
+            border-radius: 3px;
+            }
+
+            .overlap-text {
+            position: relative;
+            }
+
+            .overlap-text a {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            color: #003569;
+            font-size: 14px;
+            text-decoration: none;
+            font-family: 'Overpass Mono', monospace;
+            letter-spacing: -1px;
+            }
+
+            .btn {
+            width: 100%;
+            background-color: #3897f0;
+            border: 1px solid #3897f0;
+            padding: 5px 12px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 3px;
+            }
+
+            .sub-content {
+            width: 250px;
+            height: 40%;
+            font-size: 13px;
+            margin: 10px auto;
+            border: 1px solid #e6e6e6;
+            padding: 20px 50px;
+            background-color: #fff;
+            }
+
+            .s-part {
+            text-align: center;
+            font-family: 'Overpass Mono', monospace;
+            word-spacing: -3px;
+            letter-spacing: -2px;
+            font-weight: normal;
+            }
+
+            .s-part a {
+            text-decoration: none;
+            cursor: pointer;
+            color: #3897f0;
+            font-family: 'Overpass Mono', monospace;
+            word-spacing: -3px;
+            letter-spacing: -2px;
+            font-weight: normal;
+            }
+
+            input:focus {
+                background-color: yellow;
+            }
+
+            /* youtube link */
+            .youtube{
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 160px;
+            text-align: center;
+            padding: 15px 10px;
+            background: #bb0000;
+            border-radius: 5px;
+            }
+
+            .youtube a{
+            text-decoration: none;
+            color: #fff;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            }
+            .separator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #999;
+            margin-top: 6px;
+            }
+
+            .separator .line {
+            height: 1px;
+            width: 40%;
+            background-color: #dbdbdb;
+            }
+            .other {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            }
+
+            .fb-login-btn {
+            margin: 1rem;
+            border: 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #385185;
+            font-weight: 600;
+            background: transparent;
+            }
+
+            .fb-icon {
+            color: #385185;
+            font-size: 1rem;
+            padding-right: 1px;
+            }
+
+            .forgot-password {
+            font-size: 11px;
+            color: #003569;
+            }
+
+            .signup {
+            color: #3897f0;
+            font-weight: 600;
+            }
+            .app p {
+            line-height: 18px;
+            color:#262626;
+            font-size:14px;
+            text-align:center;
+            margin:10px 20px;
+            }
+
+            .app-img {
+            flex-direction: row;
+            justify-content: center;
+            margin:10px 0;
+            -webkit-box-orient: horizontal;
+            -moz-box-orient: horizontal;
+            }
+
+            .app-img a {
+            margin-right:8px;
+            height: 43.5px;
+            }
+
+            .app-img img {
+            height:40px;
+            }
+            .footer {
+                padding-bottom: 52px;
+                padding-top: 24px;
+            }
+
+            .links {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .links a {
+                text-decoration: none;
+                color: var(--txt-second-color);
+                font-size: 13px;
+                line-height: 18px;
+                margin: 0 8px 12px 8px;
+            }
+
+            .copyright {
+                padding: 12px 0;
+                color: var(--txt-second-color);
+                font-size: 13px;
+                line-height: 18px;
+                text-align: center;
+            }
+
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <div style=" margin: 50px; margin-left: 300px;">
+                    <img style="width: 350px; height: 500px;" src="https://www.bhinneka.com/blog/wp-content/uploads/2023/02/Hp-termahal-iPhone-14-Pro-Max-Terbaru-2023.jpg">
+                </div>
+            </td>
+
+            
+            <td>
+                <div id="wrapper">
+                    <div class="main-content">
+                      <div class="header">
+                        <img src="https://i.imgur.com/zqpwkLQ.png" />
+                      </div>
+                      <div class="l-part">
+                        <input type="text" placeholder="Phone number, Username, or Email " class="input-1" />
+                        <div class="overlap-text">
+                          <input type="password" placeholder="Password" class="input-2" />
+                        </div>
+                        <input type="button" value="Log in" class="btn" />
+                      </div>
+                      <div class="separator">
+                        <div class="line"></div>
+                            <p style="font-size: 10px;">OR</p>
+                        <div class="line"></div>
+                      </div>
+                      <div class="other">
+                        <button class="fb-login-btn" type="button">
+                            <i class="fa fa-facebook-official fb-icon"></i>
+                            <span class="">Log in with Facebook</span>
+                        </button>
+                        <a class="forgot-password" href="#">Forgot password?</a>
+                    </div>
+                    </div>
+                    <div class="sub-content">
+                      <div class="s-part">
+                        Don't have an account?<a href="#">Sign up</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="text-align: center;" class="app">
+                    <p>Get the app.</p>
+                    <div class="app-img">
+                        <a>
+                            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/4b70f6fae447.png" >
+                        </a>
+                        <a>
+                            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/f06b908907d5.png">
+                        </a> 
+                      </div> 
+                  </div>  
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="footer">
+    <div class="links">
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Jobs</a>
+        <a href="#">Help</a>
+        <a href="#">API</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Top Accounts</a>
+        <a href="#">Hashtags</a>
+        <a href="#">Locations</a>
+        <a href="#" id="darkmode-toggle">Darkmode</a>
+    </div>
+    <div class="copyright">
+        © 2021 Instagram from Facebook
+    </div>
+</div>
+
+
+</body>
+</html>
