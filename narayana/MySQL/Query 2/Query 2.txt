@@ -1,0 +1,15 @@
+1. SELECT * FROM `obat` WHERE jenis LIKE '%Obat Kapsul%'
+2. SELECT * FROM `obat` WHERE jenis LIKE '%Obat Suntik%'
+3. SELECT id, SUM(stock) as total FROM `detail_obat` GROUP BY id
+4. SELECT tanggal_lahir as total FROM `pasien` GROUP BY tanggal_lahir ORDER BY tanggal_lahir ASC
+5. SELECT tanggal_lahir as total FROM `pasien` GROUP BY tanggal_lahir ORDER BY tanggal_lahir DESC
+6. SELECT umur as total FROM `pasien` GROUP BY umur ORDER BY umur DESC
+7. SELECT alamat FROM `pasien` ORDER BY alamat ASC
+8. SELECT nama FROM `pasien` ORDER BY nama DESC
+9. SELECT id_obat, SUM(jumlah_obat) as total FROM `detail_transaksi` GROUP BY id_obat
+10. SELECT id_pasien, SUM(total_harga) as total FROM `transaksi` GROUP BY id_pasien
+
+
+
+
+
