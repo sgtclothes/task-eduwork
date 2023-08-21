@@ -13,8 +13,6 @@ class BookController extends Controller
     public function index()
     {
         $book = Book::with(['author','publisher','catalog'])->get();
-
-        return $book;
         return view('pages.book');
     }
 

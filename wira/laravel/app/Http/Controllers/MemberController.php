@@ -14,8 +14,8 @@ class MemberController extends Controller
     {
         $member = Member::with('user')->latest()->get();
         
-        return $member;
-        // return view('pages.member');
+      
+        return view('pages.member');
     }
 
     /**

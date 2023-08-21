@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +37,15 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "name" => "required|string",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
+        ]);
+
+        Author::create($data);
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -53,16 +67,29 @@ class AuthorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, $id)
     {
-        //
+        $rules =  [
+            "name" => "required|string",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
+        ];
+        
+        $validateData = $request->validate($rules);
+        $author = Author::findOrFail($id);
+
+        $author->update($validateData);
+
+        return redirect()->route('authors.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Author $author)
+    public function destroy($id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $author->delete();
     }
 }

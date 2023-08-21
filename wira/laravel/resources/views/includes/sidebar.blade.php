@@ -84,8 +84,8 @@
         <div data-i18n="Authentications">Menu</div>
       </a> --}}
       {{-- <ul class="menu-sub"> --}}
-        <li class="menu-item {{ request()->is('author') ? 'active' : '' }}">
-          <a href="{{ route('author') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('author*') ? 'active' : '' }}">
+          <a href="{{ route('authors.index') }}" class="menu-link">
             <i class="menu-icon bx bxs-user"></i>
             <div data-i18n="Basic">Author</div>
           </a>
@@ -99,7 +99,7 @@
         </li>
 
         <li class="menu-item {{ request()->is('publisher*') ? 'active' : '' }}">
-          <a href="{{ url('publisher') }}" class="menu-link">
+          <a href="{{ url('publishers') }}" class="menu-link">
             <i class='menu-icon bx bxs-user-check'></i>
             <div data-i18n="Basic">Publisher</div>
           </a>

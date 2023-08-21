@@ -50,5 +50,6 @@
       </div>
     </div>
     @include('includes.script')
+    @stack('script')
 </body>
 </html>

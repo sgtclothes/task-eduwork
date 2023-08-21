@@ -40,7 +40,7 @@ class PublisherController extends Controller
         ]);
 
         Publisher::create($data);
-        return redirect()->route('publisher.index');
+        return redirect()->route('publishers.index');
 
     }
 
@@ -77,10 +77,10 @@ class PublisherController extends Controller
         ];
 
         $validateData = $request->validate($rules);
-        $publishers = Publisher::find($id);
+        $publishers = Publisher::findOrFail($id);
 
         $publishers->update($validateData);
-        return redirect()->route('publisher.index');
+        return redirect()->route('publishers.index');
     }
 
     /**
@@ -91,6 +91,6 @@ class PublisherController extends Controller
         $publishers = Publisher::find($id);
         $publishers->delete();
 
-        return redirect()->route('publisher.index');
+        return redirect()->route('publishers.index');
     }
 }

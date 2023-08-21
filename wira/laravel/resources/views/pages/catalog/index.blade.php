@@ -10,7 +10,7 @@
               <div class="card">
                 <h5 class="card-header">Table Basic</h5>
                   <a href="{{ route('catalog-create') }}">
-                    <button class="btn btn-primary ms-3 my-2">Create New Catalog</button>
+                    <button class="btn btn-primary ms-3 my-2">Add Catalog</button>
                   </a>
                 <div class="table-responsive text-nowrap">
                   <table class="table">

@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\PublisherController;
+use App\Models\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/catalog/update/{id}', [CatalogController::class, 'update'])->name('catalog-update');
     Route::delete('/catalog/destroy/{id}', [CatalogController::class, 'destroy'])->name('catalog-delete');
 
-    Route::resource('publisher', PublisherController::class);
+    Route::resource('/publishers', PublisherController::class);
+
+    Route::resource('/authors', AuthorController::class);
 
     Route::get('/book', [BookController::class, 'index'])->name('book');
     Route::get('/member', [MemberController::class, 'index'])->name('member');
