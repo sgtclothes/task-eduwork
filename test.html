@@ -201,6 +201,93 @@
         let buttonInsert = document.getElementById("btn-insert");
         let inputQuantity = document.getElementById("input-qty");
 
+        // function fetchAPIData(b){
+        //   console.log(b)
+        //   let c = undefined
+        //   console.log(c)
+        //   // if (c == undefined) {
+        //   //   console.log("C adalah undifined")
+        //   // }
+        //   let a = 1;
+        //   if (isNaN(a + b) == true) {
+        //     console.log("C adlaah Nan")
+        //   }
+        //   return a + b;
+        // }
+        // console.log(fetchAPIData())
+
+        function fetchAPIData(){
+          let b = 1;
+          let c = 3;
+          let d = 4;
+          let e = 10;
+          // if (!(d == e)) {
+          //   console.log("e tidak sama dengan 12")
+          // }
+          if (((b == 1 || c == 2 || e ===  10) && (d == 4 && e == 12)) && (a == 5)) {
+            console.log("Ok")
+          } else {
+            console.log("Ga Ok")
+          }
+
+          let voteable = (b <= 18) ? "Too Young" : "old Enough";
+          // if (b < 18) {
+          //   voteable = "Too Young"
+          // } else {
+          //   voteable = "Old Enough"
+          // }
+          console.log(voteable)
+          //return b;
+          let f = {
+            nama : "adit",
+            gender : 22,
+          };
+          let g = JSON.stringify(f)
+          let h = '{"nama" : "Agus", "gender" : "laki-laki"}'
+          let i = JSON.parse(h)
+          console.log(f)
+          console.log(g)
+          console.log(i)
+        }
+        fetchAPIData()
+        // console.log(fetchAPIData())
+
+        class ToNavigation {
+          constructor(){
+            this.Primary = null;
+            this.Secondary = null;
+            this.Success = null;
+            this.Danger = null;
+            console.log(this)
+          }
+          onClickPrimary(){
+            let self = this;
+            document.getElementById("btn-alert-primary").addEventListener("click", function(){
+              console.log("Button Primary Terklik")
+              self.Primary = 1;
+              console.log(self.Primary)
+            });
+          }
+          onClickSecondary(){
+            document.getElementById("btn-alert-secondary").addEventListener("click", function(){
+              console.log("Button Secondary Terklik")
+            });
+          }
+          onClickSuccess(){
+            document.getElementById("btn-alert-success").addEventListener("click", function(){
+              console.log("Button Success Terklik")
+            });
+          }
+          onClickDanger(){
+            document.getElementById("btn-alert-danger").addEventListener("click", function(){
+              console.log("Button Danger Terklik")
+            });
+          }
+        }
+        let topNavigation = new ToNavigation();
+        topNavigation.onClickPrimary();
+        topNavigation.onClickSecondary();
+
         buttonInsert.addEventListener("click", function(){
           let value = inputselect.value;
           let index = items.findIndex(item => item.kode_barang == value);
