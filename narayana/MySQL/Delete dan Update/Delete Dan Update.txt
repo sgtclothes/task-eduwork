@@ -1,0 +1,10 @@
+1. UPDATE `detail_obat` SET `tempat_produksi` = 'PT Aditama Raya Farmindo JAYA' WHERE `id` = '2'
+
+2. UPDATE `detail_obat` SET `tempat_produksi` = 'PT. Actavis Indonesia MAKMUR' WHERE `id` = '5'
+
+3. UPDATE `obat` SET `jenis` = 'Obat Cair' WHERE `id` = '7'
+
+4. DELETE FROM `obat` WHERE id 3
+
+5. DELETE FROM `pasien` WHERE id 5
+
