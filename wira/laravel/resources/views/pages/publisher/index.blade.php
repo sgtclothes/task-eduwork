@@ -29,8 +29,8 @@
                   {{-- <a href="{{ route('publisher.create') }}">
                     <button class="btn btn-primary ms-3 my-2">Create New Publisher</button>
                   </a> --}}
-                <div class="table-responsive">
-                  <table class="table">
+                <div class="table table-responsive">
+                  <table class="table" id="table_id">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -136,9 +136,24 @@
     position: absolute; right: 0;bottom:1px
   }
 </style>
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 @endpush
 
 @push('script')
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+       $(document).ready( function () {
+            $('#table_id').DataTable({
+                "columnDefs": [
+                { "width": "25%", "targets": 0 },
+                { "width": "50%", "targets": 1 },
+                { "width": "50%", "targets": 2 },
+                { "width": "25%", "targets": 3 }
+            ]
+            });
+        });
+    </script>
+
   <script type="text/javascript">
 
   const { createApp } = Vue
