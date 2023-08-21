@@ -1,0 +1,25 @@
+1. SELECT transaksi.id, nama, umur, alamat, tanggal_transaksi, total_harga, total_kembalian
+FROM `transaksi`
+JOIN pasien ON transaksi.id = pasien.id 
+ORDER BY transaksi.id
+
+2. SELECT nama, tempat_produksi, tanggal_produksi, tanggal_kadaluarsa, stock, jenis, harga
+FROM `detail_obat`
+JOIN obat ON detail_obat.id = obat.id 
+ORDER BY nama ASC
+
+3. SELECT nama, tempat_produksi, tanggal_produksi, tanggal_kadaluarsa, stock, jenis, harga
+FROM `detail_obat`
+RIGHT JOIN obat ON detail_obat.id = obat.id 
+ORDER BY nama ASC
+
+4. SELECT tempat_produksi, nama
+FROM `detail_obat`
+LEFT JOIN obat ON detail_obat.id = obat.id 
+ORDER BY nama ASC
+
+5. SELECT transaksi.id, nama, umur, alamat, tanggal_transaksi, total_harga, total_kembalian
+FROM `transaksi`
+JOIN pasien ON transaksi.id = pasien.id 
+WHERE alamat LIKE '%Jawa%'
+ORDER BY transaksi.id
