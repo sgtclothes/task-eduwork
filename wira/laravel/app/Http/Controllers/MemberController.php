@@ -35,7 +35,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "name" => "required|string",
+            "gender" => "required|string|in:L,P",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
+        ]);
+
+        Member::create($data);
+        return redirect()->route('members.index');
     }
 
     /**
@@ -57,16 +66,27 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            "name" => "required|string",
+            "gender" => "required|string|in:L,P",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
+        ]);
+
+        $members = Member::findOrFail($id);
+        $members->update($data);
+        return redirect()->route('members.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Member $member)
+    public function destroy($id)
     {
-        //
+        $member = Member::find($id);
+        $member->delete();
     }
 }

@@ -112,8 +112,8 @@
           </a>
         </li>
 
-        <li class="menu-item {{ request()->is('member') ? 'active' : '' }}">
-          <a href="{{ route('member') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('members') ? 'active' : '' }}">
+          <a href="{{ url('members') }}" class="menu-link">
             <i class='menu-icon bx bxs-user-detail'></i>
             <div data-i18n="Basic">Member</div>
           </a>
