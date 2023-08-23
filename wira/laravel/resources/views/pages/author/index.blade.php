@@ -2,7 +2,7 @@
 
 
 @section('content')
-  <div id="control-data">
+  <div id="controlData">
     <div class="container-xxl flex-grow-1 container-p-y">
   
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="table table-responsive">
-                  <table class="table" id="table_id">
+                  <table class="table" id="datatable">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -40,31 +40,13 @@
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Address</th>
-                        <th>Book</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                        
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
 
-                    @foreach ($authors as $author)
-                      <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $author->name }}</td>
-                        <td>{{ $author->email }}</td>
-                        <td>{{ $author->phone_number }}</td>
-                        <td>{{ $author->address }}</td>
-                        <td>{{ count($author->book_author) }}</td>
-                        <td>{{ date('d-m-Y' ,strtotime($author->created_at)) }}</td>
-                        <td>
-                          <a href="#" @click="editData({{ $author }})" class="btn btn-primary">edit</a>
-                          <a href="#" @click="deleteData({{ $author->id }})" class="btn btn-danger">hapus</a>
-                         
-                          
-                        </td>
-                      </tr>
-                    @endforeach
+                   
                     
                     </tbody>
                   </table>
@@ -163,7 +145,98 @@
         });
     </script>
     
-  <script type="text/javascript">
+
+<script>
+
+
+
+  var actionUrl = '{{ url('authors') }}'
+  var apiUrl = '{{ url('api/authors') }}'
+
+  var columns = [
+    {data: 'DT_RowIndex', class:'text-center',orderable: true},
+    {data: 'name', class:'text-center',orderable: true},
+    {data: 'email', class:'text-center',orderable: true},
+    {data: 'phone_number', class:'text-center',orderable: true},
+    {data: 'address', class:'text-center',orderable: true},
+    {render: function (data, type, row, meta) {
+        return type === 'display'
+            ? 
+            ` <a href="#" class="btn btn-warning btn-sm" onclick="createApp.editData(event, ${meta.data})">Edit</a>
+              <a href="#" class="btn btn-danger btn-sm" onclick="createApp.deleteData(event, ${row.id})">hapus</a>
+            `
+            : data;
+    },orderable: false, width: '200px', class:'text-center'}
+    // {render: function (index, row, data, meta) {
+      
+           
+    //         ` <a href="#" class="btn btn-warning btn-sm" onclick="editData(event, ${meta.row})">Edit</a>
+    //           <a href="#" class="btn btn-danger btn-sm" onclick="deleteData(event, ${row.id})">hapus</a>
+    //         `
+            
+    // },orderable: false, width: '200px', class:'text-center'}
+    // {render: function(data, type, row, meta){
+    //   return 
+    //   ` <a href="#" class="btn btn-warning btn-sm" onClick="controller.editData(event, ${meta.row})">Edit</a>
+    //     <a href="#" class="btn btn-danger btn-sm" onClick="controller.deketeData(event, ${data.id})">hapus</a>
+    //   `
+    // }, orderable: false, width: '200px', class:'text-center'}
+  ]
+
+  const { createApp } = Vue
+      
+  createApp({
+    data() {
+      return {
+        datas: [],
+        data: {},
+        anggota: {},        
+        actionUrl,
+        apiUrl,
+        editStatus : false
+      }
+    },
+    mounted: function() {
+      this.datatable()
+    },
+    methods : {
+      datatable() {
+        const _this = this;
+        _this.table = $(`#datatable`).DataTable({
+          ajax: {
+            url: _this.apiUrl,
+            type: 'GET'
+          },
+          columns: columns
+        }).on('xhr', function(){
+          _this.datas = _this.table.ajax.json().data
+        })
+      },
+    
+     addData() {
+        this.data = ""
+        this.actionUrl = '{{ url('authors') }}'
+       $('#author-modal').modal('show')
+      },
+      editData(data) {
+        this.data = data
+        this.actionUrl = '{{ url('authors') }}' + '/' + data.id
+        this.editStatus = true
+        $('#author-modal').modal('show')
+      },
+      deleteData(id) {
+       this.actionUrl = '{{ url('authors') }}' + '/' + id
+       if(confirm("Are you sure ?")) {
+        axios.post(this.actionUrl, {_method: "DELETE"}).then(response => {
+          window.location.reload()
+        })
+       }
+      }
+      }
+  }).mount('#controlData')
+
+</script>    
+{{-- <script type="text/javascript">
 
   const { createApp } = Vue
 
@@ -197,5 +270,5 @@
       }
     },
   }).mount('#control-data')
-  </script>
+  </script> --}}
 @endpush

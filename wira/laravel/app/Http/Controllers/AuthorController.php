@@ -8,20 +8,19 @@ use Illuminate\Http\Request;
 class AuthorController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $authors = Author::with('book_author')->get();
-        return view('pages.author.index', [
-            'authors' => $authors
-        ]);
+        return view('pages.author.index');
+    }
+
+    public function api() 
+    {
+        $authors = Author::all();
+        $datatables = datatables()->of($authors)->addIndexColumn();
+        return $datatables->make(true);
     }
 
     /**

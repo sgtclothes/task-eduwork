@@ -47,3 +47,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/member', [MemberController::class, 'index'])->name('member');
 
 });
+
+Route::get('api/authors',[AuthorController::class,'api']);
