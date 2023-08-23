@@ -71,7 +71,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form :action="actionUrl" method="post">
+            <form :action="actionUrl" method="post" @submit="submitForm($event,data.id)">
               @csrf
               {{-- @method('PUT') --}}
               <input type="hidden" name="_method" value="PUT" v-if="editStatus">
@@ -148,8 +148,6 @@
 
 <script>
 
-
-
   var actionUrl = '{{ url('authors') }}'
   var apiUrl = '{{ url('api/authors') }}'
 
@@ -162,11 +160,11 @@
     {render: function (data, type, row, meta) {
         return type === 'display'
             ? 
-            ` <a href="#" class="btn btn-warning btn-sm" onclick="createApp.editData(event, ${meta.data})">Edit</a>
-              <a href="#" class="btn btn-danger btn-sm" onclick="createApp.deleteData(event, ${row.id})">hapus</a>
+            ` <a href="#" class="btn btn-warning btn-sm" onclick="App.editData(event, ${meta.row})">Edit</a>
+              <a href="#" class="btn btn-danger btn-sm" onclick="App.deleteData(event, ${row.id})">hapus</a>
             `
             : data;
-    },orderable: false, width: '200px', class:'text-center'}
+    },orderable: true, width: '200px', class:'text-center'}
     // {render: function (index, row, data, meta) {
       
            
@@ -185,7 +183,7 @@
 
   const { createApp } = Vue
       
-  createApp({
+  var App = createApp({
     data() {
       return {
         datas: [],
@@ -207,7 +205,7 @@
             url: _this.apiUrl,
             type: 'GET'
           },
-          columns: columns
+          columns
         }).on('xhr', function(){
           _this.datas = _this.table.ajax.json().data
         })
@@ -215,60 +213,34 @@
     
      addData() {
         this.data = ""
-        this.actionUrl = '{{ url('authors') }}'
+        this.editStatus = false
        $('#author-modal').modal('show')
       },
-      editData(data) {
-        this.data = data
-        this.actionUrl = '{{ url('authors') }}' + '/' + data.id
+      editData(event,row) {
+        this.data = this.datas[row]
         this.editStatus = true
         $('#author-modal').modal('show')
       },
-      deleteData(id) {
-       this.actionUrl = '{{ url('authors') }}' + '/' + id
+      deleteData(event,id) {
        if(confirm("Are you sure ?")) {
-        axios.post(this.actionUrl, {_method: "DELETE"}).then(response => {
-          window.location.reload()
+        $(event.target).parents('tr').remove()
+        axios.post(this.actionUrl+'/'+id, {_method: 'DELETE'}).then(response => {
+          alert("data has been removed")
         })
        }
+      },
+      submitForm(event,id) {
+        event.preventDefault();
+        const _this = this
+        var actionUrl = !this.editStatus ? this.actionUrl : this.actionUrl+'/'+id
+        axios.post(actionUrl, new FormData($(event.target)[0])).then(response => {
+          $('#author-modal').modal('hide')
+          _this.table.ajax.reload()
+        })
       }
       }
   }).mount('#controlData')
 
 </script>    
-{{-- <script type="text/javascript">
 
-  const { createApp } = Vue
-
-  createApp({
-    data() {
-      return {
-        data: {},
-        actionUrl : '{{ url('authors') }}',
-        editStatus : false
-      }
-    },
-    methods: {
-      addData() {
-        this.data = ""
-        this.actionUrl = '{{ url('authors') }}'
-       $('#author-modal').modal('show')
-      },
-      editData(data) {
-        this.data = data
-        this.actionUrl = '{{ url('authors') }}' + '/' + data.id
-        this.editStatus = true
-        $('#author-modal').modal('show')
-      },
-      deleteData(id) {
-       this.actionUrl = '{{ url('authors') }}' + '/' + id
-       if(confirm("Are you sure ?")) {
-        axios.post(this.actionUrl, {_method: "DELETE"}).then(response => {
-          window.location.reload()
-        })
-       }
-      }
-    },
-  }).mount('#control-data')
-  </script> --}}
 @endpush

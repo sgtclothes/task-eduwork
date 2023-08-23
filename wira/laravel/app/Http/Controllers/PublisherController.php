@@ -12,11 +12,14 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = Publisher::with('book_publisher')->get();
+        return view('pages.publisher.index');
+    }
 
-        return view('pages.publisher.index', [
-            'publishers' => $publishers
-        ]);
+    public function api()
+    {
+        $publishers = Publisher::all();
+        $publishers = datatables()->of($publishers)->addIndexColumn();
+        return $publishers->make(true);
     }
 
     /**

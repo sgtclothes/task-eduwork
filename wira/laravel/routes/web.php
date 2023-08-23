@@ -40,12 +40,14 @@ Route::group(['middleware' => 'auth'], function() {
     Route::delete('/catalog/destroy/{id}', [CatalogController::class, 'destroy'])->name('catalog-delete');
 
     Route::resource('/publishers', PublisherController::class);
+    Route::get('api/publishers', [PublisherController::class, 'api']);
+    
 
     Route::resource('/authors', AuthorController::class);
+    Route::get('api/authors',[AuthorController::class,'api']);
 
     Route::get('/book', [BookController::class, 'index'])->name('book');
-    Route::get('/member', [MemberController::class, 'index'])->name('member');
+    Route::get('/members', [MemberController::class, 'index'])->name('member');
+    Route::get('api/members', [MemberController::class, 'api'])->name('member-api');
 
 });
-
-Route::get('api/authors',[AuthorController::class,'api']);

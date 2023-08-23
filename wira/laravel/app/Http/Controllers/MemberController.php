@@ -11,13 +11,17 @@ class MemberController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $member = Member::with('user')->latest()->get();
-        
+    {    
       
         return view('pages.member');
     }
 
+    public function api() 
+    {
+        $members = Member::all();
+        $members = datatables()->of($members)->addIndexColumn();
+        return $members->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      */

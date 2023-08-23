@@ -1,8 +1,9 @@
 @extends('layouts.template')
 
+
 @section('content')
- <div id="control-data">
-   <div class="container-xxl flex-grow-1 container-p-y">
+  <div id="controlData">
+    <div class="container-xxl flex-grow-1 container-p-y">
   
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
 
@@ -10,27 +11,28 @@
               <!-- Basic Bootstrap Table -->
               <div class="card">
                 <h5 class="card-header">Table Basic</h5>
-
-                  <div class="col-lg-4 col-md-6">
+                <div class="mx-3 mb-3">
+                  <!-- Default Modal -->
+                    <div class="col-lg-4 col-md-6">
                       <div class="mt-3">
                         <!-- Button trigger modal -->
                       <a href="#">
                         <button
                         @click="addData()"
                          type="button"
-                          class="btn btn-primary mx-3"
+                          class="btn btn-primary"
                           data-bs-toggle="modal"
                           data-bs-target="#publisher-modal">
-                          Add Publisher
+                          Add publisher
                         </button>
                         </a>
+                        
+                       
                       </div>
                     </div>
-                  {{-- <a href="{{ route('publisher.create') }}">
-                    <button class="btn btn-primary ms-3 my-2">Create New Publisher</button>
-                  </a> --}}
+                </div>
                 <div class="table table-responsive">
-                  <table class="table" id="table_id">
+                  <table class="table" id="datatable">
                     <thead>
                       <tr>
                         <th>No</th>
@@ -38,35 +40,23 @@
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Address</th>
-                        <th>Book</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                        
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
 
-                    @foreach ($publishers as $publisher)
-                      <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $publisher->name }}</td>
-                        <td>{{ $publisher->email }}</td>
-                        <td>{{ $publisher->phone_number }}</td>
-                        <td>{{ $publisher->address }}</td>
-                        <td>{{ count($publisher->book_publisher) }}</td>
-                        <td>{{ date('d-m-Y' ,strtotime($publisher->created_at)) }}</td>
-                        <td>
-                            <a href="#" @click="editData({{ $publisher }})" class="btn btn-primary">edit</a>
-                          <a href="#" @click="deleteData({{ $publisher->id }})" class="btn btn-danger">hapus</a>
-                        </td>
-                      </tr>
-                    @endforeach
+                   
                     
                     </tbody>
                   </table>
                 </div>
               </div>
+              <!--/ Basic Bootstrap Table -->
+
               <hr class="my-5" />
+
+            
               <!-- Modal -->
     <div class="modal fade" id="publisher-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -81,9 +71,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form :action="actionUrl" method="post">
+            <form :action="actionUrl" method="post" @submit="submitForm($event,data.id)">
               @csrf
-            
+              {{-- @method('PUT') --}}
               <input type="hidden" name="_method" value="PUT" v-if="editStatus">
 
             <div class="row g-2">
@@ -122,7 +112,8 @@
       </div>
      </div>
   </div>
- </div>
+  </div>
+  
 
 @endsection
 
@@ -136,11 +127,11 @@
     position: absolute; right: 0;bottom:1px
   }
 </style>
- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 @endpush
 
 @push('script')
-  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
        $(document).ready( function () {
             $('#table_id').DataTable({
@@ -153,41 +144,103 @@
             });
         });
     </script>
+    
 
-  <script type="text/javascript">
+<script>
+
+  var actionUrl = '{{ url('publishers') }}'
+  var apiUrl = '{{ url('api/publishers') }}'
+
+  var columns = [
+    {data: 'DT_RowIndex', class:'text-center',orderable: true},
+    {data: 'name', class:'text-center',orderable: true},
+    {data: 'email', class:'text-center',orderable: true},
+    {data: 'phone_number', class:'text-center',orderable: true},
+    {data: 'address', class:'text-center',orderable: true},
+    {render: function (data, type, row, meta) {
+        return type === 'display'
+            ? 
+            ` <a href="#" class="btn btn-warning btn-sm" onclick="App.editData(event, ${meta.row})">Edit</a>
+              <a href="#" class="btn btn-danger btn-sm" onclick="App.deleteData(event, ${row.id})">hapus</a>
+            `
+            : data;
+    },orderable: true, width: '200px', class:'text-center'}
+    // {render: function (index, row, data, meta) {
+      
+           
+    //         ` <a href="#" class="btn btn-warning btn-sm" onclick="editData(event, ${meta.row})">Edit</a>
+    //           <a href="#" class="btn btn-danger btn-sm" onclick="deleteData(event, ${row.id})">hapus</a>
+    //         `
+            
+    // },orderable: false, width: '200px', class:'text-center'}
+    // {render: function(data, type, row, meta){
+    //   return 
+    //   ` <a href="#" class="btn btn-warning btn-sm" onClick="controller.editData(event, ${meta.row})">Edit</a>
+    //     <a href="#" class="btn btn-danger btn-sm" onClick="controller.deketeData(event, ${data.id})">hapus</a>
+    //   `
+    // }, orderable: false, width: '200px', class:'text-center'}
+  ]
 
   const { createApp } = Vue
-
-  createApp({
+      
+  var App = createApp({
     data() {
       return {
+        datas: [],
         data: {},
-        actionUrl : '{{ url('publishers') }}',
+        anggota: {},        
+        actionUrl,
+        apiUrl,
         editStatus : false
       }
     },
-    methods: {
-      addData() {
+    mounted: function() {
+      this.datatable()
+    },
+    methods : {
+      datatable() {
+        const _this = this;
+        _this.table = $(`#datatable`).DataTable({
+          ajax: {
+            url: _this.apiUrl,
+            type: 'GET'
+          },
+          columns
+        }).on('xhr', function(){
+          _this.datas = _this.table.ajax.json().data
+        })
+      },
+    
+     addData() {
         this.data = ""
-        this.actionUrl = '{{ url('publishers') }}'
+        this.editStatus = false
        $('#publisher-modal').modal('show')
       },
-      editData(data) {
-        this.data = data
-        this.actionUrl = '{{ url('publishers') }}' + '/' + data.id
+      editData(event,row) {
+        this.data = this.datas[row]
         this.editStatus = true
         $('#publisher-modal').modal('show')
       },
-      deleteData(id) {
-       this.actionUrl = '{{ url('publishers') }}' + '/' + id
+      deleteData(event,id) {
        if(confirm("Are you sure ?")) {
-        axios.post(this.actionUrl, {_method: "DELETE"}).then((response) => {
-          window.location.reload()
+        $(event.target).parents('tr').remove()
+        axios.post(this.actionUrl+'/'+id, {_method: 'DELETE'}).then(response => {
+          alert("data has been removed")
         })
        }
+      },
+      submitForm(event,id) {
+        event.preventDefault();
+        const _this = this
+        var actionUrl = !this.editStatus ? this.actionUrl : this.actionUrl+'/'+id
+        axios.post(actionUrl, new FormData($(event.target)[0])).then(response => {
+          $('#publisher-modal').modal('hide')
+          _this.table.ajax.reload()
+        })
       }
-    },
-  }).mount('#control-data')
-  </script>
-@endpush
+      }
+  }).mount('#controlData')
 
+</script>    
+
+@endpush
