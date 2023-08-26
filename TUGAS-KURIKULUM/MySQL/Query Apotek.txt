@@ -1,0 +1,10 @@
+1. SELECT * FROM supplier
+2. SELECT `id`, `nama` FROM `supplier` WHERE 1
+3. SELECT * FROM `supplier` WHERE alamat = "cimahi"
+4. SELECT * FROM `obat`
+5. SELECT `id`, `kode_obat`, `nama_obat`, `harga`, `id_supplier` FROM `obat` WHERE 1
+6. SELECT `nama_obat`, `harga` FROM `obat` WHERE 1
+7. SELECT * FROM `obat` WHERE id_supplier = 1
+8. SELECT * FROM `obat` WHERE harga > 5000
+9. SELECT * FROM `obat` WHERE harga < 5000
+10 SELECT * FROM `obat` WHERE harga >= 5000
