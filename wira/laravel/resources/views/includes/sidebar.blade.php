@@ -105,8 +105,8 @@
           </a>
         </li>
 
-        <li class="menu-item {{ request()->is('book') ? 'active' : '' }}">
-          <a href="{{ route('book') }}" class="menu-link">
+        <li class="menu-item {{ request()->is('books*') ? 'active' : '' }}">
+          <a href="{{ url('books') }}" class="menu-link">
             <i class='menu-icon bx bxs-book-bookmark'></i>
             <div data-i18n="Basic">Book</div>
           </a>

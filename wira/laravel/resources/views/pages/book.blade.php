@@ -1,241 +1,267 @@
 @extends('layouts.template')
 
+@section('title', 'book page')
+
 @section('content')
-  <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+  <div class="container-xxl flex-grow-1 container-p-y" id="controlData">
+    <div class="row">
+      <div class="col-md-5 offset-md-3">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><i class='bx bx-search-alt-2' style="font-size: 1.3rem" ></i></box-icon></span>
+          <input type="text" class="form-control" placeholder="Username" autocomplete="off" v-model="search">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-primary" @click="addData()">
+         new book
+        </button>
+      </div>
+    </div>
 
-              <h4>Book Table</h4>
-              <!-- Basic Bootstrap Table -->
-              <div class="card">
-                <h5 class="card-header">Table Basic</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Project</th>
-                        <th>Client</th>
-                        <th>Users</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                      <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                        <td>Albert Cook</td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-primary me-1">Active</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-1"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                        <td>Barry Hunter</td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-success me-1">Completed</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                        <td>Trevor Baker</td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
-                        </td>
-                        <td>Jerry Milton</td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-warning me-1">Pending</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-3 col-sm-6 col-xs-12 m-3" v-for="(book,index) in filteredList" >
+        <div class="card" style="width: 18rem;">
+          <div class="card-body" v-on:click.prevent="editData(book.id)">
+            <h5 class="card-title">@{{ book.title }} (@{{ book.qty }}) (@{{ book.publisher_id }})</h5>
+            <h5 class="card-title">@{{ book.catalog_id }} (@{{ book.author_id }})</h5>
+            <p class="card-text">Rp@{{ numberWithSpaces(book.price) }},- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+               <!-- Modal -->
+    <div class="modal fade" id="modal-book" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+
+            <div class="row g-2 mb-2">
+              <div class="col">
+                <label for="isbn" class="form-label">isbn</label>
+                <input type="number" v-model="isbn" id="isbn" name="isbn" class="form-control" placeholder="masukkan nama"  />
               </div>
-              <!--/ Basic Bootstrap Table -->
 
-              <hr class="my-5" />
-
-            
-              <!--/ Responsive Table -->
+              <div class="col">
+                <label for="title" class="form-label">title</label>
+                <input type="text" v-model="title" id="title" name="title" class="form-control" placeholder="xxxx@xxx.xx"/>
+              </div>
+             
+            </div>
+            <div class="row g-2 mb-2">
+              <div class="col mb-0">
+                <label for="year" class="form-label">year</label>
+                <input type="number" v-model="year" id="year" name="year" class="form-control" placeholder="masukkan nomor hp" />
+              </div>
+              <div class="col mb-0">
+                <label for="publisher" class="form-label">publisher</label>
+                <select v-model="publisher_id" name="publisher_id" id="" class="form-control">
+                 @foreach ($publishers as $publisher)
+                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                 @endforeach
+                 {{-- :selected="book.publisher_id == {{ $publisher->id}}" --}}
+                </select>
+              </div>        
+             
             </div>
 
+            <div class="row g-2 mb-2">
+              <div class="col">
+                <label for="author" class="form-label">author</label>
+               <select v-model="author_id" name="author_id" id="" class="form-control">
+                 @foreach ($authors as $author)
+                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                 @endforeach
+                </select>
+              </div>  
+              <div class="col mb-2">
+                <label for="catalog" class="form-label">catalog</label>
+                <select v-model="catalog_id" name="catalog_id" id="" class="form-control">
+                 @foreach ($catalogs as $catalog)
+                    <option value="{{ $catalog->id }}">{{ $catalog->name }}</option>
+                 @endforeach
+                </select>
+              </div>      
+            </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <label for="qty" class="form-label">qty</label>
+                <input type="number" v-model="qty" id="qty" name="qty" class="form-control" placeholder="masukkan alamat" />
+              </div>             
+            </div>
+
+            <div class="row mt-2 mb-5">
+              <div class="col">
+                <label for="price" class="form-label">price</label>
+                <input type="number" v-model="price" id="price" name="price" class="form-control" placeholder="masukkan alamat" />
+              </div>             
+            </div>
+
+            <div class="position-relative save-btn">
+              <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0" 
+              v-on:click.prevent="storeData">Save changes</button>
+              <button type="submit" class="btn btn-danger position-absolute bottom-0 start-0" v-on:click="deleteData(book.id)"
+              v-if="deleteNow" 
+              >delete</button>
+              {{--  --}}
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+     </div>
+
+  </div>
 @endsection
+
+@push('styles')
+<style>
+    .save-btn{
+    margin-top:80px
+  }
+  
+</style>
+
+
+@push('script')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <script>
+    let actionUrl = '{{ url('books') }}'
+    let apiUrl = '{{ url('api/books') }}'
+
+    const { createApp } = Vue
+      
+  var App = createApp({
+    data() {
+      return {
+        books: [],
+        search : '',
+        book: '',
+        editStatus: null,
+        isbn:null,
+        title:null,
+        year:null,
+        publisher_id:null,
+        author_id:null,
+        catalog_id:'',
+        qty:null,
+        price:null,
+        deleteNow: true
+      }
+    },
+    mounted: function() {
+     this.get_books()
+    },
+    methods : {
+      get_books()
+      {
+         const _this = this
+      
+        $.ajax({
+          url: apiUrl,
+          methods: 'GET',
+          success : function(data) {
+            _this.books = JSON.parse(data)
+          },
+          error : function(error) {
+            console.log(error)
+          }
+        })
+      },
+      numberWithSpaces(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      },
+      addData()
+      {
+        this.book = ''
+        this.deleteNow = true
+        $('#modal-book').modal('show')
+      },
+
+      storeData() {
+        var form_data = new FormData()
+        form_data.append("isbn", this.isbn)
+        form_data.append("title", this.title)
+        form_data.append("year", this.year)
+        form_data.append("publisher_id", this.publisher_id)
+        form_data.append("author_id", this.author_id)
+        form_data.append("catalog_id", this.catalog_id)
+        form_data.append("qty", this.qty)
+        form_data.append("price", this.price)
+        form_data.append("editStatus", this.editStatus)
+
+        axios.post(`api/book-store`, form_data)
+          .then((response) => {
+              $('#modal-book').modal('hide')
+              alert('success')
+              this.isbn = "";
+              this.title = "";
+              this.year = "";
+              this.publisher_id = "";
+              this.author_id = "";
+              this.catalog_id = "";
+              this.qty = "";
+              this.price = "";
+              this.editStatus = null;
+              this.get_books()
+          }).catch((err) => {
+            alert('error')
+            console.log(err)
+          });
+      },
+
+      editData(id)
+      {
+        $('#modal-book').modal('show')
+        this.editStatus = id
+        var url = "{{ url('api/get-book') }}" + '/' + id
+
+        axios.get(url)
+          .then(resp => {
+            var data = resp.data
+              this.isbn = data.isbn;
+              this.title = data.title;
+              this.year = data.year;
+              this.publisher_id = data.publisher_id;
+              this.author_id = data.author_id;
+              this.catalog_id = data.catalog_id;
+              this.qty = data.qty;
+              this.price = data.price;
+
+              this.addData()
+          }).catch(err => {
+            alert('error')
+            console.log(err)
+          }).finally(()=> {
+
+          })
+       
+      },
+
+      deleteData(id) {
+        console.log(id)
+      },
+    },
+      
+    computed : {
+      filteredList()
+      {
+        return this.books.filter(book => {
+          return book.title.toLowerCase().includes(this.search.toLowerCase())
+        })
+      }
+    }
+  }).mount('#controlData')
+  </script>
+@endpush

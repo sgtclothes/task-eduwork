@@ -46,7 +46,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/authors', AuthorController::class);
     Route::get('api/authors',[AuthorController::class,'api']);
 
-    Route::get('/book', [BookController::class, 'index'])->name('book');
+// Route::get('/book', [BookController::class, 'index'])->name('book');
+    Route::resource('/books', BookController::class);
+    Route::get('api/books', [BookController::class,'api']);
+    Route::get('api/book-delete/{id}', [BookController::class, 'apiDelete']);
+    Route::post('api/book-store', [BookController::class, 'apiStore']);
+    Route::get('api/get-book/{id}', [BookController::class, 'apiGetBook']);
 
     // Route::get('/members', [MemberController::class, 'index'])->name('member');
     Route::resource('/members', MemberController::class);

@@ -164,7 +164,7 @@
               <a href="#" class="btn btn-danger btn-sm" onclick="App.deleteData(event, ${row.id})">hapus</a>
             `
             : data;
-    },orderable: true, width: '200px', class:'text-center'}
+    },orderable: true, width: '200px', class:'text-center', data: null}
     // {render: function (index, row, data, meta) {
       
            

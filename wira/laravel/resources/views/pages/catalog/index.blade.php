@@ -53,6 +53,6 @@
 
             
               <!--/ Responsive Table -->
-            </div>
+  </div>
 
 @endsection
