@@ -20,12 +20,14 @@
 
     <div class="row mt-4 justify-content-center">
       <div class="col-md-3 col-sm-6 col-xs-12 m-3" v-for="(book,index) in filteredList" >
-        <div class="card" style="width: 18rem;">
+        <div class="card card-item position-relative" style="width: 18rem;">
           <div class="card-body" v-on:click.prevent="editData(book.id)">
             <h5 class="card-title">@{{ book.title }} (@{{ book.qty }}) (@{{ book.publisher_id }})</h5>
             <h5 class="card-title">@{{ book.catalog_id }} (@{{ book.author_id }})</h5>
             <p class="card-text">Rp@{{ numberWithSpaces(book.price) }},- </p>
           </div>
+          <button type="submit" class="btn btn-danger position-absolute btn-delete" v-on:click="deleteData(book.id)"
+            >delete</button>
         </div>
       </div>
     </div>
@@ -111,9 +113,7 @@
             <div class="position-relative save-btn">
               <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0" 
               v-on:click.prevent="storeData">Save changes</button>
-              <button type="submit" class="btn btn-danger position-absolute bottom-0 start-0" v-on:click="deleteData(book.id)"
-              v-if="deleteNow" 
-              >delete</button>
+              
               {{--  --}}
             </div>
           </form>
@@ -127,8 +127,9 @@
 
 @push('styles')
 <style>
-    .save-btn{
-    margin-top:80px
+    .btn-delete{
+    bottom: 15px;
+    right: 15px;
   }
   
 </style>
@@ -142,12 +143,12 @@
 
     const { createApp } = Vue
       
-  var App = createApp({
+   var App = createApp({
     data() {
       return {
         books: [],
         search : '',
-        book: '',
+        book: {},
         editStatus: null,
         isbn:null,
         title:null,
@@ -157,7 +158,6 @@
         catalog_id:'',
         qty:null,
         price:null,
-        deleteNow: true
       }
     },
     mounted: function() {
@@ -185,7 +185,20 @@
       addData()
       {
         this.book = ''
-        this.deleteNow = true
+        this.isbn = null,
+        this.title = null,
+        this.year = null,
+        this.publisher_id = null,
+        this.author_id = null,
+        this.catalog_id = '',
+        this.qty = null,
+        this.price = null,
+        $('#modal-book').modal('show')
+      },
+
+      addDataUpdate()
+      {
+        this.book = ''
         $('#modal-book').modal('show')
       },
 
@@ -239,7 +252,7 @@
               this.qty = data.qty;
               this.price = data.price;
 
-              this.addData()
+              this.addDataUpdate()
           }).catch(err => {
             alert('error')
             console.log(err)
@@ -249,9 +262,16 @@
        
       },
 
-      deleteData(id) {
-        console.log(id)
-      },
+      deleteData(id){
+
+        if(confirm("Are you sure to delete this book ?")){
+            axios.delete(`/api/book-delete/${id}`).then(response=>{
+                this.get_books()
+            }).catch(error=>{
+                console.log(error)
+            })
+        }
+      }
     },
       
     computed : {

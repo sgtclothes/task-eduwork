@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
 // Route::get('/book', [BookController::class, 'index'])->name('book');
     Route::resource('/books', BookController::class);
     Route::get('api/books', [BookController::class,'api']);
-    Route::get('api/book-delete/{id}', [BookController::class, 'apiDelete']);
+    Route::delete('api/book-delete/{id}', [BookController::class, 'apiDelete']);
     Route::post('api/book-store', [BookController::class, 'apiStore']);
     Route::get('api/get-book/{id}', [BookController::class, 'apiGetBook']);
 
