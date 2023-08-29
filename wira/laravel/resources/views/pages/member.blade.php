@@ -1,5 +1,6 @@
 @extends('layouts.template')
 
+@section('title', 'member page')
 
 @section('content')
   <div id="controlData">
@@ -41,6 +42,7 @@
                         <th>Phone number</th>
                         <th>Address</th>
                         <th>Email</th>
+                        <th>Date</th>
                         <th>Actions</th>
                        
                       </tr>
@@ -163,6 +165,7 @@
     {data: 'phone_number', class:'text-center',orderable: true},
     {data: 'address', class:'text-center',orderable: true},
     {data: 'email', class:'text-center',orderable: true},
+    {data: 'date', class:'text-center',orderable: true},
     {render: function (data, type, row, meta) {
         return type === 'display'
             ? 
@@ -170,7 +173,7 @@
               <a href="#" class="btn btn-danger btn-sm" onclick="App.deleteData(event, ${row.id})">hapus</a>
             `
             : data;
-    },orderable: true, width: '200px', class:'text-center'}
+    },orderable: true, width: '200px', class:'text-center', data: null}
     // {render: function (index, row, data, meta) {
       
            

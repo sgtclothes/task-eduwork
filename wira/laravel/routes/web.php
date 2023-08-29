@@ -46,7 +46,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/authors', AuthorController::class);
     Route::get('api/authors',[AuthorController::class,'api']);
 
-// Route::get('/book', [BookController::class, 'index'])->name('book');
     Route::resource('/books', BookController::class);
     Route::get('api/books', [BookController::class,'api']);
     Route::delete('api/book-delete/{id}', [BookController::class, 'apiDelete']);

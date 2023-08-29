@@ -113,8 +113,6 @@
             <div class="position-relative save-btn">
               <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0" 
               v-on:click.prevent="storeData">Save changes</button>
-              
-              {{--  --}}
             </div>
           </form>
           </div>
@@ -131,6 +129,9 @@
     bottom: 15px;
     right: 15px;
   }
+  .save-btn {
+    margin-top: 80px;
+  }
   
 </style>
 
@@ -138,10 +139,10 @@
 @push('script')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   <script>
-    let actionUrl = '{{ url('books') }}'
-    let apiUrl = '{{ url('api/books') }}'
+  let actionUrl = '{{ url('books') }}'
+  let apiUrl = '{{ url('api/books') }}'
 
-    const { createApp } = Vue
+  const { createApp } = Vue
       
    var App = createApp({
     data() {
@@ -155,7 +156,7 @@
         year:null,
         publisher_id:null,
         author_id:null,
-        catalog_id:'',
+        catalog_id:null,
         qty:null,
         price:null,
       }
@@ -166,7 +167,7 @@
     methods : {
       get_books()
       {
-         const _this = this
+        const _this = this
       
         $.ajax({
           url: apiUrl,
@@ -198,7 +199,6 @@
 
       addDataUpdate()
       {
-        this.book = ''
         $('#modal-book').modal('show')
       },
 
@@ -236,7 +236,7 @@
 
       editData(id)
       {
-        $('#modal-book').modal('show')
+   
         this.editStatus = id
         var url = "{{ url('api/get-book') }}" + '/' + id
 
@@ -251,24 +251,22 @@
               this.catalog_id = data.catalog_id;
               this.qty = data.qty;
               this.price = data.price;
-
-              this.addDataUpdate()
+              $('#modal-book').modal('show')
+              
           }).catch(err => {
             alert('error')
             console.log(err)
           }).finally(()=> {
-
           })
        
       },
 
       deleteData(id){
-
         if(confirm("Are you sure to delete this book ?")){
-            axios.delete(`/api/book-delete/${id}`).then(response=>{
-                this.get_books()
+            axios.delete(`/api/book-delete/${id}`).then(response => {
+              this.get_books()
             }).catch(error=>{
-                console.log(error)
+              console.log(error)
             })
         }
       }

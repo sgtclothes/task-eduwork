@@ -1,5 +1,6 @@
 @extends('layouts.template')
 
+@section('title', 'catalog page')
 
 @section('content')
   <div id="controlData">
@@ -40,6 +41,7 @@
                         <th>Email</th>
                         <th>Phone number</th>
                         <th>Address</th>
+                        <th>Date</th>
                         <th>Actions</th>
                        
                       </tr>
@@ -157,6 +159,7 @@
     {data: 'email', class:'text-center',orderable: true},
     {data: 'phone_number', class:'text-center',orderable: true},
     {data: 'address', class:'text-center',orderable: true},
+    {data: 'date', class:'text-center',orderable: true},
     {render: function (data, type, row, meta) {
         return type === 'display'
             ? 

@@ -1,5 +1,7 @@
 @extends('layouts.template')
 
+@section('title', 'publisher page')
+
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
   <form action="{{ route('publisher.update', $publishers->id) }}" method="POST">

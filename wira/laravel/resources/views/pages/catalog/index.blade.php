@@ -1,5 +1,7 @@
 @extends('layouts.template')
 
+@section('title', 'catalog page')
+
 @section('content')
   <div class="container-xxl flex-grow-1 container-p-y">
   
@@ -31,7 +33,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $catalog->name }}</td>
                         <td>{{ count($catalog->book_catalog) }}</td>
-                        <td>{{ date('d-m-Y' ,strtotime($catalog->created_at)) }}</td>
+                        <td>{{ convert_date($catalog->created_at) }}</td>
                         <td>
                           <a href="{{ route('catalog-edit', $catalog->id) }}" class="btn btn-primary">edit</a>
                           <form action="{{ route('catalog-delete', $catalog->id) }}" method="POST">
