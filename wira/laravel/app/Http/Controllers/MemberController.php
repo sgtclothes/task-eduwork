@@ -4,29 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {    
-      
+    public function index(Request $request)
+    {
+        if ($request->gender) {
+            $datas = Member::where('gender', $request->gender)->get();
+            $datatables = datatables()->of($datas)->addIndexColumn();
+            return $datatables->make(true);
+        } else if (!$request->gender) {
+            $datas = Member::all();
+        }
+
         return view('pages.member');
     }
 
-    public function api() 
+
+    public function api()
     {
         $members = Member::all();
-
-        
         $members = datatables()->of($members)
-        ->addColumn('date', function($member) {
-            return
-            date('d-F-Y', strtotime($member->created_at));
-        })
-        ->addIndexColumn();
+            ->addColumn('date', function ($member) {
+                return convert_date($member->created_at);
+            })
+            ->addIndexColumn();
         return $members->make(true);
     }
     /**

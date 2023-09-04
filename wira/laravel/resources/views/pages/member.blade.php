@@ -5,17 +5,16 @@
 @section('content')
   <div id="controlData">
     <div class="container-xxl flex-grow-1 container-p-y">
-  
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
-
               <h4>Member Table</h4>
               <!-- Basic Bootstrap Table -->
               <div class="card">
                 <h5 class="card-header">Table Basic</h5>
                 <div class="mx-3 mb-3">
                   <!-- Default Modal -->
-                    <div class="col-lg-4 col-md-6">
-                      <div class="mt-3">
+                   <div class="row justify-content-between">
+                     <div class="col-lg-4 col-md-6">
+                      <div class="mt-3 mx-2">
                         <!-- Button trigger modal -->
                       <a href="#">
                         <button
@@ -31,6 +30,17 @@
                        
                       </div>
                     </div>
+                    
+                     <div class="col-lg-4 col-md-6 ">
+                       <div class="mt-3 w-50 ms-auto me-3">
+                         <select name="gender" class="form-control filter-select" id="">
+                          <option value="0">semua jenis kelamin</option>
+                          <option value="L">Laki - laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                       </div>
+                    </div>
+                   </div>
                 </div>
                 <div class="table table-responsive">
                   <table class="table" id="datatable">
@@ -136,6 +146,7 @@
 @endpush
 
 @push('script')
+
  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
        $(document).ready( function () {
@@ -172,21 +183,8 @@
             `
             : data;
     },orderable: true, width: '200px', class:'text-center', data: null}
-    // {render: function (index, row, data, meta) {
-      
-           
-    //         ` <a href="#" class="btn btn-warning btn-sm" onclick="editData(event, ${meta.row})">Edit</a>
-    //           <a href="#" class="btn btn-danger btn-sm" onclick="deleteData(event, ${row.id})">hapus</a>
-    //         `
-            
-    // },orderable: false, width: '200px', class:'text-center'}
-    // {render: function(data, type, row, meta){
-    //   return 
-    //   ` <a href="#" class="btn btn-warning btn-sm" onClick="controller.editData(event, ${meta.row})">Edit</a>
-    //     <a href="#" class="btn btn-danger btn-sm" onClick="controller.deketeData(event, ${data.id})">hapus</a>
-    //   `
-    // }, orderable: false, width: '200px', class:'text-center'}
   ]
+
 
   const { createApp } = Vue
       
@@ -248,6 +246,18 @@
       }
   }).mount('#controlData')
 
+  
 </script>    
 
+<script>
+  $('select[name=gender]').on('change', function() {
+    gender = $('select[name=gender]').val()
+
+    if(gender == 0) {
+      App.table.ajax.url(actionUrl).load()
+    }else {
+      App.table.ajax.url(actionUrl+'?gender='+gender).load()
+    }
+  })
+</script>
 @endpush

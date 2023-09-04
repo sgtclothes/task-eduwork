@@ -61,23 +61,6 @@ class BookController extends Controller
         return redirect()->route('books.index');
     }
 
-    // public function apiStore(Request $request)
-    // {
-    //     $data = $request->validate([
-    //         "isbn" => "required|string",
-    //         "title" => "required|email",
-    //         "year" => "required|numeric",
-    //         "publisher_id" => "required|numeric",
-    //         "author_id" => "required|numeric",
-    //         "catalog_id" => "required|numeric",
-    //         "qty" => "required|numeric",
-    //         "price" => "required|numeric",
-    //     ]);
-
-    //     Book::create($data);
-    //     return redirect()->route('books.index');
-    // }
-
     public function apiStore()
     {
         $editStatus = request('editStatus');

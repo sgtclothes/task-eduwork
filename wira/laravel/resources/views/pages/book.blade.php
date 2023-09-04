@@ -20,7 +20,8 @@
 
     <div class="row mt-4 justify-content-center">
       <div class="col-md-3 col-sm-6 col-xs-12 m-3" v-for="(book,index) in filteredList" >
-        <div class="card card-item position-relative" style="width: 18rem;">
+        <a href="">
+          <div class="card card-item position-relative" style="width: 18rem;">
           <div class="card-body" v-on:click.prevent="editData(book.id)">
             <h5 class="card-title">@{{ book.title }} (@{{ book.qty }}) (@{{ book.publisher_id }})</h5>
             <h5 class="card-title">@{{ book.catalog_id }} (@{{ book.author_id }})</h5>
@@ -29,6 +30,7 @@
           <button type="submit" class="btn btn-danger position-absolute btn-delete" v-on:click="deleteData(book.id)"
             >delete</button>
         </div>
+        </a>
       </div>
     </div>
 
