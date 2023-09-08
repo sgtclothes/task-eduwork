@@ -45,7 +45,7 @@
                     for ($x=0; $x < count((array) $value ['kelas']) ; $x++) { 
                         echo "<td>" . $i++
                             . "<td>" . $value ['nama'] . "<td>" . $value['tanggal_lahir']
-                            . "<td>" . $usia -> format('$y Tahun') . "<td>" . $value ['alamat'] 
+                            . "<td>" . $usia -> format('%y Tahun') . "<td>" . $value ['alamat'] 
                             . "<td>" . $value ['kelas'] . "<td>" . $value ['nilai'] 
                             . "<td>" . $grade . "<tr>";
 
