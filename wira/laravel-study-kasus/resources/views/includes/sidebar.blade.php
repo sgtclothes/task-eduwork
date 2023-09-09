@@ -100,12 +100,12 @@
           </a>
         </li>
         
-        <li class="menu-item {{ request()->is('members') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('members') ? 'active' : '' }}">
           <a href="{{ url('members') }}" class="menu-link">
             <i class='menu-icon bx bxs-user-detail'></i>
             <div data-i18n="Basic">Member</div>
           </a>
-        </li>
+        </li> --}}
         
       {{-- </ul>
     </li> --}}

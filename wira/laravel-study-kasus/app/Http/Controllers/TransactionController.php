@@ -52,13 +52,16 @@ class TransactionController extends Controller
                 return "Aktif";
                }
             })
-            
-            ->addColumn('action', function ($row) {
-                $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> 
-                <a href="javascript:void(0)" class="detail btn btn-warning btn-sm">detail</a>
-                <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                return $actionBtn;
-            })
+
+            // ->addColumn('action', function ($row) {
+            //     $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> 
+            //     <a href="javascript:void(0)" class="detail btn btn-warning btn-sm">detail</a>
+            //     <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+            //     return $actionBtn;
+            // })
+            ->addColumn('action', 'pages.transaction.action')
+            ->rawColumns(['action'])
+
             // ->addColumn('details', function($transaction) {
                 
             // })
@@ -115,9 +118,14 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaction $transaction, $id)
+    public function edit($id)
     {
-        return view('pages.transaction.edit');
+        $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
+        // $transactions = Transaction::find($id);
+        $members = Member::all();
+        $books = Book::all();
+        
+        return view('pages.transaction.edit', compact('transactions','members','books'));
     }
 
     /**

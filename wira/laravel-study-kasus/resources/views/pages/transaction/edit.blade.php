@@ -1,16 +1,19 @@
 @extends('layouts.template')
 
-@section('title', 'Transaction page')
+@section('title', 'Edit Transaction page')
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h2>Ini edit transaksi</h2>
-  <form action="{{ route('transactions.store') }}" method="POST">
+    <h4>Edit Peminjaman</h4>
+  <form action="{{ route('transactions.update', $transactions->id) }}" method="POST">
     @csrf
      <div class="card-body col-lg-6 col-md-4">
         <div class="my-3">
         <label for="member_id" class="form-label">Name</label>
         <select name="member_id" id="" class="form-control" >
+          <option value="{{$transactions->member_id}}">
+              Jangan Ubah ({{$transactions->member->name}})
+          </option>
           @foreach ($members as $member)
             <option value="{{ $member->id }}">{{ $member->name }}</option>
           @endforeach
@@ -21,6 +24,11 @@
         <div class="my-3">
         <label for="book_id" class="form-label">book</label>
         <select name="book_id[]" multiple="multiple" id="" class="select2-multiple form-control" id="select2Multiple">
+          @foreach ($transactions->details[1]->book as $item)
+          <option value="{{$transactions->details[1]->book->id}}">
+            Jangan Ubah ({{$transactions->details[1]->book->title}})
+          </option>
+          @endforeach
           @foreach ($books as $book)
             <option value="{{ $book->id }}">{{ $book->title }}</option>
           @endforeach
@@ -48,6 +56,18 @@
             placeholder="ketikkan nomor hp publisher"
             name="date_end"
         />
+        </div>
+        
+        <div class="col-lg-6 mt-3">
+         
+         <div class="form-check">
+           {{-- <input class="form-check-input" type="radio" name="status" id="status" value="{{ old('status', $status) }}">
+           <label class="form-check-label" for="status">
+             Sudah dikembalikan
+           </label> --}}
+            <input type=radio name="status" value="0" {{ $transactions->status == '0' ? 'checked' : ''}}>Belum dikembalikan<br>
+            <input type=radio name="status" value="1" {{ $transactions->status == '1' ? 'checked' : ''}}>Sudah dikembalikan<br>       
+         </div>
         </div>
        
         </div>

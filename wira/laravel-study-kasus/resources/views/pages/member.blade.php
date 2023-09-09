@@ -34,7 +34,7 @@
                      <div class="col-lg-4 col-md-6 ">
                        <div class="mt-3 w-50 ms-auto me-3">
                          <select name="gender" class="form-control filter-select" id="">
-                          <option value="0">semua jenis kelamin</option>
+                          <option value="NONE">semua jenis kelamin</option>
                           <option value="L">Laki - laki</option>
                           <option value="P">Perempuan</option>
                         </select>

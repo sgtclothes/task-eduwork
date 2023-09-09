@@ -15,12 +15,17 @@ class MemberController extends Controller
     {
         if ($request->gender) {
             $datas = Member::where('gender', $request->gender)->get();
-            $datatables = datatables()->of($datas)->addIndexColumn();
+            if ($request->gender == "NONE") {
+                $datas = Member::all();
+            }
+            $datatables = datatables()->of($datas)
+                ->addColumn('date', function ($member) {
+                    return convert_date($member->created_at);
+                })
+                ->addIndexColumn();
             return $datatables->make(true);
-        } else if (!$request->gender) {
-            $datas = Member::all();
         }
-
+      
         return view('pages.member');
     }
 
