@@ -94,8 +94,17 @@
             {data: 'date_end', name: 'date_end'},
             {data: 'member.name', name: 'member.name'},
             {data: 'days', name: 'days'},
-            {data: 'details[].qty', name: 'details[].qty'},
-            {data: 'details[].book.price', name: 'details[].book.price'},
+            {data: 'amount', name: 'amount'},
+            {render: function (data, type, row, meta){
+              let number = data;
+              let sum = 0
+              
+              number.forEach(num => {
+                sum += num
+              });
+
+              return sum;
+            }, data: 'details[].book.price', name: 'details[].book.price'},
             {data: 'status_tr', name: 'status_tr'},
             {
                 data: 'action', 

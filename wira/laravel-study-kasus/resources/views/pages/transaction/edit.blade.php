@@ -7,6 +7,7 @@
     <h4>Edit Peminjaman</h4>
   <form action="{{ route('transactions.update', $transactions->id) }}" method="POST">
     @csrf
+    @method('PUT')
      <div class="card-body col-lg-6 col-md-4">
         <div class="my-3">
         <label for="member_id" class="form-label">Name</label>
@@ -23,12 +24,18 @@
         </div>
         <div class="my-3">
         <label for="book_id" class="form-label">book</label>
-        <select name="book_id[]" multiple="multiple" id="" class="select2-multiple form-control" id="select2Multiple">
-          @foreach ($transactions->details[1]->book as $item)
-          <option value="{{$transactions->details[1]->book->id}}">
-            Jangan Ubah ({{$transactions->details[1]->book->title}})
-          </option>
-          @endforeach
+        <select name="book_id[]" 
+        multiple="multiple" id="" class="select2-multiple form-control" 
+        id="select2Multiple"
+        >
+         @foreach ($transactions->details as $item)
+             
+         <option value="{{$item->book->id}}" selected="selected">
+           Jangan Ubah ({{$item->book->title}})
+         </option>
+         
+         @endforeach
+       
           @foreach ($books as $book)
             <option value="{{ $book->id }}">{{ $book->title }}</option>
           @endforeach
@@ -45,6 +52,7 @@
             id="date_start"
             placeholder="ketikkan nomor hp publisher"
             name="date_start"
+            value="{{ old('date_start', $transactions->date_start) }}"
         />
         </div>
         <div class="col-lg-6">
@@ -55,6 +63,7 @@
             id="date_end"
             placeholder="ketikkan nomor hp publisher"
             name="date_end"
+            value="{{ old('date_end', $transactions->date_end) }}"
         />
         </div>
         
@@ -73,7 +82,7 @@
         </div>
 
        <div class="d-grid">
-          <button type="submit" name="submit" class="btn btn-primary mt-4">Create</button>
+          <button type="submit" name="submit" class="btn btn-primary mt-4">Edit</button>
        </div>
     </div>
   </form>

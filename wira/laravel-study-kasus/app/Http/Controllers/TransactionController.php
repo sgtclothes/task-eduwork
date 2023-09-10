@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use SebastianBergmann\Diff\Diff;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\Builder;
 use App\DataTables\TransactionDataTable;
 
 class TransactionController extends Controller
@@ -20,9 +21,6 @@ class TransactionController extends Controller
      */
     public function index(TransactionDataTable $dataTable)
     {
-       
-
-        // return $dataTable->render('pages.transaction.index');
         return view('pages.transaction.index');
     }
 
@@ -44,27 +42,26 @@ class TransactionController extends Controller
                 $days = $days . ' hari';
                 return $days;
             })
+            ->addColumn('amount', function ($transaction) {
+                return count($transaction->details);
+            })
+
+            ->addColumn('price', function ($transaction) {
+                return count($transaction->details);
+            })
+
+            
             ->addColumn('status_tr', function ($transaction) {
                if($transaction->status == 0) {
-                return "Tidak Aktif";
+                return "belum dikembalikan";
                }
                else {
-                return "Aktif";
+                return "sudah dikembalikan";
                }
             })
 
-            // ->addColumn('action', function ($row) {
-            //     $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> 
-            //     <a href="javascript:void(0)" class="detail btn btn-warning btn-sm">detail</a>
-            //     <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-            //     return $actionBtn;
-            // })
             ->addColumn('action', 'pages.transaction.action')
             ->rawColumns(['action'])
-
-            // ->addColumn('details', function($transaction) {
-                
-            // })
             ->addIndexColumn();
 
         return $datatables->make(true);
@@ -121,7 +118,7 @@ class TransactionController extends Controller
     public function edit($id)
     {
         $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
-        // $transactions = Transaction::find($id);
+        
         $members = Member::all();
         $books = Book::all();
         
@@ -145,6 +142,17 @@ class TransactionController extends Controller
 
         $transaction->update($validateData);
 
+        $tr_details = [];
+
+        foreach ($request->book_id as $value) {
+            $tr_details[] = [
+                'transaction_id' => $transaction->id,
+                'book_id' => $value
+            ];
+        }
+
+        DB::table('transaction_details')->insert($tr_details);
+
         return redirect()->route('transactions.index');
     }
 
@@ -154,6 +162,11 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         $transaction = Transaction::findOrFail($id);
+
+        $transaction->details()->delete();
+        
         $transaction->delete();
+
+        return redirect()->route('transactions.index');
     }
 }

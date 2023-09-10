@@ -38,6 +38,7 @@
                           <option value="L">Laki - laki</option>
                           <option value="P">Perempuan</option>
                         </select>
+                         
                        </div>
                     </div>
                    </div>
