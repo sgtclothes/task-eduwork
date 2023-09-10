@@ -42,5 +42,14 @@
     $x = $i === 'hello' ? 'oke' : 'tidak oke';
     echo $x; 
     ?>
+    <br>
+    <?php 
+    $a = 3;
+    $b = 2;
+
+    $c = $a > $b;
+    echo "$a > $b: $c";
+    echo "<hr>";
+    ?>
 </body>
 </html>
