@@ -38,10 +38,13 @@
                         </div>
                          
                          <div class="me-3"  style="width: 15%">
-                          <select name="gender" class="form-control filter-select" id="">
-                          <option value="">semua jenis kelamin</option>
-                          <option value="L">Laki - laki</option>
-                          <option value="P">Perempuan</option>
+                          <select name="date_start" class="form-control filter-select" id="">
+                          <option value="NONE">Pilih Tanggal</option>
+                          @foreach ($transactions as $transaction)
+                          <option value="{{ $transaction->date_start }}">{{ convert_date($transaction->date_start) }}</option>
+                  
+                          @endforeach
+                         
                         </select>
                          </div>
                          
@@ -184,6 +187,16 @@
       App.table.ajax.url(actionUrl).load()
     }else {
       App.table.ajax.url(actionUrl+'?status='+status).load()
+    }
+  })
+
+    $('select[name=date_start]').on('change', function() {
+    date_start = $('select[name=date_start]').val()
+
+    if(date_start == 0) {
+      App.table.ajax.url(actionUrl).load()
+    }else {
+      App.table.ajax.url(actionUrl+'?date_start='+date_start).load()
     }
   })
 </script>

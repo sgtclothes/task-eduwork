@@ -74,8 +74,8 @@
            <label class="form-check-label" for="status">
              Sudah dikembalikan
            </label> --}}
-            <input type=radio name="status" value="0" {{ $transactions->status == '0' ? 'checked' : ''}}>Belum dikembalikan<br>
-            <input type=radio name="status" value="1" {{ $transactions->status == '1' ? 'checked' : ''}}>Sudah dikembalikan<br>       
+            <input type=radio name="status" value="1" {{ $transactions->status == '1' ? 'checked' : ''}}>Belum dikembalikan<br>
+            <input type=radio name="status" value="2" {{ $transactions->status == '2' ? 'checked' : ''}}>Sudah dikembalikan<br>       
          </div>
         </div>
        
