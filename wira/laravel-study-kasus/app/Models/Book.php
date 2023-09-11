@@ -22,6 +22,11 @@ class Book extends Model
         return $this->belongsTo(Catalog::class,'catalog_id');
     }
 
+    public function details()
+    {
+        return $this->hasMany(TransactionDetail::class, 'book_id','id');
+    }
+
     public function booktoDetails()
     {
         return $this->belongsToMany(Transaction::class,'transaction_details','book_id', 'transaction_id');

@@ -12,23 +12,45 @@
               <!-- Basic Bootstrap Table -->
               <div class="card">
                 <h5 class="card-header">Table Basic</h5>
-                <div class="mx-3 mb-3">
+                
                   <!-- Default Modal -->
-                    <div class="col-lg-4 col-md-6">
-                      <div class="mt-3">
+
+                  <div class="d-flex flex-row">
                         <!-- Button trigger modal -->
-                      <a href="{{ route('transactions.create') }}">
+                      <div class="col-lg-3 col-md-3">
+                        <a href="{{ route('transactions.create') }}" >
                         <button
 
                          type="button"
-                          class="btn btn-primary"
+                          class="btn btn-primary ms-3"
                          >
                           Add Transaction
                         </button>
                         </a>
                       </div>
-                    </div>
-                </div>
+                     
+                        <div class="ms-auto me-3 mb-3" style="width: 15%">
+                           <select name="status" class="form-control filter-select" id="">
+                          <option value="NONE">Pilih Status</option>
+                          <option value="1">Belum dikembalikan</option>
+                          <option value="2">sudah dikembalikan</option>
+                        </select>
+                        </div>
+                         
+                         <div class="me-3"  style="width: 15%">
+                          <select name="gender" class="form-control filter-select" id="">
+                          <option value="">semua jenis kelamin</option>
+                          <option value="L">Laki - laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                         </div>
+                         
+                   
+                    
+                   </div>
+                   
+                  
+               
                 <div class="container">
                   <table class="table table-responsive yajra-datatable"  id="datatable">
                     <thead>
@@ -81,21 +103,23 @@
 @push('script')
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script>
-
-  $(function () {
+    var apiUrl = '{{ url('api/transactions') }}'
+    var actionUrl = '{{ url('transactions') }}'
+  // $(function () {
     
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('transaction.get') }}",
-        columns: [
+    // var tableData = $('.yajra-datatable').DataTable({
+      
+    //     processing: true,
+    //     serverSide: true,
+    //     ajax: "{{ route('transaction.get') }}",
+        var columns = [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'date_start', name: 'date_start'},
             {data: 'date_end', name: 'date_end'},
             {data: 'member.name', name: 'member.name'},
             {data: 'days', name: 'days'},
             {data: 'amount', name: 'amount'},
-            {render: function (data, type, row, meta){
+            {render: function (data){
               let number = data;
               let sum = 0
               
@@ -103,7 +127,7 @@
                 sum += num
               });
 
-              return sum;
+              return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             }, data: 'details[].book.price', name: 'details[].book.price'},
             {data: 'status_tr', name: 'status_tr'},
             {
@@ -113,10 +137,54 @@
                 searchable: true
             },
         ]
-    });
+    // });
     
-  });
+  // });
+
+  const { createApp } = Vue
+      
+  var App = createApp({
+    data() {
+      return {
+        datas: [],
+        data: {},
+        anggota: {},        
+        actionUrl,
+        apiUrl,
+        editStatus : false
+      }
+    },
+    mounted: function() {
+      this.datatable()
+    },
+    methods : {
+      datatable() {
+        const _this = this;
+        _this.table = $(`#datatable`).DataTable({
+          ajax: {
+            url: _this.apiUrl,
+            type: 'GET'
+          },
+          columns
+        }).on('xhr', function(){
+          _this.datas = _this.table.ajax.json().data
+        })
+      },
+    
+    
+      }
+  }).mount('#controlData')
 
 </script>    
+<script>
+    $('select[name=status]').on('change', function() {
+    status = $('select[name=status]').val()
 
+    if(status == 0) {
+      App.table.ajax.url(actionUrl).load()
+    }else {
+      App.table.ajax.url(actionUrl+'?status='+status).load()
+    }
+  })
+</script>
 @endpush
