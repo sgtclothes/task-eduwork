@@ -12,6 +12,7 @@ use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
 use App\DataTables\TransactionDataTable;
+use DateTime;
 
 class TransactionController extends Controller
 {
@@ -21,15 +22,12 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-        // $transactions = Transaction::->get();
 
-        // if ($request->status) {
-        //     $datas = Transaction::where('status', $request->status)->with(['member:id,name', 'details', 'details.book'])->get();
-        if (($request->date_start or $request->status) or ($request->date_start and $request->status)) {
-            $datas = Transaction::where('date_start', $request->date_start)->orWhere('status', $request->status)
+        if (($request->status and $request->date_start) or ($request->status or $request->date_start)) {
+            $datas = Transaction::where('status', $request->status)->orWhere('date_start', $request->date_start)
                 ->with(['member:id,name', 'details', 'details.book'])->get();
 
-            if ($request->date_start == "NONE"  or $request->status == "NONE") {
+            if ($request->date_start == "NONE" or $request->status == "NONE") {
                 $datas = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
             }
             $datatables = datatables()->of($datas)
@@ -71,8 +69,25 @@ class TransactionController extends Controller
         }
 
         $transactions = DB::table('transactions')->distinct()->get('date_start');
+        $tr = Transaction::all();
+        
+        $tes = date("Y-m-d");
 
-        return view('pages.transaction.index', compact('transactions'));
+       
+
+        $late_date = Transaction::with('member:id,name')
+        ->where('date_end','<', $tes)
+        ->where('status', '=', 1)->get();
+        // return $late_date;
+        $date1 = Transaction::select('date_end')->where('date_end', '<', $tes)->where('status', '=', 1)->get();
+        
+        // foreach ($late_date as $late) {
+        //     # code...
+        // }
+
+        $count = explode(',',$late_date->count());
+       
+        return view('pages.transaction.index', compact('transactions','late_date','count'));
     }
 
     public function api(Request $request)
@@ -103,7 +118,7 @@ class TransactionController extends Controller
 
 
             ->addColumn('status_tr', function ($transaction) {
-                if ($transaction->status == 0) {
+                if ($transaction->status == 1) {
                     return "belum dikembalikan";
                 } else {
                     return "sudah dikembalikan";
@@ -177,13 +192,17 @@ class TransactionController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-    {
-        $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
 
+    {
+        $tes = date("Y-m-d");
+        $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
+        $late_date = Transaction::with('member:id,name')
+        ->where('date_end', '<', $tes)
+        ->where('status', '=', 1)->get();
         $members = Member::all();
         $books = Book::all();
 
-        return view('pages.transaction.edit', compact('transactions', 'members', 'books'));
+        return view('pages.transaction.edit', compact('transactions', 'members', 'books','late_date'));
     }
 
     /**
