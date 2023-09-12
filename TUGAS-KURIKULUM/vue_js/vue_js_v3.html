@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>v-show</title>
+</head>
+<body>
+    <div id="app"> {{ message }} 
+        <div v-show="showDiv">This div tag can be hidden</div>
+        <label v-for="user in users" :key="user.name"><br>
+            Nama : {{ user.name }}, Umur {{ user.age }}
+        </label>
+    </div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        message : 'Hello vue!',
+        showDiv: true,
+        users: [
+            {
+                name : 'Adit',
+                age : '22'
+            },
+            {
+                name : 'Wahyu',
+                age : '21'
+            },
+            {
+                name : 'Refia',
+                age : '24'
+            },
+        ]
+      }
+    }
+  })
+ app.mount('#app')
+</script>
+
+</body>
+</html>
