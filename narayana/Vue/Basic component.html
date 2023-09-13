@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <div v-if="status == 'tampilkan' ">
+        <label v-for="user in user"
+          >Name : {{ user.name }}, Umur {{ user.age }} tahun <br
+        /></label>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+  const { createApp, ref } = Vue;
+
+  createApp({
+    setup() {
+      const message = ref("Hello vue!");
+      return {
+        message: "Hello Vue!",
+        status: "tampilkan",
+        user: [
+          {
+            name: "Chandra",
+            age: 18,
+          },
+          {
+            name: "Ali",
+            age: 11,
+          },
+          {
+            name: "Bagus",
+            age: 26,
+          },
+        ],
+      };
+    },
+  }).mount("#app");
+</script>
