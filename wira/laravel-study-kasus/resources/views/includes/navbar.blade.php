@@ -20,22 +20,39 @@
       <!-- Notif -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-          <div class="avatar d-flex justify-content-center align-items-center">
+          @php
+            $now = date("Y-m-d");
+            $late_date = App\Models\Transaction::with('member:id,name')
+            ->where('date_end', '<', $now)
+            ->where('status', '=', 1)->get();
+          @endphp
+          @if (count($late_date) === 0)
+         <div class="avatar d-flex justify-content-center align-items-center ">
              <i class="fa-regular fa-bell fa-xl"></i>
           </div>
+          @elseif($count = count($late_date) > 0)
+           {{-- <div class="avatar avatar-online d-flex justify-content-center align-items-center">
+             
+          </div> --}}
+            <div class="avatar position-relative mt-3 me-2">
+            <i class="fa-regular fa-bell fa-xl"></i> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ $count }}</span>
+          </div>
+
+          @else
+
+          @endif
+        
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li>
-            <a class="dropdown-item">
+      
+              <li>
+                {{-- <a class="dropdown-item" href="#">                
                  @foreach ($late_date as $late)
-                    <div class="d-flex flex-column mb-2">{{ $late->member->name }}</div> 
+                   {{ $late->member->name }} 
                  @endforeach
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-              @csrf
-              </form>
-          </li>
-          
+                </a> --}}
+                {!! notification() !!}
+                </li>
         </ul>
       </li>
       <!--/ User -->

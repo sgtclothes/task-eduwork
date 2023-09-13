@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
 use App\Models\Book;
+use App\Models\Author;
 use App\Models\Catalog;
 use App\Models\Publisher;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -18,12 +19,15 @@ class BookController extends Controller
         $publishers = Publisher::all();
         $authors = Author::all();
         $catalogs = Catalog::all();
+        $tes = date("Y-m-d");
+       
         return view(
             'pages.book',
             [
                 'publishers' => $publishers,
                 'authors' => $authors,
                 'catalogs' => $catalogs,
+              
             ]
         );
     }
@@ -65,7 +69,7 @@ class BookController extends Controller
     {
         $editStatus = request('editStatus');
 
-        if($editStatus != "null") {
+        if ($editStatus != "null") {
             $book = Book::find($editStatus);
             $book->isbn = request('isbn');
             $book->title = request('title');
@@ -76,7 +80,7 @@ class BookController extends Controller
             $book->qty = request('qty');
             $book->price = request('price');
             $book->save();
-        }else {
+        } else {
             $book = new Book;
             $book->isbn = request('isbn');
             $book->title = request('title');
@@ -89,7 +93,7 @@ class BookController extends Controller
             $book->save();
         }
 
-        return response()->json('success',200);
+        return response()->json('success', 200);
     }
 
     /**
@@ -145,8 +149,8 @@ class BookController extends Controller
 
     public function apiDelete($id)
     {
-       $book = Book::findOrFail($id);
-       $book->delete();
-    return response()->json('success', 200);
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return response()->json('success', 200);
     }
 }

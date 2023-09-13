@@ -73,8 +73,6 @@ class TransactionController extends Controller
         
         $tes = date("Y-m-d");
 
-       
-
         $late_date = Transaction::with('member:id,name')
         ->where('date_end','<', $tes)
         ->where('status', '=', 1)->get();

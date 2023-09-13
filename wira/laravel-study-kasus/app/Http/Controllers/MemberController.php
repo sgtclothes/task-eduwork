@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -25,6 +26,9 @@ class MemberController extends Controller
                 ->addIndexColumn();
             return $datatables->make(true);
         }
+        $tes = date("Y-m-d");
+
+        
       
         return view('pages.member');
     }
