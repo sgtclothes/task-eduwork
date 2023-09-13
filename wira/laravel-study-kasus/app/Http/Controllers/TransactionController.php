@@ -23,10 +23,14 @@ class TransactionController extends Controller
     public function index(Request $request)
     {
 
-        if (($request->status and $request->date_start) or ($request->status or $request->date_start)) {
+        if ($request->status or $request->date_start) {
             $datas = Transaction::where('status', $request->status)->orWhere('date_start', $request->date_start)
                 ->with(['member:id,name', 'details', 'details.book'])->get();
 
+            if ($request->status and $request->date_start) {
+                $datas = Transaction::where('status', $request->status)->where('date_start', $request->date_start)
+                    ->with(['member:id,name', 'details', 'details.book'])->get();
+            }
             if ($request->date_start == "NONE" or $request->status == "NONE") {
                 $datas = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
             }
@@ -70,22 +74,22 @@ class TransactionController extends Controller
 
         $transactions = DB::table('transactions')->distinct()->get('date_start');
         $tr = Transaction::all();
-        
+
         $tes = date("Y-m-d");
 
         $late_date = Transaction::with('member:id,name')
-        ->where('date_end','<', $tes)
-        ->where('status', '=', 1)->get();
+            ->where('date_end', '<', $tes)
+            ->where('status', '=', 1)->get();
         // return $late_date;
         $date1 = Transaction::select('date_end')->where('date_end', '<', $tes)->where('status', '=', 1)->get();
-        
+
         // foreach ($late_date as $late) {
         //     # code...
         // }
 
-        $count = explode(',',$late_date->count());
-       
-        return view('pages.transaction.index', compact('transactions','late_date','count'));
+        $count = explode(',', $late_date->count());
+
+        return view('pages.transaction.index', compact('transactions', 'late_date', 'count'));
     }
 
     public function api(Request $request)
@@ -195,12 +199,12 @@ class TransactionController extends Controller
         $tes = date("Y-m-d");
         $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
         $late_date = Transaction::with('member:id,name')
-        ->where('date_end', '<', $tes)
-        ->where('status', '=', 1)->get();
+            ->where('date_end', '<', $tes)
+            ->where('status', '=', 1)->get();
         $members = Member::all();
         $books = Book::all();
 
-        return view('pages.transaction.edit', compact('transactions', 'members', 'books','late_date'));
+        return view('pages.transaction.edit', compact('transactions', 'members', 'books', 'late_date'));
     }
 
     /**
@@ -226,15 +230,43 @@ class TransactionController extends Controller
             $tr_details[]  = [
                 'transaction_id' => $transaction->id,
                 'book_id' => $value,
-
             ];
         }
-        // $book_ids = array_keys($tr_details);
-        // dd($book_ids);
-        // $book_id = $tr_details[0]['book_id'];
-        // $tranasaction_id = $tr_details[0]['transaction_id'];
-        // DB::table('transaction_details')->upsert($tr_details, $tr_details, $book_ids);
-        DB::table('transaction_details')->insert($tr_details);
+
+        $post_book = $request->book_id;
+
+        $existing_detail_id = TransactionDetail::where('transaction_id', $transaction->id)->select('id', 'book_id')->get();
+
+        $details = $existing_detail_id->toArray();
+
+        $details_book_id = [];
+        $transaction_details_id = [];
+        
+        foreach ($details as $detail) {
+            if (!in_array($detail['book_id'], $details_book_id)) {
+                $details_book_id[] = $detail['book_id'];
+                $transaction_details_id[] = $detail['id'];
+            }
+        }
+
+        foreach ($details_book_id as $key => $book) {
+            if (!in_array($book, $post_book)) {
+                TransactionDetail::where('book_id', $book)->where('id', $transaction_details_id[$key])
+                
+                ->delete();
+            };
+        }
+
+        foreach ($post_book as $pbook) {
+            if (!in_array($pbook, $details_book_id)) {
+                DB::table('transaction_details')->insert([
+                    'transaction_id' => $transaction->id,
+                    'book_id' => $pbook,
+                ]);
+            }
+        }
+
+    
         return redirect()->route('transactions.index');
     }
 

@@ -12,7 +12,7 @@
         <div class="my-3">
         <label for="member_id" class="form-label">Name</label>
         <select name="member_id" id="" class="form-control" >
-          <option value="{{$transactions->member_id}}">
+          <option value="{{$transactions->member_id}}" selected="selected">
               Jangan Ubah ({{$transactions->member->name}})
           </option>
           @foreach ($members as $member)
@@ -26,7 +26,7 @@
         <label for="book_id" class="form-label">book</label>
         <select name="book_id[]" 
         multiple="multiple" id="" class="select2-multiple form-control" 
-        id="select2Multiple"
+        id="select2Multiple" required
         >
          @foreach ($transactions->details as $item)
              
