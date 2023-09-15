@@ -25,17 +25,19 @@
             $late_date = App\Models\Transaction::with('member:id,name')
             ->where('date_end', '<', $now)
             ->where('status', '=', 1)->get();
+            $tr_count = $late_date->count();
           @endphp
           @if (count($late_date) === 0)
          <div class="avatar d-flex justify-content-center align-items-center ">
              <i class="fa-regular fa-bell fa-xl"></i>
           </div>
-          @elseif($count = count($late_date) > 0)
+          @elseif(count($late_date) > 0)
            {{-- <div class="avatar avatar-online d-flex justify-content-center align-items-center">
              
           </div> --}}
             <div class="avatar position-relative mt-3 me-2">
-            <i class="fa-regular fa-bell fa-xl"></i> <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ $count }}</span>
+            <i class="fa-regular fa-bell fa-xl"></i> 
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{ $tr_count }}</span>
           </div>
 
           @else

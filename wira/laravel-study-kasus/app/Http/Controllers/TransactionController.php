@@ -23,53 +23,17 @@ class TransactionController extends Controller
     public function index(Request $request)
     {
 
-        if ($request->status or $request->date_start) {
-            $datas = Transaction::where('status', $request->status)->orWhere('date_start', $request->date_start)
-                ->with(['member:id,name', 'details', 'details.book'])->get();
+        $datas = Transaction::with(['member:id,name', 'details', 'details.book']);
 
-            if ($request->status and $request->date_start) {
-                $datas = Transaction::where('status', $request->status)->where('date_start', $request->date_start)
-                    ->with(['member:id,name', 'details', 'details.book'])->get();
+        if (isset($request->date_start) and isset($request->status)) {
+            if ($request->date_start != '0') {
+                $datas->whereDate('date_start', $request->date_start);
             }
-            if ($request->date_start == "NONE" or $request->status == "NONE") {
-                $datas = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
+            if ($request->status != "0") {
+                $datas->where('status', $request->status);
             }
-            $datatables = datatables()->of($datas)
-                ->addColumn('date start', function ($transaction) {
-                    return convert_date($transaction->date_start);
-                })
-                ->addColumn('date end', function ($transaction) {
-                    return convert_date($transaction->date_end);
-                })
-                ->addColumn('days', function ($transaction) {
-                    $start =  Carbon::parse($transaction->date_start);
-                    $end =  Carbon::parse($transaction->date_end);
-                    $days = $start->diffInDays($end);
-                    $days = $days . ' hari';
-                    return $days;
-                })
-                ->addColumn('amount', function ($transaction) {
-                    return count($transaction->details);
-                })
-
-                ->addColumn('price', function ($transaction) {
-                    return count($transaction->details);
-                })
-
-
-                ->addColumn('status_tr', function ($transaction) {
-                    if ($transaction->status == 1) {
-                        return "belum dikembalikan";
-                    } else {
-                        return "sudah dikembalikan";
-                    }
-                })
-
-                ->addColumn('action', 'pages.transaction.action')
-                ->rawColumns(['action'])
-                ->addIndexColumn();
-
-            return $datatables->make(true);
+            $datas->get();
+            return $this->generateDataTable($datas);
         }
 
         $transactions = DB::table('transactions')->distinct()->get('date_start');
@@ -80,18 +44,52 @@ class TransactionController extends Controller
         $late_date = Transaction::with('member:id,name')
             ->where('date_end', '<', $tes)
             ->where('status', '=', 1)->get();
-        // return $late_date;
-        $date1 = Transaction::select('date_end')->where('date_end', '<', $tes)->where('status', '=', 1)->get();
-
-        // foreach ($late_date as $late) {
-        //     # code...
-        // }
-
-        $count = explode(',', $late_date->count());
-
+        
+        $count = $late_date->count();
+       
         return view('pages.transaction.index', compact('transactions', 'late_date', 'count'));
     }
 
+    public function generateDataTable($datas)
+    {
+
+        $datatables = datatables()->of($datas)
+            ->addColumn('date start', function ($transaction) {
+                return convert_date($transaction->date_start);
+            })
+            ->addColumn('date end', function ($transaction) {
+                return convert_date($transaction->date_end);
+            })
+            ->addColumn('days', function ($transaction) {
+                $start =  Carbon::parse($transaction->date_start);
+                $end =  Carbon::parse($transaction->date_end);
+                $days = $start->diffInDays($end);
+                $days = $days . ' hari';
+                return $days;
+            })
+            ->addColumn('amount', function ($transaction) {
+                return count($transaction->details);
+            })
+
+            ->addColumn('price', function ($transaction) {
+                return count($transaction->details);
+            })
+
+
+            ->addColumn('status_tr', function ($transaction) {
+                if ($transaction->status == 1) {
+                    return "belum dikembalikan";
+                } else {
+                    return "sudah dikembalikan";
+                }
+            })
+
+            ->addColumn('action', 'pages.transaction.action')
+            ->rawColumns(['action'])
+            ->addIndexColumn();
+
+        return $datatables->make(true);
+    }
     public function api(Request $request)
     {
         $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
@@ -117,7 +115,6 @@ class TransactionController extends Controller
             ->addColumn('price', function ($transaction) {
                 return count($transaction->details);
             })
-
 
             ->addColumn('status_tr', function ($transaction) {
                 if ($transaction->status == 1) {
@@ -158,6 +155,7 @@ class TransactionController extends Controller
         $transactions = Transaction::create($data);
 
         $tr_details = [];
+        // dd($request->book_id);
 
         foreach ($request->book_id as $value) {
             $tr_details[] = [
@@ -167,17 +165,11 @@ class TransactionController extends Controller
         }
         DB::table('transaction_details')->insert($tr_details);
 
-        // $detail = TransactionDetail::findOrFail($tr_details[1]);
+        $book = Book::with('details')->whereIn('id', $request->book_id)->get()->toArray();
 
-        // $book = Book::with('details')->findOrFail($detail->book_id);
-
-        // if ($detail->book_id) {
-        //     $book->qty -= 1;
-        // }
-
-
-        // $book->save();
-
+        foreach ($book as $data) {
+            DB::table('books')->where('id', $data['id'])->update(['qty' => $data['qty'] - 1]);
+        }
 
         return redirect()->route('transactions.index');
     }
@@ -241,7 +233,7 @@ class TransactionController extends Controller
 
         $details_book_id = [];
         $transaction_details_id = [];
-        
+
         foreach ($details as $detail) {
             if (!in_array($detail['book_id'], $details_book_id)) {
                 $details_book_id[] = $detail['book_id'];
@@ -251,9 +243,7 @@ class TransactionController extends Controller
 
         foreach ($details_book_id as $key => $book) {
             if (!in_array($book, $post_book)) {
-                TransactionDetail::where('book_id', $book)->where('id', $transaction_details_id[$key])
-                
-                ->delete();
+                TransactionDetail::where('book_id', $book)->where('id', $transaction_details_id[$key])->delete();
             };
         }
 
@@ -266,7 +256,12 @@ class TransactionController extends Controller
             }
         }
 
-    
+        $book = Book::with('details')->whereIn('id', $request->book_id)->get()->toArray();
+
+        foreach ($book as $data) {
+            DB::table('books')->where('id', $data['id'])->update(['qty' => $data['qty'] - 1]);
+        }
+
         return redirect()->route('transactions.index');
     }
 

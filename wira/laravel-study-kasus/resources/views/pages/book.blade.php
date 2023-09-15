@@ -23,7 +23,7 @@
         <a href="">
           <div class="card card-item position-relative" style="width: 18rem;">
           <div class="card-body" v-on:click.prevent="editData(book.id)">
-            <h5 class="card-title">@{{ book.title }} (@{{ book.qty }}) (@{{ book.publisher_id }})</h5>
+            <h5 class="card-title">@{{ book.title }}, jumlah : (@{{ book.qty }})</h5>
             <h5 class="card-title">@{{ book.catalog_id }} (@{{ book.author_id }})</h5>
             <p class="card-text">Rp@{{ numberWithSpaces(book.price) }},- </p>
           </div>

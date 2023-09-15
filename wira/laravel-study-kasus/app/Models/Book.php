@@ -24,7 +24,7 @@ class Book extends Model
 
     public function details()
     {
-        return $this->hasMany(TransactionDetail::class, 'book_id','id');
+        return $this->hasMany(TransactionDetail::class, 'book_id', 'id');
     }
 
     public function booktoDetails()

@@ -31,7 +31,7 @@
                      
                         <div class="ms-auto me-3 mb-3" style="width: 15%">
                            <select name="status" class="form-control filter-select" id="">
-                          <option value="NONE">Pilih Status</option>
+                          <option value="0">Pilih Status</option>
                           <option value="1">Belum dikembalikan</option>
                           <option value="2">sudah dikembalikan</option>
                         </select>
@@ -39,7 +39,7 @@
                          
                          <div class="me-3"  style="width: 15%">
                           <select name="date_start" class="form-control filter-select" id="">
-                          <option value="NONE">Pilih Tanggal</option>
+                          <option value="0">Pilih Tanggal</option>
                           @foreach ($transactions as $transaction)
                           <option value="{{ $transaction->date_start }}">{{ convert_date($transaction->date_start) }}</option>
                   
@@ -180,24 +180,12 @@
 
 </script>    
 <script>
-    $('select[name=status]').on('change', function() {
+    $('select[name=status], select[name=date_start]').on('change', function() {
     status = $('select[name=status]').val()
-
-    if(status == 0) {
-      App.table.ajax.url(actionUrl).load()
-    }else {
-      App.table.ajax.url(actionUrl+'?status='+status).load()
-    }
-  })
-
-    $('select[name=date_start]').on('change', function() {
     date_start = $('select[name=date_start]').val()
 
-    if(date_start == 0) {
-      App.table.ajax.url(actionUrl).load()
-    }else {
-      App.table.ajax.url(actionUrl+'?date_start='+date_start).load()
-    }
+    App.table.ajax.url(actionUrl + '?status=' + status + '&date_start='+ date_start).load()
   })
+
 </script>
 @endpush
