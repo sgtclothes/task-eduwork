@@ -8,9 +8,15 @@
   <form action="{{ route('transactions.update', $transactions->id) }}" method="POST">
     @csrf
     @method('PUT')
-     <div class="card-body col-lg-6 col-md-4">
-        <div class="my-3">
-        <label for="member_id" class="form-label">Name</label>
+
+  <table class="table table-borderless w-50 ms-auto me-auto mt-3 card p-3 fw-normal">
+  
+    <tr class="text-capitalize ">
+      <td colspan="5">Tambah Peminjaman</td>
+    </tr>
+    <tr class="text-capitalize">
+      <td>Anggota</td>
+      <td >
         <select name="member_id" id="" class="form-control" >
           <option value="{{$transactions->member_id}}" selected="selected">
               Jangan Ubah ({{$transactions->member->name}})
@@ -19,11 +25,32 @@
             <option value="{{ $member->id }}">{{ $member->name }}</option>
           @endforeach
         </select>
-          
-       
-        </div>
-        <div class="my-3">
-        <label for="book_id" class="form-label">book</label>
+      </td>
+    </tr>
+    <tr class="text-capitalize">
+     <td >Tanggal Pinjam</td>
+     <td class="d-flex flex-row"><input
+            type="date"
+            class="form-control"
+            id="date_start"
+            placeholder="ketikkan nomor hp publisher"
+            name="date_start"
+            value="{{ old('date_start', $transactions->date_start) }}"
+        />
+        <p class="ms-2 me-2 fw-bold">-</p>
+       <input
+            type="date"
+            class="form-control"
+            id="date_end"
+            placeholder="ketikkan nomor hp publisher"
+            name="date_end"
+            value="{{ old('date_start', $transactions->date_start) }}"></td>
+    </tr>
+
+   
+    <tr class="text-capitalize" >
+      <td>Buku</td>
+      <td>
         <select name="book_id[]" 
         multiple="multiple" id="" class="select2-multiple form-control" 
         id="select2Multiple" required
@@ -40,51 +67,33 @@
             <option value="{{ $book->id }}">{{ $book->title }}</option>
           @endforeach
         </select>
-       
-        </div>
-
-        <div class="my-3 row">
-        <div class="col-lg-6">
-          <label for="date_start" class="form-label">Tanggal pinjam</label>
-          <input
-            type="date"
-            class="form-control"
-            id="date_start"
-            placeholder="ketikkan nomor hp publisher"
-            name="date_start"
-            value="{{ old('date_start', $transactions->date_start) }}"
-        />
-        </div>
-        <div class="col-lg-6">
-          <label for="date_end" class="form-label">Tanggal kembali</label>
-          <input
-            type="date"
-            class="form-control"
-            id="date_end"
-            placeholder="ketikkan nomor hp publisher"
-            name="date_end"
-            value="{{ old('date_end', $transactions->date_end) }}"
-        />
-        </div>
         
-        <div class="col-lg-6 mt-3">
-         
-         <div class="form-check">
-           {{-- <input class="form-check-input" type="radio" name="status" id="status" value="{{ old('status', $status) }}">
-           <label class="form-check-label" for="status">
-             Sudah dikembalikan
-           </label> --}}
+      </td>
+    </tr>
+
+    <tr class="text-capitalize" >
+      <td>Status</td>
+      <td>
+       <div class="form-check">
+           
             <input type=radio name="status"  value="1" {{ $transactions->status == '1' ? 'checked' : ''}}>Belum dikembalikan<br>
             <input type=radio name="status"  value="2" {{ $transactions->status == '2' ? 'checked' : ''}}>Sudah dikembalikan<br>       
          </div>
-        </div>
-       
-        </div>
+        
+      </td>
+    </tr>
 
-       <div class="d-grid">
+    <tr class="d-flex justify-content-end mt-3">
+      
+      <td>
+      <div class="ms-auto">
+         <div class="d-grid">
           <button type="submit" name="submit" class="btn btn-primary mt-4">Edit</button>
        </div>
-    </div>
+      </div>
+      </td>
+    </tr> 
+  </table>   
   </form>
 </div>
 @endsection

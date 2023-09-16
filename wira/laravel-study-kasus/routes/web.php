@@ -44,7 +44,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('/publishers', PublisherController::class);
     Route::get('api/publishers', [PublisherController::class, 'api']);
     
-
     Route::resource('/authors', AuthorController::class);
     Route::get('api/authors',[AuthorController::class,'api']);
 

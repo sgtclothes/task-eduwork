@@ -4,57 +4,73 @@
 
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
+   <h4>Tambah Peminjaman</h4>
   <form action="{{ route('transactions.store') }}" method="POST">
     @csrf
-     <div class="card-body col-lg-6 col-md-4">
-        <div class="my-3">
-        <label for="member_id" class="form-label">Name</label>
+
+  <table class="table table-borderless w-50 ms-auto me-auto mt-3 card p-3 fw-normal">
+  
+    <tr class="text-capitalize ">
+      <td colspan="5">Tambah Peminjaman</td>
+    </tr>
+    <tr class="text-capitalize">
+      <td>Anggota</td>
+      <td >
         <select name="member_id" id="" class="form-control" >
           @foreach ($members as $member)
             <option value="{{ $member->id }}">{{ $member->name }}</option>
           @endforeach
         </select>
-          
-       
-        </div>
-        <div class="my-3">
-        <label for="book_id" class="form-label">book</label>
-        <select name="book_id[]" multiple="multiple" id="" class="select2-multiple form-control" id="select2Multiple">
-          @foreach ($books as $book)
-            <option value="{{ $book->id }}">{{ $book->title }}</option>
-          @endforeach
-        </select>
-       
-        </div>
-
-        <div class="my-3 row">
-        <div class="col-lg-6">
-          <label for="date_start" class="form-label">Tanggal pinjam</label>
-          <input
+      </td>
+    </tr>
+    <tr class="text-capitalize">
+     <td >Tanggal Pinjam</td>
+     <td class="d-flex flex-row"><input
             type="date"
             class="form-control"
             id="date_start"
             placeholder="ketikkan nomor hp publisher"
             name="date_start"
         />
-        </div>
-        <div class="col-lg-6">
-          <label for="date_end" class="form-label">Tanggal kembali</label>
-          <input
+        <p class="ms-2 me-2 fw-bold">-</p>
+       <input
             type="date"
             class="form-control"
             id="date_end"
             placeholder="ketikkan nomor hp publisher"
-            name="date_end"
-        />
-        </div>
-       
-        </div>
+            name="date_end"></td>
+   </tr>
 
-       <div class="d-grid">
+   
+    <tr class="text-capitalize" >
+      <td>Buku</td>
+      <td>
+        <select name="book_id[]" multiple="multiple" id="" class="select2-multiple form-control" id="select2Multiple">
+          @foreach ($books as $book)
+            <option value="{{ $book->id }}">{{ $book->title }}</option>
+          @endforeach
+        </select>
+        
+      </td>
+    </tr>
+   
+    
+
+    <tr class="d-flex justify-content-end mt-3">
+      
+      <td>
+      <div class="ms-auto">
+         <div class="d-grid">
           <button type="submit" name="submit" class="btn btn-primary mt-4">Create</button>
        </div>
-    </div>
+      </div>
+      </td>
+    </tr>
+
+    
+    
+  </table>
+  
   </form>
 </div>
 @endsection

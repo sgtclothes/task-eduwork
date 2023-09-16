@@ -44,9 +44,9 @@ class TransactionController extends Controller
         $late_date = Transaction::with('member:id,name')
             ->where('date_end', '<', $tes)
             ->where('status', '=', 1)->get();
-        
+
         $count = $late_date->count();
-       
+
         return view('pages.transaction.index', compact('transactions', 'late_date', 'count'));
     }
 
@@ -147,7 +147,7 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            "member_id" => "required|numeric",
+            "member_id" => "required|numeric|unique:transactions,member_id",
             "date_start" => "required|date",
             "date_end" => "required|date",
         ]);
@@ -177,9 +177,17 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaction $transaction)
+    public function show($id)
     {
-        //
+        $tes = date("Y-m-d");
+        $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
+        $late_date = Transaction::with('member:id,name')
+        ->where('date_end', '<', $tes)
+            ->where('status', '=', 1)->get();
+        $members = Member::all();
+        $books = Book::all();
+
+        return view('pages.transaction.show', compact('transactions', 'members', 'books', 'late_date'));
     }
 
     /**
@@ -209,6 +217,7 @@ class TransactionController extends Controller
             "status" => "required|in:1,2",
             "date_start" => "required|date",
             "date_end" => "required|date",
+            "status" => "required"
         ];
 
         $validateData = $request->validate($rules);
@@ -258,8 +267,10 @@ class TransactionController extends Controller
 
         $book = Book::with('details')->whereIn('id', $request->book_id)->get()->toArray();
 
-        foreach ($book as $data) {
-            DB::table('books')->where('id', $data['id'])->update(['qty' => $data['qty'] - 1]);
+        if ($request->status == "2") {
+            foreach ($book as $data) {
+                DB::table('books')->where('id', $data['id'])->update(['qty' => $data['qty'] + 1]);
+            }
         }
 
         return redirect()->route('transactions.index');

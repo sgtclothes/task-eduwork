@@ -19,6 +19,7 @@ function notification()
 {
     date_default_timezone_set('Asia/Jakarta');
     $now = date("Y-m-d");
+    
     $late_date = Transaction::with('member:id,name')
         ->where('date_end', '<', $now)
         ->where('status', '=', 1)->get();

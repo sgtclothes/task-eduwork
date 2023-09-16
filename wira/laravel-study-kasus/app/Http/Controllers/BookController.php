@@ -34,7 +34,7 @@ class BookController extends Controller
 
     public function api()
     {
-        $books = Book::all();
+        $books = Book::where('qty','>','0')->get();
         return json_encode($books);
     }
     /**
