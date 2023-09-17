@@ -22,7 +22,6 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-
         $datas = Transaction::with(['member:id,name', 'details', 'details.book']);
 
         if (isset($request->date_start) and isset($request->status)) {
@@ -92,43 +91,45 @@ class TransactionController extends Controller
     }
     public function api(Request $request)
     {
-        $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
+        if (auth()->user()->can('pengurus pinjaman')) {
+            $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->get();
 
-        $datatables = datatables()->of($transactions)
-            ->addColumn('date start', function ($transaction) {
-                return convert_date($transaction->date_start);
-            })
-            ->addColumn('date end', function ($transaction) {
-                return convert_date($transaction->date_end);
-            })
-            ->addColumn('days', function ($transaction) {
-                $start =  Carbon::parse($transaction->date_start);
-                $end =  Carbon::parse($transaction->date_end);
-                $days = $start->diffInDays($end);
-                $days = $days . ' hari';
-                return $days;
-            })
-            ->addColumn('amount', function ($transaction) {
-                return count($transaction->details);
-            })
+            $datatables = datatables()->of($transactions)
+                ->addColumn('date start', function ($transaction) {
+                    return convert_date($transaction->date_start);
+                })
+                ->addColumn('date end', function ($transaction) {
+                    return convert_date($transaction->date_end);
+                })
+                ->addColumn('days', function ($transaction) {
+                    $start =  Carbon::parse($transaction->date_start);
+                    $end =  Carbon::parse($transaction->date_end);
+                    $days = $start->diffInDays($end);
+                    $days = $days . ' hari';
+                    return $days;
+                })
+                ->addColumn('amount', function ($transaction) {
+                    return count($transaction->details);
+                })
 
-            ->addColumn('price', function ($transaction) {
-                return count($transaction->details);
-            })
+                ->addColumn('price', function ($transaction) {
+                    return count($transaction->details);
+                })
 
-            ->addColumn('status_tr', function ($transaction) {
-                if ($transaction->status == 1) {
-                    return "belum dikembalikan";
-                } else {
-                    return "sudah dikembalikan";
-                }
-            })
+                ->addColumn('status_tr', function ($transaction) {
+                    if ($transaction->status == 1) {
+                        return "belum dikembalikan";
+                    } else {
+                        return "sudah dikembalikan";
+                    }
+                })
 
-            ->addColumn('action', 'pages.transaction.action')
-            ->rawColumns(['action'])
-            ->addIndexColumn();
+                ->addColumn('action', 'pages.transaction.action')
+                ->rawColumns(['action'])
+                ->addIndexColumn();
 
-        return $datatables->make(true);
+            return $datatables->make(true);
+        }
     }
 
     /**
@@ -182,7 +183,7 @@ class TransactionController extends Controller
         $tes = date("Y-m-d");
         $transactions = Transaction::with(['member:id,name', 'details', 'details.book'])->find($id);
         $late_date = Transaction::with('member:id,name')
-        ->where('date_end', '<', $tes)
+            ->where('date_end', '<', $tes)
             ->where('status', '=', 1)->get();
         $members = Member::all();
         $books = Book::all();

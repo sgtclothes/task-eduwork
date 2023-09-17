@@ -31,6 +31,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/spatie', [HomeController::class, 'test_spatie'])->name('dashboard');
 
     Route::get('/author', [AuthorController::class, 'index'])->name('author');
 

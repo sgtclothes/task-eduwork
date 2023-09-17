@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Catalog;
 use App\Models\Member;
+use App\Models\Catalog;
 use App\Models\Publisher;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class HomeController extends Controller
 {
@@ -84,4 +87,24 @@ class HomeController extends Controller
     
     ));
   }
+
+  public function test_spatie()
+  {
+    // $role = Role::create(['name' => 'petugas']);
+    // $permission = Permission::create(['name' => 'pengurus pinjaman']);
+
+    // $role->givePermissionTo($permission);
+    // $permission->assignRole($role);
+
+    // return auth()->user();
+
+  //   $user = User::with('roles')->get();
+  //   return $user;
+  // }
+
+  $user = auth()->user();
+  $user->assignRole('petugas');
+  return $user;
+  }
+  
 }
