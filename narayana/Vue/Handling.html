@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+      <p>{{ "Moose count: " + count }}</p>
+      <button v-on:click="count++">Count moose</button>
+      <br />
+      <br />
+      <button v-on:click="hello_world">Say hello world</button>
+      <br />
+      <br />
+      <button v-on:click="greet">Greet</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            count: 0,
+            name: "Penjelajah",
+          };
+        },
+        methods: {
+          hello_world: function greet(event) {
+            alert(`Hello world`);
+          },
+          greet: function greet(event) {
+            alert(`Hallo ${this.name}`);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
