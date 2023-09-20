@@ -12,7 +12,13 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        //
+        // return view('admin.catalog.index');
+        
+        $catalog = Catalog::select('*')->get()->toArray();
+        return view('admin.catalog.index', [
+            'apotek' => 'Apotek',
+            'catalog' => $catalog
+        ]);
     }
 
     /**
