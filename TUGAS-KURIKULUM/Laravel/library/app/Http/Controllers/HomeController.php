@@ -153,7 +153,7 @@ class HomeController extends Controller
         // $members = Member::with('user')->get();
         // $books = Book::with('publisher', 'author', 'catalog')->get();
         // $publisher = Publisher::with('books')->get();
-        return $data19;
+        // return $data19;
         return view('home');
     }
 }

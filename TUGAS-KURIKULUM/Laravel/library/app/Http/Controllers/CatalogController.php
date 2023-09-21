@@ -14,11 +14,15 @@ class CatalogController extends Controller
     {
         // return view('admin.catalog.index');
         
-        $catalog = Catalog::select('*')->get()->toArray();
-        return view('admin.catalog.index', [
-            'apotek' => 'Apotek',
-            'catalog' => $catalog
-        ]);
+        // $catalog = Catalog::select('*')->get()->toArray();
+        // return view('admin.catalog.index', [
+        //     'apotek' => 'Apotek',
+        //     'catalog' => $catalog
+        // ]);
+
+        $catalogs = Catalog::with('books')->get();
+        // return $catalogs;
+        return view('admin.catalog.index', compact('catalogs'));
     }
 
     /**
