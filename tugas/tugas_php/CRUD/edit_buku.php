@@ -26,7 +26,7 @@
 ?>
  
 <body>
-	<a href="buku.php">Go to Home</a>
+	<a href="buku.php">Kembali</a>
 	<br/><br/>
  
 	<form action="edit_buku.php?isbn=<?php echo $isbn; ?>" method="post">

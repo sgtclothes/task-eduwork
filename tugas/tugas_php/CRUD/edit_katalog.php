@@ -17,7 +17,7 @@
 ?>
  
 <body>
-	<a href="buku.php">Go to Home</a>
+	<a href="katalog.php">Kembali</a>
 	<br/><br/>
  
 	<form action="edit_katalog.php?id_katalog=<?php echo $id_katalog; ?>" method="post">

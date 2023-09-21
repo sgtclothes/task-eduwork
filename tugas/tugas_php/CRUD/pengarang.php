@@ -13,16 +13,41 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <style>
+ul { background-color: blue; 
+}
+a { color: white; 
+}
+table { margin-left: 5px;   
+        border: 3px solid blue;
+}
+p { margin-left: 5px;   
+}
+</style>
+
 </head>
+ 
 <body>
-     <center>
-          <a href="buku.php">Buku</a> |
-          <a href="pengarang.php">Pengarang</a> |
-          <a href="penerbit.php">Penerbit</a> |
-          <a href="katalog.php">Katalog</a>
-     </center>
-     <hr>
- <a href="add_pengarang.php">Tambah Pengarang</a> <br><br>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="buku.php">Buku</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="pengarang.php">Pengarang</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="penerbit.php">Penerbit</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="katalog.php">Katalog</a>
+  </li>
+  
+</ul>
+
+<hr>
+<p>
+<a class='btn btn-success' href='add_pengarang.php'>Tambah Pengarang</a><br/>
+</p>
 
  <table class="table" width='80%' border=1>
      <tr>

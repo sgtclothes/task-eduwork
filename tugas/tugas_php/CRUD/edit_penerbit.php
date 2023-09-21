@@ -20,7 +20,7 @@
 ?>
  
 <body>
-	<a href="buku.php">Go to Home</a>
+	<a href="penerbit.php">Kembali</a>
 	<br/><br/>
  
 	<form action="edit_penerbit.php?id_penerbit=<?php echo $id_penerbit; ?>" method="post">
