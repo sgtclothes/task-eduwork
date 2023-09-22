@@ -14,16 +14,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <style>
 ul { background-color: blue; 
-    
 }
 a { color: white; 
-    
 }
-
 table { margin-left: 5px;   
         border: 3px solid blue;
 }
-
 p { margin-left: 5px;   
 }
 </style>
