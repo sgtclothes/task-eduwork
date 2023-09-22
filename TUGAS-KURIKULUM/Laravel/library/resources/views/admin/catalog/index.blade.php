@@ -7,7 +7,8 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Bordered Table</h3>
+                <!-- <h3 class="card-title">Bordered Table</h3> -->
+                <a href="{{url('catalogs/create')}}" class="btn btn-primary pull-right">Create New Catalog</a>
                 </div>
 
                 <div class="card-body">
@@ -18,15 +19,24 @@
                                 <th style="width: 40px">Name</th>
                                 <th style="width: 40px">Total Books</th>
                                 <th style="width: 40px">Created At</th>
+                                <th style="width: 40px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($catalogs as $key => $value)
+                            @foreach($catalogs as $key => $catalog)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td class="text-center">{{COUNT($value['books'])}}</td>
-                                <td>{{ date("F j, Y, g:i a", strtotime($value['created_at'])) }}</td>
+                                <td>{{$catalog['name']}}</td>
+                                <td class="text-center">{{COUNT($catalog['books'])}}</td>
+                                <td>{{ date("F j, Y, g:i a", strtotime($catalog['created_at'])) }}</td>
+                                <td>
+                                    <a class="btn btn-warning" href="{{url('catalogs/' .$catalog->id. '/edit')}}">Edit</a>
+                                    <form action="{{url('catalogs',['id' => $catalog->id])}}" method="post">
+                                    <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are You Sure?');">
+                                        @method('delete')
+                                        @csrf
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
