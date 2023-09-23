@@ -7,13 +7,17 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $publishers = Publisher::with('books')->get();
-        return view('admin.publisher.index', compact('publishers'));
+        return view('admin.publisher.publisher', compact('publishers'));
     }
 
     /**
@@ -21,7 +25,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+
     }
 
     /**
@@ -54,7 +58,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        return view('admin.publisher.edit', compact('publisher'));
+
     }
 
     /**
