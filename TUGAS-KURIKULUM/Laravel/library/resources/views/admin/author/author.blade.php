@@ -2,30 +2,33 @@
 @section('header', 'Author')
 
 @section('css')
-
+<!-- plugins Data Table -->
+<link rel="stylesheet" href="{{asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 @endsection
 
 @section('content')
 <div id="controller" class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
                 <!-- <h3 class="card-title">Bordered Table</h3> -->
                 <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Author</a>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th >No</th>
+                                <th style="width: 30px;">No</th>
                                 <th >Name</th>
                                 <th >Email</th>
                                 <th >Phone Number</th>
                                 <th >Address</th>
                                 <th >Total Books</th>
                                 <th >Created At</th>
-                                <th >Action</th>
+                                <th style="width: 50px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,25 +41,17 @@
                                 <td>{{$author['address']}}</td>
                                 <td class="text-center">{{COUNT($author['books'])}}</td>
                                 <td>{{ date("F j, Y, g:i a", strtotime($author['created_at'])) }}</td>
-                                <td>
-                                    <a class="btn btn-warning" @click="editData({{ $author }})" href="#">Edit</a>
-                                    <a class="btn btn-danger" @click="deleteData({{ $author->id }})" href="#">Delete</a>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-warning btn-sm" @click="editData({{ $author }})" href="#">Edit</a>
+                                        <a class="btn btn-danger btn-sm" @click="deleteData({{ $author->id }})" href="#">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
             </div>
-
-            <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
-            </div>  
     </div>
 
         <div class="modal fade" id="modal-default">
@@ -101,6 +96,28 @@
 @endsection
 
 @section('js')
+<!-- Plugins Data Table -->
+<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+  $(function () {
+    $("#example2").DataTable({
+      "responsive": true, "lengthChange": true, "autoWidth": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
     <script type="text/javascript">
         var controller = new Vue({
             el: '#controller',
