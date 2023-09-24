@@ -20,6 +20,15 @@ class PublisherController extends Controller
         return view('admin.publisher.publisher', compact('publishers'));
     }
 
+    public function api()
+    {
+        $publishers = Publisher::with('books')->get();
+        // $publishers = Publisher::all();
+        $datatables = datatables()->of($publishers, compact('publishers'))->addIndexColumn();
+
+        return $datatables->make(true);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

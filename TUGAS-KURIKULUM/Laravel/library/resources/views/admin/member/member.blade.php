@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('header', 'Publisher')
+@section('header', 'Member')
 
 @section('css')
 <!-- plugins Data Table -->
@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">
                 <!-- <h3 class="card-title">Bordered Table</h3> -->
-                <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Publisher</a>
+                <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Member</a>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-striped table-bordered">
@@ -23,10 +23,10 @@
                             <tr>
                                 <th >No</th>
                                 <th >Name</th>
-                                <th >Email</th>
+                                <th >Gender</th>
                                 <th >Phone Number</th>
                                 <th >Address</th>
-                                <!-- <th >Total Books</th> -->
+                                <th >Email</th>
                                 <th >Created At</th>
                                 <th >Action</th>
                             </tr>
@@ -40,7 +40,7 @@
                 <div class="modal-content">
                     <form :action="actionUrl" method="post" autocomplete="off" @submit="submitForm($event, data.id)">
                         <div class="modal-header">
-                            <h4 class="modal-title">Publisher</h4>
+                            <h4 class="modal-title">Member</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -53,8 +53,13 @@
                                 <input name="name" :value="data.name" type="text" required="" class="form-control" placeholder="Enter Name">
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input :value="data.email" name="email" type="email" required="" class="form-control" placeholder="Enter Email">
+                                <label>Gender</label>
+                                <select class="form-control" :value="data.gender"  name="gender" required autocomplete="off">
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                                <!-- <input name="gender" :value="data.gender" type="text" required="" class="form-control" placeholder="Enter Gender"> -->
                             </div>
                             <div class="form-group">
                                 <label>Phone Number</label>
@@ -63,6 +68,10 @@
                             <div class="form-group">
                                 <label>Address</label>
                                 <input :value="data.address" name="address" type="text" required="" class="form-control" placeholder="Enter Address">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input :value="data.email" name="email" type="email" required="" class="form-control" placeholder="Enter Email">
                             </div>
                             
                         </div>
@@ -91,27 +100,16 @@
 <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script type="text/javascript">
-    var actionUrl = '{{url('authors')}}'
-    var apiUrl = '{{url('api/authors')}}'
+    var actionUrl = '{{url('members')}}'
+    var apiUrl = '{{url('api/members')}}'
 
     var columns = [
         {data: 'DT_RowIndex', class: 'text-center', orderable: false},
         {data: 'name', class: 'text-center', orderable: false},
-        {data: 'email', class: 'text-center', orderable: true},
+        {data: 'gender', class: 'text-center', orderable: false},
         {data: 'phone_number', class: 'text-center', orderable: true},
         {data: 'address', class: 'text-center', orderable: true},
-        // {
-        //     data: null,
-        //     class: 'text-center',
-        //     render: function (data, type, row) {
-        //         var totalBooks = 0;
-        //         if (data.books && Array.isArray(data.books)) {
-        //             totalBooks = data.books.length;
-        //         }
-        //         return totalBooks;
-        //     },
-        //     orderable: true,
-        // },
+        {data: 'email', class: 'text-center', orderable: true},
         {data: 'created_at', class: 'text-center', orderable: true},
         {render: function (data, index, row, meta) {
             return `
@@ -133,43 +131,4 @@
     }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
   });
 </script> -->
-
-<!-- <script type="text/javascript">
-        var controller = new Vue({
-            el: '#controller',
-            data: {
-                data: {},
-                actionUrl : '{{ url('publishers') }}',
-                editStatus : false
-            },
-            mounted: function (){
-
-            },
-            methods: {
-                addData() {
-                    this.data = {};
-                    this.actionUrl = '{{ url('publishers') }}';
-                    this.editStatus = false
-                    $('#modal-default').modal();
-                    // console.log('add data');
-                },
-                editData(data) {
-                    // console.log(data)
-                    this.data = data;
-                    this.actionUrl = '{{ url('publishers') }}'+'/'+data.id;
-                    this.editStatus = true
-                    $('#modal-default').modal();
-                },
-                deleteData(id) {
-                    // console.log(id)
-                    this.actionUrl = '{{ url('publishers') }}'+'/'+id;
-                    if (confirm("Are You Sure ?")) {
-                        axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {
-                            location.reload();
-                        });
-                    }
-                },
-            }
-        });
-    </script> -->
 @endsection
