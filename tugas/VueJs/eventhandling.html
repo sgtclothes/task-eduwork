@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+<style>
+    h1 {
+        color:blue;
+    }
+</style>
+
+</head>
+<body>
+    <h1>Tugas Event Handling</h1>
+<hr>
+    <!-- counter -->
+     <div id="example-1">
+         <button v-on:click="counter += 1">Klik</button>
+         <p>Tombol di atas sudah di klik sebanyak {{ counter }} kali.</p>
+     </div>
+<hr>
+     <div id="example-2">
+         <!-- `greet` is the name of a method defined below -->
+         <button v-on:click="greet">Greet</button>
+     </div>
+<hr>
+     <div id="example-3">
+         <button v-on:click="say('aku ganteng')">Say aku ganteng</button>
+         <button v-on:click="say('aku baik')">Say aku baik</button>
+     </div>
+<hr>
+     <div id="ex-4">
+         <button v-on:click="warn('Form belum bisa di submit. Silahkan lengkapi semua data!', $event)">
+           Submit
+         </button>
+     </div>
+<hr>
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    counter: 0
+  }
+})
+
+var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    name: 'Rizal Ahmad Fauzi'
+  },
+  // define methods under the `methods` object
+  methods: {
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+      // `event` is the native DOM event
+      if (event) {
+        alert(target.tagName)
+      }
+    }
+  }
+})
+
+var example3 = new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+
+var ex4 = new Vue({
+    el: '#ex-4',
+methods: {
+  warn: function (message, event) {
+    // now we have access to the native event
+    if (event) {
+      event.preventDefault()
+    }
+    alert(message)
+  }
+}
+})
+
+</script>
