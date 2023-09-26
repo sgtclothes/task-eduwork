@@ -21,7 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 
 
 // Route::get('/catalogs', [App\Http\Controllers\CatalogController::class, 'index']);
@@ -49,9 +48,13 @@ Route::resource('/authors', App\Http\Controllers\AuthorController::class);
 
 Route::resource('/members', App\Http\Controllers\MemberController::class);
 
+Route::resource('/books', App\Http\Controllers\BookController::class);
+
 // route api untuk akses data dari function api
 Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
 Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
 Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
+Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api']);
+
 
 
