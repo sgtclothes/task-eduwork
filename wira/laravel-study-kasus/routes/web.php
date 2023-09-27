@@ -23,16 +23,15 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('/spatie', [HomeController::class, 'test_spatie'])->name('dashboard');
-
+    
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/author', [AuthorController::class, 'index'])->name('author');
 
     Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog');

@@ -283,8 +283,9 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         $transaction = Transaction::findOrFail($id);
+        
         $transaction->details()->delete();
-
+        $transaction->delete();
         return redirect()->route('transactions.index');
     }
 }

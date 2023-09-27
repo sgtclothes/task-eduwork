@@ -65,8 +65,9 @@
             <div class="row g-2 mb-2">
               <div class="col mb-0">
                 <label for="year" class="form-label">year</label>
-                <input type="number" v-model="year" id="year" name="year" class="form-control" placeholder="masukkan nomor hp" />
+                <input type="number" v-model="year" id="year" name="year" class="form-control" placeholder="masukkan tahun terbit" />
               </div>
+              
               <div class="col mb-0">
                 <label for="publisher" class="form-label">publisher</label>
                 <select v-model="publisher_id" name="publisher_id" id="" class="form-control">

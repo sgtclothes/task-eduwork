@@ -60,7 +60,7 @@
 
             
               <!-- Modal -->
-    <div class="modal fade" id="author-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal fade" id="author-modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -112,7 +112,7 @@
           </div>
         </div>
       </div>
-     </div>
+    </div>
   </div>
   </div>
   
@@ -168,20 +168,7 @@
             `
             : data;
     },orderable: true, width: '200px', class:'text-center', data: null}
-    // {render: function (index, row, data, meta) {
-      
-           
-    //         ` <a href="#" class="btn btn-warning btn-sm" onclick="editData(event, ${meta.row})">Edit</a>
-    //           <a href="#" class="btn btn-danger btn-sm" onclick="deleteData(event, ${row.id})">hapus</a>
-    //         `
-            
-    // },orderable: false, width: '200px', class:'text-center'}
-    // {render: function(data, type, row, meta){
-    //   return 
-    //   ` <a href="#" class="btn btn-warning btn-sm" onClick="controller.editData(event, ${meta.row})">Edit</a>
-    //     <a href="#" class="btn btn-danger btn-sm" onClick="controller.deketeData(event, ${data.id})">hapus</a>
-    //   `
-    // }, orderable: false, width: '200px', class:'text-center'}
+   
   ]
 
   const { createApp } = Vue

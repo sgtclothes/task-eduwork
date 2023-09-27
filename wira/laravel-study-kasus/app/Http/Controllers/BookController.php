@@ -16,9 +16,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $publishers = Publisher::all();
-        $authors = Author::all();
-        $catalogs = Catalog::all();
+        $publishers = Publisher::latest()->get();
+        $authors = Author::latest()->get();
+        $catalogs = Catalog::latest()->get();
         $tes = date("Y-m-d");
        
         return view(
@@ -34,7 +34,7 @@ class BookController extends Controller
 
     public function api()
     {
-        $books = Book::where('qty','>','0')->get();
+        $books = Book::where('qty','>','0')->latest()->get();
         return json_encode($books);
     }
     /**

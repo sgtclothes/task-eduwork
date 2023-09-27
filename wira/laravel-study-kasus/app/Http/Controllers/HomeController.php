@@ -35,7 +35,7 @@ class HomeController extends Controller
     $total_anggota = Member::count();
     $total_buku = Book::count();
     $total_peminjam = Transaction::whereMonth('date_start', date('m'))->count();
-    $total_penerbit = Publisher::count();
+   
 
     $data_book = Book::select(DB::raw("COUNT(catalog_id) as total"))->groupBy('catalog_id')
       ->orderBy('catalog_id')->pluck('total');
@@ -78,7 +78,6 @@ class HomeController extends Controller
       'total_anggota',
       'total_buku',
       'total_peminjam',
-      'total_penerbit',
       'data_donut',
       'label_donut',
       'data_bar',
