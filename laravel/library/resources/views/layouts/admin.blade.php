@@ -137,6 +137,54 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="{{ url('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                        Dashboard
+                        </p>
+                    </a>
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{ url('catalog') }}" class="nav-link {{ request()->is('catalog') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-columns"></i>
+                        <p>
+                        Catalog
+                        </p>
+                    </a>
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{ url('publisher') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                        Publisher
+                        </p>
+                    </a>
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{ url('author') }}" class="nav-link {{ request()->is('author') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                        Author
+                        </p>
+                    </a>
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                        Book
+                        </p>
+                    </a>
+                </li>                    
+                <li class="nav-item">
+                    <a href="{{ url('member') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tree"></i>
+                        <p>
+                        Member
+                        </p>
+                    </a>
+                </li>                    
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -147,11 +195,16 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="col">
-                        <h1 class="m-0">Dashboard</h1>
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col sm-6">
+                        <h1 class="m-0">@yield('header')</h1>
                     </div><!-- /.col -->
+                </div>
+            </div>
+        </div>
         <!-- /.content-header -->
-    </div>
 
     <!-- Main content -->
     <section class="content">
@@ -159,7 +212,7 @@
             @yield('content')
         </div>
     </section>
-
+    </div>
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">
