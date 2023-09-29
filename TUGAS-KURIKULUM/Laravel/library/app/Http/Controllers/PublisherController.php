@@ -22,10 +22,14 @@ class PublisherController extends Controller
 
     public function api()
     {
-        $publishers = Publisher::with('books')->get();
-        // $publishers = Publisher::all();
-        $datatables = datatables()->of($publishers, compact('publishers'))->addIndexColumn();
+        // $publishers = Publisher::with('books')->get();
+        $publishers = Publisher::all();  
 
+        $datatables = datatables()->of($publishers)
+                            ->addColumn('custom_date', function ($publisher){
+                                return custom_date_format($publisher->created_at);
+                            })
+                            ->addIndexColumn();
         return $datatables->make(true);
     }
 

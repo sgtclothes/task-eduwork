@@ -112,7 +112,10 @@
         //     },
         //     orderable: true,
         // },
-        {data: 'created_at', class: 'text-center', orderable: true},
+        { 
+            data: 'created_at', render: function (data, type, row) {
+                return custom_date_format(data);
+            }, class: 'text-center', orderable: true },
         {render: function (data, index, row, meta) {
             return `
                 <a class="btn btn-warning" onclick="controller.editData(event, ${meta.row})" href="#">
