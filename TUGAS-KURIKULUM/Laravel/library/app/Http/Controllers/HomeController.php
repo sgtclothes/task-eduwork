@@ -26,6 +26,41 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+     public function dashboard()
+     {
+         $total_buku = Book::count();
+         $total_anggota = Member::count();
+         $total_penerbit = Publisher::count();
+         $total_peminjaman = Transaction::whereMonth('date_start', date('m'))->count();
+
+         $data_donut = Book::select(DB::raw("COUNT(publisher_id) as total"))->groupBy('publisher_id')->orderBy('publisher_id', 'asc')->pluck('total');
+         $label_donut = Publisher::orderBy('publishers.id', 'asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('name')->pluck('name');
+     
+         // Dump the values for debugging
+        //  dump($total_buku, $total_anggota, $total_penerbit, $total_peminjaman);
+
+        // return $label_donut;
+        // dump($data_donut, $label_donut);
+
+        $label_bar = ['Peminjaman'];
+        $data_bar = [];
+
+        foreach ($label_bar as $key => $value) {
+            $data_bar[$key]['label'] = $label_bar[$key];
+            $data_bar[$key]['backgroundColor'] = 'rgba(60,141,188, 0.9)';
+            $data_month = [];
+                foreach (range(1,12) as $month ) {
+                    $data_month[] = Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_start', $month)->first()->total;
+                }
+                $data_bar[$key] = $data_month;
+        }
+        // return $data_bar;
+     
+         return view('dashboard', compact('total_buku', 'total_anggota', 'total_penerbit', 'total_peminjaman', 'data_donut', 'label_donut'));
+     }
+    
+
     public function index()
     {
         $data = Member::select('*')

@@ -143,7 +143,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="{{url('home')}}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
+            <a href="{{url('dashboard')}}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
