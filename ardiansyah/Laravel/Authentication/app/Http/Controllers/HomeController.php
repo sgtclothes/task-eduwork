@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Models\Book;
 use App\Models\Publisher;
 use App\Models\Catalog;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,12 +38,27 @@ class HomeController extends Controller
         // ->join('users', 'users.member_id', '=', 'members.id')
         // ->get();
 
-        // // no 2
-        // $data2 = Member::select('*')
+        // no 2
+        // $data = Member::select('*')
         // ->leftjoin('users', 'users.member_id', '=', 'members.id')
         // ->where('users.id', NULL)
         // ->get();
 
+        // no 3
+        // $data = Transaction::select('members.id', 'members.name')
+        // ->rightJoin('members', 'members.id', '=', 'transactions.member_id')
+        // ->where('transactions.member_id', NULL)
+        // ->get();
+
+        // no 4
+        // $data = Member::select('members.id', 'members.name', 'members.phone_number')
+        // ->join('transactions', 'transactions.member_id', '=', 'members.id')
+        // ->orderBy('members.id', 'asc')
+        // ->get();
+
+
+
+        // return $data;
         // return $data2;
         return view('home');
     }
