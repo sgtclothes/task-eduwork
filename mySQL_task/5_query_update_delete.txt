@@ -1,0 +1,9 @@
+UPDATE `obat` SET `harga_obat` = '10000' WHERE `obat`.`id_obat` = 324567;
+
+UPDATE `detail_resep` SET `tanggal_pemesanan` = '2023-10-11' WHERE `detail_resep`.`id_resep` = 111118;
+
+DELETE FROM `detail_resep` WHERE `detail_resep`.`id_resep` = 111122
+
+DELETE FROM `detail_pasien` WHERE `detail_pasien`.`id_pasien` = 346785
+
+UPDATE `detail_pasien` SET `no_telepon` = '081265567890' WHERE `detail_pasien`.`id_pasien` = 156524;
