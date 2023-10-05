@@ -10,6 +10,6 @@ class Author extends Model
     use HasFactory;
     public function books()
     {
-        return $this->hasMany('App\Models\Books', 'Author_id');
+        return $this->hasMany('App\Models\Book', 'Author_id');
     }
 }
