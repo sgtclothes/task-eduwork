@@ -14,10 +14,36 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index(Request $request)
+    // {
+    //     if ($request->gender) {
+    //         $datas = Member::where('gender', $request->gender)->get();
+    //     } else {
+    //         $datas = Member::all();
+    //     }
+    //     $datatables = datatables()->of($datas)->addIndexColumn();
+
+    //     return $datatables->make(true);
+    //     // return view('admin.member.member');
+    // }
+
+    public function index(Request $request)
     {
+        $datas = Member::query();
+
+        if ($request->gender) {
+            $datas->where('gender', $request->gender);
+        }
+
+        $datatables = datatables()->of($datas)->addIndexColumn();
+
+        if ($request->ajax()) {
+            return $datatables->make(true);
+        }
+
         return view('admin.member.member');
     }
+
 
     public function api() 
     {

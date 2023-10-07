@@ -8,8 +8,11 @@ use App\Models\Catalog;
 use App\Models\Member;
 use App\Models\Publisher;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DashboardController extends Controller
 {
@@ -21,6 +24,25 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function test_spatie()
+    {
+        // $role = Role::create(['name' => 'writer']);
+        // $permission = Permission::create(['name' => 'index Transaction']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        // $user = auth()->user();
+        // $user->assignRole('writer');
+
+        $user = User::with('roles')->get();
+
+        // $user = User::where('id', 4)->first();
+        // $user->removeRole('writer');
+
+        return $user;
     }
 
     /**

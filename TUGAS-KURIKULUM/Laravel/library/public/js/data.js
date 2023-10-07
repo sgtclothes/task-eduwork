@@ -50,6 +50,7 @@ var controller = new Vue ({
             submitForm(event, id) {
                 event.preventDefault();
                 const _this = this;
+                console.log(this.actionUrl);
                 var actionUrl = ! this.editStatus ? this.actionUrl : this.actionUrl+'/'+id;
                 axios.post(actionUrl, new FormData($(event.target)[0])).then(response =>{
                     $('#modal-default').modal('hide');

@@ -14,8 +14,18 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <!-- <h3 class="card-title">Bordered Table</h3> -->
-                <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Member</a>
+                    <div class="row">
+                        <div class="col-md-10">
+                             <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Member</a>
+                        </div>
+                        <div class="col-md-2">
+                            <select name="gender" class="form-control" id="">
+                                <option value="0">Semua Jenis Kelamin</option>
+                                <option value="F">Perempuan</option>
+                                <option value="M">Laki-Laki</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-striped table-bordered">
@@ -103,6 +113,8 @@
     var actionUrl = '{{url('members')}}'
     var apiUrl = '{{url('api/members')}}'
 
+    console.log(actionUrl)
+
     var columns = [
         {data: 'DT_RowIndex', class: 'text-center', orderable: false},
         {data: 'name', class: 'text-center', orderable: false},
@@ -123,12 +135,19 @@
     ];
 </script>
 <script src="{{ asset('js/data.js') }}"></script>
-<!-- <script>
-  $(function () {
-    $("#example2").DataTable({
-      "responsive": true, "lengthChange": true, "autoWidth": true,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-  });
-</script> -->
+<script type="text/javascript">
+    $('select[name=gender]').on('change', function() {
+        gender = $('select[name=gender]').val();
+
+        // Periksa jika gender adalah "Semua Jenis Kelamin"
+        if (gender == 0) {
+            // Kirim filter kosong (tanpa gender) ke server
+            controller.table.ajax.url(actionUrl).load();
+        } else {
+            // Kirim gender yang dipilih ke server sebagai filter
+            controller.table.ajax.url(actionUrl+'?gender='+gender).load();
+        }
+    })
+</script>
+
 @endsection
