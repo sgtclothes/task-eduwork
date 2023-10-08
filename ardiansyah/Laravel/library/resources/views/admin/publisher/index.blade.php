@@ -14,7 +14,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="#" @click="addData()" class="btn btn-sm btn-primary pull-right">Create New Publisher</a>
+                        <a href="#" @click="addData()" class="btn btn-sm btn-primary pull-right">Create New
+                            Publisher</a>
                     </div>
                     <div class="card-body">
                         <table id="datatable" class="table table-striped table-bordered">
@@ -25,6 +26,7 @@
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Phone Number</th>
                                     <th class="text-center">Address</th>
+                                    <th class="text-center">Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -123,6 +125,11 @@
             },
             {
                 data: 'address',
+                class: 'text-center',
+                orderable: true
+            },
+            {
+                data: 'date',
                 class: 'text-center',
                 orderable: true
             },
