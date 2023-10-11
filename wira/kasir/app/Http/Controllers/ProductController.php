@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+      
         $category = Category::all();
         return view('pages.product', compact('category'));
     }

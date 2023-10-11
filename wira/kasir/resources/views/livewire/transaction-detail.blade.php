@@ -6,59 +6,43 @@
 
     <div class="card-body mt-5">
 
-        <div class="table table-responsive">
-            <table id="datatable" class="display table table-responsive table-bordered">
+      <div class="table">
+            <table id="datatable" class="table table-bordered">
         <thead>
             <tr>
               <th>no</th>
-              <th>product name</th>
               <th>Invoice</th>
-              <th>category</th>
-              <th>unit</th>
-              <th>price</th>
-              <th>Total</th>
-              <th>action</th>
+              <td>Actions</td>
             </tr>
         </thead>
              @php
              $no = 1
           @endphp
           <tbody>
-            @forelse ($transaction as $tr)
+            @foreach ($tr_total as $tr)
              <tr>
-               <td>{{ $no++ }}</td>
-              <td>{{ $tr->product->name }}</td>
+              <td>{{ $no++ }}</td>
               <td>{{ $tr->invoice }}</td>
-              <td>{{ $tr->category->name }}</td>
-              <td>{{ $tr->qty }}</td>
-              <td>{{ $tr->price }}</td>
-              <td>{{ $tr->total }}</td>
               <td>
-                <button wire:click="edit({{ $tr->id }})" class="btn btn-info btn-sm">edit</button>
-                <button wire:click="delete({{ $tr->id }})" class="btn btn-danger btn-sm">Delete</button>
+                {{-- <button data-toggle="modal" data-target="#showModal" wire:click="show({{ $tr->invoice }})" class="btn btn-warning btn-sm">Show</button> --}}
+
+               <button wire:click="edit({{ $tr->invoice }})" class="btn btn-info btn-sm">edit</button>
+
+              
               </td>
              </tr>
-             @empty
-             <tfoot>
-               <td colspan="8" class="text-center">tidak ada transaksi</td>
-             </tfoot>
-             @endforelse
+             @endforeach
+             
           </tbody>
           
-          <tfoot>
-            <td colspan="7" class="text-center">total</td>
-            @forelse ($tr_total as $tr)
-                <td>{{ $tr->total }}</td>
-            @empty
-              <td>0</td>  
-            @endforelse
-            
-            
-          </tfoot>
+         
        
         </table>
         </div>
     </div>
-  
+
+ 
+    @include('livewire.transaction-detail-show')
+    {{-- @include('livewire.hello-modal') --}}
  </div>
 </div>

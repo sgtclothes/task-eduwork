@@ -23,16 +23,15 @@
   @include('includes.sidebar')
 
   <div class="content-wrapper">
-
     @if (request()->is('transaction-product'))
     <livewire:transaction /> 
     @else
     
     <livewire:transaction-detail /> 
     @endif
-   
-  </div>
 
+  </div>
+  
   @include('includes.footer')
 
 </div>
@@ -48,11 +47,16 @@
                 { "width": "25%", "targets": 0 },
                 { "width": "25%", "targets": 1 },
                 { "width": "25%", "targets": 2 },
-                { "width": "25%", "targets": 3 },
-                { "width": "25%", "targets": 4 }
+              
             ]
             });
         });
+    </script>
+    <script type="text/javascript">
+        window.livewire.on('showModal', () => {
+          $('#showModal').modal('show')
+        });
+
     </script>
 </body>
 </html>

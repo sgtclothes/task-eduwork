@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Transaction;
+use App\Models\Transaction as Tr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,10 +18,11 @@ class TransactionController extends Controller
         $category = Category::latest()->get();
         $products = Product::latest()->get();
 
-        $transaction = Transaction::distinct()->where('enum', 'PAID')->get(['invoice','products_id','category_id','qty','price','total']);
+        // $tr_total = Transaction::select(DB::raw("MIN(products_id), invoice,category_id"))->where('enum', 'PAID')->groupBy('invoice')->get();
+        // $tr_total = Tr::select('invoice')->distinct('invoice')->where('enum', 'PAID')->get();
+      
+        return $tr_total;
 
-
-        return $transaction;
         return view('pages.transaction',compact('category','products'));
     }
 

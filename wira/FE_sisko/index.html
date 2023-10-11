@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slicing landing page eduwork</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/scss/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div>
+                <div class="phone-call">
+                  <img src="assets/img/phone.svg" alt="" />
+                  <span class="ms-2">(021) 893457</span>
+                  <img src="assets/img/icon-social.svg" class="ms-2" alt="" />
+                </div>
+              </div>
+              <div>
+                <div class="info-support">
+                  <img src="assets/img/info.svg" alt="" />
+                  <span class="ms-2">Support</span>
+                  <img src="assets/img/world.svg" class="ms-2" alt="" />
+                  <span>ID</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <section class="section-navbar">
+        <nav class="navbar navbar-expand-lg light px-5 py-4">
+          <div class="container-fluid container mt-3">
+            <a class="navbar-brand" href="">
+              <img src="assets/img/logo.svg" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    All Category
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">New</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Gaming</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Acceccories</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Sale</a>
+                </li>
+              </ul>
+              <div class="user-transaction">
+                <ul class="d-flex list-unstyled">
+                  <li class="nav-item me-3">
+                    <a class="nav-link" href="#"
+                      ><img src="assets/img/search.svg" alt=""
+                    /></a>
+                  </li>
+                  <li class="nav-item me-3">
+                    <a class="nav-link" href="#"
+                      ><img src="assets/img/bag-shopping.svg" alt=""
+                    /></a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="me-2">{{ dataUser.user_fullname }}</span>
+                      <img src="assets/img/avatar.png" alt="" />
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+      <div class="container">
+        <section class="section-hero">
+          <div class="row d-flex">
+            <div class="col-md-4 col-lg-6 d-none d-md-block d-lg-block">
+              <img
+                src="assets/img/iphone.png"
+                class="img-iphone d-none d-md-none d-lg-block"
+                alt=""
+              />
+            </div>
+            <div
+              class="col-md-8 col-lg-6 ms-5 ms-lg-0 justify-content-center align-items-center"
+            >
+              <div class="text-copy">
+                <p class="text-seller">Best Seller 2023</p>
+                <h1 class="text-title">Iphone 14 Pro</h1>
+                <p class="text-description">
+                  Hingga saat ini, Apple masih menjadi favorit banyak orang
+                  <br />
+                  dengan produk iPhone series-nya, salah satunya adalah
+                  <br />
+                  iPhone 14 Pro
+                </p>
+                <p class="text-price">Rp 18.999.000</p>
+              </div>
+              <div class="d-flex">
+                <div
+                  class="btn btn-primary bg-white text-dark px-5 py-2 btn-buy-now"
+                >
+                  <img src="assets/img/bag-shopping.svg" alt="" />
+                  <span>Beli sekarang</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-carousel mt-5">
+          <div class="owl-carousel owl-theme">
+            <div class="item card shadow" style="width: 22rem">
+              <div class="d-flex mt-2 ms-2">
+                <div>
+                  <img src="assets/img/s23.png" class="align-self-center" />
+                </div>
+                <div class="card-body card-product">
+                  <p class="card-category">Smartphone</p>
+                  <p class="card-title-product">Samsung Galaxy S23 Ultra</p>
+                  <p class="card-buy-now">Beli sekarang</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="item card shadow" style="width: 22rem">
+              <div class="d-flex mt-2 ms-2">
+                <div>
+                  <img src="assets/img/ps5.png" class="align-self-center" />
+                </div>
+                <div class="card-body card-product">
+                  <p class="card-category">Gaming</p>
+                  <p class="card-title-product">Sony Playstation 5 Bundle</p>
+                  <p class="card-buy-now">Beli sekarang</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="item card shadow" style="width: 22rem">
+              <div class="d-flex mt-2 ms-2">
+                <div>
+                  <img src="assets/img/asus.png" class="align-self-center" />
+                </div>
+                <div class="card-body card-product">
+                  <p class="card-category">Laptop</p>
+                  <span class="card-title-product"
+                    >Asus Zephyrus g14 Ryzen</span
+                  >
+                  <p class="card-buy-now">Beli sekarang</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-category mt-5">
+          <h2>Jelajahi Kategori</h2>
+
+          <div class="">
+            <div class="row d-flex justify-content-center">
+              <div
+                class="col-sm-6 col-md-4 col-lg-2 d-flex mt-3 mt-md-3 mt-lg-0 justify-content-center"
+                v-for="data in aaData"
+                :key="data.id"
+              >
+                <div class="card p-2 card-category" style="width: 12rem">
+                  <div class="d-flex justify-content-center">
+                    <img
+                      src="assets/img/smartphone.svg"
+                      class="card-img-top w-25"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <p class="card-text">
+                      <!-- Smartphone &
+                      <br />
+                      Accecoriss -->
+
+                      {{ data.keyword_name }}
+                    </p>
+
+                    <p class="card-amount-product">5,6k Produk</p>
+                  </div>
+                </div>
+              </div>
+              <!-- <div
+                class="col-sm-6 col-md-4 col-lg-2 d-flex mt-3 mt-md-3 mt-lg-0 justify-content-center"
+              >
+                <div class="card p-2 card-category" style="width: 12rem">
+                  <div class="d-flex justify-content-center">
+                    <img
+                      src="assets/img/laptop.svg"
+                      class="card-img-top w-50"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <p class="card-text">
+                      Laptop &
+                      <br />
+                      Accecoriss
+                    </p>
+
+                    <p class="card-amount-product">3,1k Produk</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-sm-6 col-md-4 col-lg-2 d-flex mt-3 mt-md-3 mt-lg-0 justify-content-center"
+              >
+                <div class="card p-2 card-category" style="width: 12rem">
+                  <div class="d-flex justify-content-center">
+                    <img
+                      src="assets/img/pc-desktrop.svg"
+                      class="card-img-top w-50"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <p class="card-text">
+                      PC Desktrop &
+                      <br />
+                      Gaming Space
+                    </p>
+
+                    <p class="card-amount-product">5,6k Produk</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-sm-6 col-md-4 col-lg-2 d-flex mt-3 mt-md-3 mt-lg-0 justify-content-center"
+              >
+                <div class="card p-2 card-category" style="width: 12rem">
+                  <div class="d-flex justify-content-center">
+                    <img
+                      src="assets/img/gaming.svg"
+                      class="card-img-top w-75"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <p class="card-text">Gaming Space</p>
+
+                    <p class="card-amount-product">5,6k Produk</p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-sm-6 col-md-4 col-lg-2 d-flex mt-3 mt-md-3 mt-lg-0 justify-content-center"
+              >
+                <div class="card p-2 card-category" style="width: 12rem">
+                  <div class="d-flex justify-content-center">
+                    <img
+                      src="assets/img/camera.svg"
+                      class="card-img-top w-50"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body text-center">
+                    <p class="card-text">Camera</p>
+
+                    <p class="card-amount-product">5,6k Produk</p>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </section>
+
+        <section class="section-promo">
+          <h2 class="mt-4">Promo untukmu</h2>
+          <div class="row">
+            <div class="col-md-4 col-lg-6">
+              <div class="promo-laptop">
+                <div class="laptop d-flex justify-content-center pt-5">
+                  <img src="assets/img/mac.png" class="img-laptop" alt="" />
+                </div>
+                <div class="describe-laptop ms-5">
+                  <p class="text-discount">Save up to 30% off</p>
+                  <h2 class="text-title">Macbook Air M2</h2>
+                  <p class="text-buy">Beli sekarang</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-6">
+              <div class="row grid gap-2 gap-md-0 gap-lg-0">
+                <div
+                  class="col-sm-6 col-md-4 col-lg-6 mt-3 mt-lg-0 mt-md-3 d-flex justify-content-center"
+                >
+                  <div class="promo-laptop-small">
+                    <div class="laptop">
+                      <img
+                        src="assets/img/acer.svg"
+                        class="img-laptop w-75"
+                        alt=""
+                      />
+                    </div>
+                    <div class="describe-laptop">
+                      <p class="text-discount">Save up to 30% off</p>
+                      <h2 class="text-title">Acer Nitro 5 Ryzen 7</h2>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-sm-6 col-md-4 col-lg-6 mt-3 mt-lg-0 mt-md-3 d-flex justify-content-center"
+                >
+                  <div class="promo-phone-small d-flex align-items-end">
+                    <div class="phone">
+                      <div class="describe-phone ms-3">
+                        <p class="text-discount mt-3">Save up to 30% off</p>
+                        <h2 class="text-title">Mi 13</h2>
+                      </div>
+
+                      <div class="img-wrapper">
+                        <div>
+                          <img
+                            src="assets/img/xiaomi.svg"
+                            class="img-laptop"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-4 col-lg-6">
+                  <div class="promo-nintendo-small d-flex align-items-end">
+                    <div class="nintendo">
+                      <div class="describe-nintendo ms-3">
+                        <p class="text-discount mt-3">Save up to 30% off</p>
+                        <h2 class="text-title">Nintendo Switch</h2>
+                      </div>
+
+                      <div class="img-wrapper">
+                        <div>
+                          <img
+                            src="assets/img/nintendo.svg"
+                            class="img-laptop w-75"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-hero-second mt-5">
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4 d-none d-lg-block"></div>
+            <div class="col-sm-6 col-md-4 col-lg-4 d-flex align-items-center">
+              <div
+                class="headphone-description mt-5 mt-md-0 mt-lg-0 ms-3 ms-md-0 ms-lg-0"
+              >
+                <p class="text-audio">Audio</p>
+                <p class="headphone-name">Headphone Sony WH-1000XM4</p>
+                <p class="headphone-price">Rp 4.499.000</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <img
+                src="/assets/img/headphone.png"
+                class="w-75 img-fluid d-none d-lg-block"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-list-product">
+        <div class="container">
+          <center class="text-list-product">List Produk</center>
+
+          <div class="row d-flex justify-content-center align-items-center">
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 mt-md-0 mt mt-lg-3 d-flex justify-content-center"
+              v-for="produk in dataProduk" :key="produk.id"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    :src="produk.photo"
+                    class="card-img-top w-75 mt-3"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">
+                    {{ produk.name }}
+                  </p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people ms-2">(142 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">{{ produk.price }}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 mt-md-0 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/iphone-mini.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Iphone 14 pro Deep Purple 512Gb</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(78 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 24.299.000</div>
+
+                  <div class="d-grid gap-2 mt-3">
+                    <button
+                      class="btn d-flex align-items-center to-cart py-2 text-center"
+                      type="button"
+                    >
+                      <img src="assets/img/bag-shopping-white.svg" alt="" />
+                      <span class="ms-2"> Masukkan ke Keranjang</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 mt-md-0 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/mac-mini.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Macbook pro M2 13” Grey 8Gb 256Gb</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(72 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 18.599.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 mt-md-0 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/mi13.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Xiaomi 12 pro 12/256gb Black</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.1</span>
+                        <span class="rating-people">(32 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 12.999.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/oppo.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">OPPO FInd X5 Pro 12/256Gb</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.1</span>
+                        <span class="rating-people">(51 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 14.599.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/anker.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Anker Soundcore Life Q30</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.5</span>
+                        <span class="rating-people">(142 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 1.099.000</div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/pc-gaming.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">
+                    PC Gaming AMD Ryzen 7 VGA RX 6600 XT RAM 8GB SSD
+                  </p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(142 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 9.199.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/asus-zep.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Ipad Min 6 Space Grey 64Gb Wifi Only</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(142 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 8.599.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/samsung-led.png"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">
+                    Monitor LED Samsung 27” Odyssey G3 165Hz FHD
+                  </p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.2</span>
+                        <span class="rating-people">(142 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 2.499.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/galaxy-tab.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Samsung Galaxy Tab S6 6/128Gb</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(32 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 8.599.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/mouse.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">Mouse Logitech G pro Wireless 2.4 Ghz</p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.1</span>
+                        <span class="rating-people">(32 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 12.999.000</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div class="card card-list shadow-sm" style="width: 17rem">
+                <div class="d-flex justify-content-center">
+                  <img
+                    src="assets/img/keyboard.svg"
+                    class="card-img-top w-75"
+                    alt="..."
+                  />
+                </div>
+                <div class="card-body card-list-product">
+                  <p class="card-text">
+                    Keyboard Keychron K2 Aluminium Hot Swap
+                  </p>
+                  <div class="rating">
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img src="assets/img/star-rating.svg" alt="" />
+                      </div>
+                      <div class="ms-2">
+                        <span class="rating-number">4.6</span>
+                        <span class="rating-people">(144 Review)</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="price-product">Rp 1.999.000</div>
+                </div>
+              </div>
+            </div> -->
+
+            <center class="mt-4">
+              <a href="">
+                <button class="btn btn-outline-dark btn-other-product">
+                  <img src="assets/img/loader.svg" alt="" />
+                  <span>Muat produk lainnya</span>
+                </button>
+              </a>
+            </center>
+          </div>
+        </div>
+      </div>
+
+      <section class="section-brand mt-5">
+        <div class="container">
+          <center class="brand-text">Brand Terkenal</center>
+          <center class="brand-typo">
+            Cek produk terbaik dari brand berikut hanya di BebooTech
+          </center>
+
+          <div class="row d-flex brand-list justify-content-center">
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+            >
+              <div
+                class="card brand-card card-apple bg-white d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-apple.svg"
+                  class="card-img-top w-25"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mt-3 mt-md-0"
+            >
+              <div
+                class="card brand-card card-mi d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-mi.svg"
+                  class="card-img-top w-25"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mt-3 mt-md-0"
+            >
+              <div
+                class="card brand-card card-wacom d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-wacom.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mt-3 mt-md-0"
+            >
+              <div
+                class="card brand-card card-asus d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-asus.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div
+                class="card brand-card card-sony d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-sony.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div
+                class="card brand-card card-amd d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-amd.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div
+                class="card brand-card card-samsung d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-samsung.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 mt-3 d-flex justify-content-center"
+            >
+              <div
+                class="card brand-card card-jbl d-flex align-items-center justify-content-center border-0"
+                style="width: 17rem"
+              >
+                <img
+                  src="assets/img/logo-jbl.svg"
+                  class="card-img-top w-50 opacity-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-service mt-5 p-4">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+            >
+              <img src="assets/img/icn_Shipping.svg" class="w-25" alt="" />
+              <div class="service-description ms-3 mt-2">
+                <span class="service-title">Gratis ongkir</span>
+                <p class="service-typo">Tanpa minimal belanja</p>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+            >
+              <img src="assets/img/call-center.svg" class="w-25" alt="" />
+              <div class="service-description ms-3 mt-2">
+                <span class="service-title"
+                  >24/7 Costumer <br />
+                  Service</span
+                >
+                <p class="service-typo">(021) 893457</p>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+            >
+              <img src="assets/img/icn_chat.svg" class="w-25" alt="" />
+              <div class="service-description ms-3 mt-2">
+                <span class="service-title">Chat dengan kami </span>
+                <p class="service-typo">Layanan chat online 24 Jam</p>
+              </div>
+            </div>
+
+            <div
+              class="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+            >
+              <img src="assets/img/icn_giftCards.svg" class="w-25" alt="" />
+              <div class="service-description ms-3 mt-2">
+                <span class="service-title">Voucher Menarik </span>
+                <p class="service-typo">Untuk kamu yang sering berbelanja</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-footer mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+              <img src="assets/img/logo.svg" alt="" />
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-3 mt-md-0 ms-lg-4">
+              <h2>NAVIGASI</h2>
+              <p>Smartphone</p>
+              <p>Laptop</p>
+              <p>Gaming</p>
+              <p>PC Desktrop</p>
+              <p>Kamera</p>
+              <p>Audio</p>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-3 mt-md-0">
+              <h2>INFORMASI</h2>
+              <p>About US</p>
+              <p>Informasi Pengiriman</p>
+              <p>Privacy & Policy</p>
+              <p>Syarat & Ketentuan</p>
+
+              <h2 class="mt-3 mt-md-0">Bahasa</h2>
+              <select name="" class="form-control w-25" id="">
+                <option value="Indonesia">Indonesia</option>
+              </select>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2 mt-3 mt-md-0">
+              <h2>CUSTOMER SERVICE</h2>
+              <p>Customer Service</p>
+              <p>Daftar atau Masuk</p>
+              <p>Referensi Gadget</p>
+              <p>Cookie</p>
+              <p>Keamanan berbelanja</p>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-40">
+              <div class="ms-md-3 ms-lg-3">
+                <h2 class="fw-bold">Ikuti Kami</h2>
+                <div class="footer-img-social">
+                  <a href="#">
+                    <img src="assets/img/Social Icon-lg.svg" alt="" />
+                  </a>
+                  <a href="#">
+                    <img src="assets/img/Social Icon-fb.svg" alt="" />
+                  </a>
+                  <a href="#">
+                    <img src="assets/img/Social Icon-tw.svg" alt="" />
+                  </a>
+                </div>
+
+                <div class="footer-download">
+                  <h2 class="fw-bold my-3">BeboTech App</h2>
+                  <a href="">
+                    <img src="assets/img/App Store Badge.svg" alt="" />
+                  </a>
+                  <a href="">
+                    <img src="assets/img/Google Play Badge.svg" alt="" />
+                  </a>
+                </div>
+
+                <div class="footer-payment">
+                  <h2 class="fw-bold my-3">Metode Pembayaran</h2>
+                  <a href="">
+                    <img src="assets/img/py-visa.svg" alt="" />
+                  </a>
+                  <a href="">
+                    <img src="assets/img/py-mastercard.svg" alt="" />
+                  </a>
+                  <a href="">
+                    <img src="assets/img/py-american express.svg" alt="" />
+                  </a>
+
+                  <a href="">
+                    <img src="assets/img/py-paypal.svg" alt="" />
+                  </a>
+
+                  <a href="">
+                    <img src="assets/img/py-diners club.svg" alt="" />
+                  </a>
+
+                  <a href="">
+                    <img src="assets/img/py-discover.svg" alt="" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-copyright mt-5 py-3">
+          <center>All Rights Reserved © 2023</center>
+        </div>
+      </section>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+    <script>
+      $(".owl-carousel").owlCarousel({
+        items: 3,
+        loop: true,
+
+        center: true,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            loop: true,
+            center: true,
+          },
+
+          400: {
+            items: 1,
+            loop: true,
+            center: true,
+          },
+          600: {
+            items: 3,
+            nav: false,
+            loop: true,
+            center: true,
+          },
+          1000: {
+            items: 3,
+            center: true,
+            loop: true,
+          },
+        },
+      });
+    </script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            aaData: "",
+            dataUser: "",
+            dataProduk : ""
+          };
+        },
+
+        mounted() {
+          this.getCategory();
+          this.getUser();
+          this.getProduct();
+        },
+
+        methods: {
+          getCategory() {
+            axios
+              .get("https://sistemtoko.com/public/demo/categories")
+              .then((response) => (this.aaData = response.data.aaData))
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+          getUser() {
+            axios
+              .get("https://sistemtoko.com/public/demo/website")
+              .then((response) => (this.dataUser = response.data.data.user))
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+
+          getProduct() {
+            axios
+              .get("https://sistemtoko.com/public/demo/product")
+              .then((response) => (this.dataProduk = response.data.aaData))
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

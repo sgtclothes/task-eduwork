@@ -41,9 +41,9 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-         
+          
           <img class="direct-chat-img" src="{{ asset('assets/dist/img/user1-128x128.jpg') }}" alt="message user image" style="width: 30px; height: auto">
-       
+      
         </a>
         <div class="dropdown-menu"> 
             <a class="dropdown-item" href="{{ route('logout') }}"
