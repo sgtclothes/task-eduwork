@@ -1,0 +1,5 @@
+1. UPDATE obat SET nama_obat = 'bodrex extra' where id = 1;
+2. UPDATE obat SET nama_obat = 'bodrex flu batuk' where id = 2;
+3. UPDATE obat SET nama_obat = 'decolgen' where id = 3;
+4. UPDATE obat SET nama_obat = 'diapet' where id = 4;
+5. DELETE FROM obat where id = 10;

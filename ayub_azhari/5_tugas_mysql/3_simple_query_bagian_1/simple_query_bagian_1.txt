@@ -1,0 +1,10 @@
+1. SELECT * FROM `detail_supplier` WHERE alamat LIKE '%rawang%';
+2. SELECT * FROM obat LIMIT 5;
+3. SELECT nama_obat, stok FROM obat WHERE stok <= 50;
+4. SELECT nama_supplier as pemasok FROM supplier;
+5. SELECT id as kode_pemasok, nama_supplier as pemasok FROM supplier ORDER BY kode_pemasok DESC;
+6. SELECT id, SUM(jumlah) AS total FROM detail_transaksi_penjualan WHERE id_obat = 1;
+7. SELECT * FROM `transaksi_pembelian` limit 5,3;
+8. SELECT * FROM `obat` WHERE stok BETWEEN 1 AND 50;
+9. SELECT nama_obat, harga_beli, stok FROM `obat` WHERE harga_beli >= 15000 ORDER BY id ASC;
+10. SELECT * FROM `transaksi_pembelian` GROUP BY id_supplier;
