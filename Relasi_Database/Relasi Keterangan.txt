@@ -1,0 +1,5 @@
+1. Relasi One to One
+t_transaksi -> t_details_transaksi = Karena didalam relasi tabel ini hanya berhubungan dengan 1 tabel saja yatu t_transaksi ke t_details_transaksi
+
+2. Relasi One to Many 
+t_pasien -> t_transaksi, t_obat -> t_details_transaksi = Bisa di bilang relasi One to Many karena dalam satu tabel bisa terhubung ke banyak tabel yang di butuhkan
