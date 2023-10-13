@@ -1,0 +1,11 @@
+1. SELECT * FROM `t_pasien`;
+2. SELECT nama_pasien FROM `t_pasien`;
+3. SELECT tanggal_lahir_pasien FROM `t_pasien`;
+4. SELECT * FROM `t_pasien` WHERE id_pasien = 5;
+4. SELECT * FROM `t_pasien` WHERE id_pasien > 3 AND id_pasien < 7 AND nama_pasien LIKE 'S%';
+5. SELECT * FROM `t_pasien` WHERE id_pasien > 3 AND id_pasien < 7;
+6. SELECT * FROM `t_pasien` WHERE nama_pasien = "Andi";
+7. SELECT * FROM t_pasien WHERE nama_pasien LIKE 'A%';
+8. SELECT * FROM t_pasien WHERE nama_pasien LIKE 'Tejo';
+9. SELECT * FROM t_pasien WHERE nama_pasien LIKE '%i' OR tanggal_lahir_pasien LIKE '%5';
+10. SELECT * FROM t_pasien WHERE tanggal_lahir_pasien LIKE '%5';
