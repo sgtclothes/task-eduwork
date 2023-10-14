@@ -1,22 +1,41 @@
-<div wire:ignore.self class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-       <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <input type="text" class="form-control" wire:model="invoice">
-                    <input type="text" class="form-control" wire:model="qty">
-                    <input type="text" class="form-control" wire:model="price">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>         
-            </div>
-       </div>
+<div>
+
+     <div id="data-category">
+      <div class="px-3 pt-4 pb-3">
+        <h3 class="card-title">Detail Transaction invoice <strong>{{ $transaction[0]['invoice'] }}</strong></h3>
+    </div>
+
+    <div class="card-body mt-3">
+
+      <div class="table">
+            <table id="datatable" class="table table-bordered">
+        <thead>
+            <tr>
+              <th>no</th> 
+              <th>Product</th> 
+              <td>Category</td>
+            </tr>
+        </thead>
+          @php
+             $no = 1
+          @endphp
+          <tbody>
+            @foreach ($transaction as $tr)
+             <tr>
+              <td>{{ $no++ }}</td>
+              <td>{{ $tr->product->name }}</td>
+              <td>{{ $tr->category->name }}</td>
+             
+
+              </td>
+             </tr>
+             @endforeach
+             
+          </tbody>
+          
+         
+       
+        </table>
+        </div>
     </div>
 </div>

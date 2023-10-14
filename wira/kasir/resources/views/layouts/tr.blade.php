@@ -25,11 +25,16 @@
   <div class="content-wrapper">
     @if (request()->is('transaction-product'))
     <livewire:transaction /> 
-    @else
-    
-    <livewire:transaction-detail /> 
     @endif
 
+    @if (request()->is('transaction-detail'))
+      <livewire:transaction-detail /> 
+    @endif
+
+    @if (request()->is('transaction-detail-show*'))
+    <livewire:transaction-detail-show {{ $slot }} /> 
+   
+    @endif
   </div>
   
   @include('includes.footer')
@@ -47,7 +52,7 @@
                 { "width": "25%", "targets": 0 },
                 { "width": "25%", "targets": 1 },
                 { "width": "25%", "targets": 2 },
-              
+
             ]
             });
         });

@@ -53,7 +53,25 @@
                 <input type="text" id="invoice" name="invoice" :value="data.invoice" class="form-control" placeholder="masukkan nama"  />
               </div>
             </div>
-         
+
+            <table class="table table-hover table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Invoice</th>
+                <th scope="col">Product</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+            </tbody>
+          </table>
             <div class="save-btn ms-auto">
             <button type="submit" class="btn btn-primary save-btn-position">Save changes</button>
           </div>
@@ -137,11 +155,10 @@
         })
       },
     
-   
       editData(event,row) {
         this.data = this.datas[row]
         this.editStatus = true
-       
+        console.log(this.data)
         $('#category-modal').modal('show')
       },
       deleteData(event,id) {

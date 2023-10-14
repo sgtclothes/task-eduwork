@@ -15,7 +15,7 @@
               <td>Actions</td>
             </tr>
         </thead>
-             @php
+          @php
              $no = 1
           @endphp
           <tbody>
@@ -23,10 +23,12 @@
              <tr>
               <td>{{ $no++ }}</td>
               <td>{{ $tr->invoice }}</td>
-              <td>
+              <td class="text-center">
                 {{-- <button data-toggle="modal" data-target="#showModal" wire:click="show({{ $tr->invoice }})" class="btn btn-warning btn-sm">Show</button> --}}
-
-               <button wire:click="edit({{ $tr->invoice }})" class="btn btn-info btn-sm">edit</button>
+                {{-- <a href="{{ route('transaction-detail-show',$tr->invoice) }}" wire:navigate class="btn btn-sm btn-primary">Show</a> --}}
+                {{-- <a href="{{ route('transaction-detail-show',['invoice' => $tr->invoice]) }}" class="btn btn-sm btn-primary">Show</a> --}}
+                <a href="{{ route('transaction-detail-show', ['invoice' => $tr->invoice]) }}" class="btn btn-sm btn-primary">Show</a>
+               {{-- <button wire:click="show({{ $tr->invoice }})" class="btn btn-info btn-sm">show</button> --}}
 
               
               </td>
@@ -42,7 +44,7 @@
     </div>
 
  
-    @include('livewire.transaction-detail-show')
+    {{-- @include('livewire.transaction-detail-show') --}}
     {{-- @include('livewire.hello-modal') --}}
  </div>
 </div>

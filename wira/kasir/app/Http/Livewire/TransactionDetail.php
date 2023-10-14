@@ -20,27 +20,44 @@ class TransactionDetail extends Component
         $products = Product::latest()->get();
         $categories = Category::latest()->get();
         $tr_total = Tr::select('invoice')->distinct('invoice')->where('enum', 'PAID')->get();
-      
+
         return view('livewire.transaction-detail', compact('transaction', 'products', 'categories', 'tr_total'))->layout('layouts.tr');
     }
 
-    public function edit($invoice)
-    {
-        return redirect()->to('/transaction-detail-show');
+    // public function edit($invoice)
+    // {
+    //     return redirect()->to('/transaction-detail-show');
 
-        $transaction = Tr::where('invoice', $invoice)->where('enum', 'PAID');
-    
+    //     $transaction = Tr::where('invoice', $invoice)->where('enum', 'PAID');
 
-        $this->invoice = $invoice;
-        $this->products_id = $transaction->products_id;
-        $this->category_id = $transaction->category_id;
-        $this->qty = $transaction->qty;
-        $this->price = $transaction->price;
-        $this->enum = $transaction->enum;
-        $this->total = $transaction->total;
 
-      
-        $this->emit('showModal');
+    //     $this->invoice = $invoice;
+    //     $this->products_id = $transaction->products_id;
+    //     $this->category_id = $transaction->category_id;
+    //     $this->qty = $transaction->qty;
+    //     $this->price = $transaction->price;
+    //     $this->enum = $transaction->enum;
+    //     $this->total = $transaction->total;
 
-    }
+
+    //     $this->emit('showModal');
+
+    // }
+
+    // public function show($invoice)
+    // {
+    //     return redirect()->route('livewire.transaction-detail-show', $invoice);
+
+    //     $transaction = Tr::where('invoice', $invoice);
+
+    //     $this->transaction_id   = $invoice;
+    //     // $this->invoice          = $transaction->invoice;
+    //     $this->products_id      = $transaction->products_id;
+    //     $this->category_id      = $transaction->category_id;
+    //     $this->qty              = $transaction->qty;
+    //     $this->price            = $transaction->price;
+    //     $this->total            = $transaction->price * $transaction->qty;
+
+    //     // $this->updateMode = true;
+    // }
 }

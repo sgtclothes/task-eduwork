@@ -10,6 +10,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionDetailController;
 use App\Http\Livewire\Transaction;
 use App\Http\Livewire\TransactionDetail;
+use App\Http\Livewire\TransactionDetailShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('category', CategoryController::class);
     Route::resource('product', ProductController::class);
     Route::resource('transaction', TransactionController::class);
-    Route::resource('transaction-detail', TransactionDetailController::class);
+    // Route::resource('transaction-detail', TransactionDetailController::class);
 
     Route::get('/api/category', [CategoryController::class,'api']);
     
@@ -44,5 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
     
     Route::get('/api/product', [ProductController::class,'api']);
     Route::get('/transaction-product', Transaction::class)->name('transaction-product');
+    Route::get('/transaction-detail', TransactionDetail::class)->name('transaction-detail');
+    Route::get('/transaction-detail-show/{invoice}', TransactionDetailShow::class)->name('transaction-detail-show');
    
 });

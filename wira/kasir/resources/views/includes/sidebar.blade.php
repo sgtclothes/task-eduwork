@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('transaction-detail.index') }}" class="nav-link {{ request()->is('transaction-detail') ? 'active' : '' }}">
+            <a href="{{ route('transaction-detail') }}" class="nav-link {{ request()->is('transaction-detail') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Transaction Detail
