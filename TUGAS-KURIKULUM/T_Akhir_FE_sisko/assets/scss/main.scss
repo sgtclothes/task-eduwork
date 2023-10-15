@@ -1,0 +1,517 @@
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  
+  // variable
+  $text-color-base: #fff;
+  $text-color-price: #ea3a3d;
+  $text-carousel: #6a6d71;
+  $text-category: #1d2227;
+  $text-review: #85888a;
+  $text-brand: #161d25;
+  $text-brand-typo: #959ead;
+  
+  @mixin tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  
+  @mixin phone {
+    @media (min-width: 300px) and (max-width: 576px) {
+      @content;
+    }
+  }
+  
+  @mixin laptop {
+    @media (min-width: 768px) and (max-width: 992px) {
+      @content;
+    }
+  }
+  
+  .section-hero {
+    position: relative;
+    background-image: linear-gradient(
+        0deg,
+        #1d2227 0%,
+        rgba(29, 34, 39, 0) 67.05%
+      ),
+      url("../img/hero.png");
+    background-size: auto;
+    background-color: #cccccc;
+    min-height: 570px;
+    max-height: 670px;
+    border-bottom-right-radius: 150px;
+    width: auto;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    white-space: normal;
+    box-sizing: content-box;
+  
+    @include phone {
+      overflow-wrap: break-word;
+      border-bottom-right-radius: 100px;
+    }
+  
+    .text-copy {
+      .text-seller {
+        margin-top: 200px;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 400;
+        color: $text-color-base;
+  
+        @include phone {
+          margin-top: 120px;
+          font-size: 1rem;
+        }
+      }
+  
+      .text-title {
+        font-size: 3rem;
+        font-style: normal;
+        font-weight: 700;
+        color: $text-color-base;
+  
+        @include phone {
+          font-size: 2rem;
+        }
+      }
+  
+      .text-description {
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        color: $text-color-base;
+        line-height: 1.8rem;
+  
+        @include phone {
+          overflow-wrap: break-word;
+          font-size: 0.8rem;
+        }
+      }
+  
+      .text-price {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 600;
+        color: $text-color-price;
+  
+        @include phone {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  
+    .btn-buy-now {
+      @include phone {
+        padding: 5px 10px 5px 10px !important;
+      }
+    }
+  
+    .img-iphone {
+      margin-left: 80px;
+      margin-top: 80px;
+      height: 70%;
+      width: auto;
+    }
+  }
+  
+  .section-carousel {
+    .item {
+      width: 250px;
+      height: 170px;
+    }
+    .img-carousel {
+      width: 100% !important;
+      height: 170px !important;
+    }
+  
+    .card-product {
+      .card-category {
+        color: $text-carousel;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: -1px;
+      }
+  
+      .card-title-product {
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+  
+      .card-buy-now {
+        color: $text-color-price;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-top: 8px;
+      }
+    }
+  }
+  
+  .section-category {
+    .row-gap-20 {
+      gap: 1.8rem !important;
+    }
+  
+    .card-category {
+      min-height: 300px;
+    }
+    h2 {
+      font-size: 2.3rem;
+      font-style: normal;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  
+    .card-text {
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 500;
+      color: $text-category;
+    }
+  
+    .card-amount-product {
+      color: $text-carousel;
+  
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+  
+  .section-promo {
+    .promo-laptop {
+      background: var(--neutral-100, #1d2227);
+      max-width: 540px;
+      width: 100%;
+      height: 480px;
+      color: white;
+      text-align: center;
+  
+      .img-laptop {
+        width: 50%;
+        height: 50%;
+      }
+  
+      .describe-laptop {
+        text-align: left;
+  
+        .text-discount {
+          color: $text-color-price;
+          font-size: 1.2rem;
+          font-style: normal;
+          font-weight: 400;
+          margin-bottom: 0.1rem;
+        }
+  
+        .text-title {
+          font-size: 2.3rem;
+          font-style: normal;
+          font-weight: 600;
+        }
+  
+        .text-buy {
+          font-size: 1.2rem;
+          font-style: normal;
+          font-weight: 600;
+        }
+      }
+    }
+  
+    .promo-laptop-small {
+      color: #fff;
+      background: var(--neutral-100, #1d2227);
+      max-width: 270px;
+      width: auto;
+      height: 240px;
+  
+      .text-discount {
+        text-align: center;
+        color: $text-color-price;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 0.1rem;
+      }
+  
+      .text-title {
+        font-size: 1.4rem;
+        text-align: center;
+        font-style: normal;
+        font-weight: 600;
+      }
+  
+      .text-buy {
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  
+    .promo-phone-small {
+      background: var(--neutral-20, #dadada);
+      max-width: 270px;
+      width: auto;
+      height: 240px;
+  
+      .text-discount {
+        color: $text-color-price;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 0.1rem;
+      }
+  
+      .text-title {
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  
+    .promo-nintendo-small {
+      background: var(--neutral-20, #d3d3d3);
+      width: 545px;
+      height: 224px;
+  
+      @include phone {
+        max-width: 545px;
+        width: auto;
+        height: 224px;
+      }
+  
+      @include laptop {
+        width: 270px;
+        height: 224px;
+      }
+  
+      .text-discount {
+        color: $text-color-price;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 0.1rem;
+      }
+  
+      .text-title {
+        font-size: 1.8rem;
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .section-hero-second {
+    background: var(--neutral-100, #1d2227);
+    max-width: 1125px;
+    width: auto;
+    height: 400px;
+  
+    @include laptop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    @include phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .headphone-description {
+      color: #fff;
+  
+      .text-audio {
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 5px;
+  
+        @include phone {
+          font-size: 1rem;
+        }
+      }
+      .headphone-name {
+        font-size: 2.2rem;
+        font-style: normal;
+        font-weight: 700;
+  
+        @include phone {
+          font-size: 1.8rem;
+        }
+      }
+  
+      .headphone-price {
+        color: $text-color-price;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 600;
+  
+        @include phone {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  .section-list-product {
+    .text-list-product {
+      margin: 60px 0 60px 0;
+      font-size: 2.2rem;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .card-list {
+      min-height: 390px !important;
+    }
+  
+    .card-list-product {
+      .card-text {
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 500;
+        color: $text-category;
+        margin-bottom: 5px;
+      }
+  
+      .rating-number {
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 500;
+      }
+  
+      .rating-people {
+        color: $text-review;
+        font-family: Poppins;
+        font-size: 0.8rem;
+        font-style: normal;
+      }
+  
+      .price-product {
+        color: $text-color-price;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 500;
+      }
+      .to-cart {
+        background-color: $text-category;
+        color: #fff;
+        border-radius: 0;
+      }
+    }
+    .btn-other-product {
+      background-color: #d8d8d8;
+      border: none;
+      &:hover {
+        background-color: rgb(199, 199, 199);
+        color: #1d2227;
+        border: none;
+      }
+    }
+  }
+  
+  .section-brand {
+    .brand-text {
+      color: $text-brand;
+      font-size: 2.2rem;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .brand-list {
+      margin-top: 40px;
+    }
+    .brand-card {
+      min-height: 160px;
+    }
+  
+    .card-mi {
+      background-color: #f49342;
+    }
+  
+    .card-wacom {
+      background-color: rgb(184, 233, 174);
+    }
+  
+    .card-asus {
+      background-color: #b1e0ff;
+    }
+  
+    .card-sony {
+      background-color: #ffe6d2;
+    }
+  
+    .card-amd {
+      background-color: #ea3a3d;
+    }
+  
+    .card-samsung {
+      background-color: #006fbb;
+    }
+  
+    .card-jbl {
+      background-color: #cfecff;
+    }
+  
+    .brand-typo {
+      color: $text-brand-typo;
+  
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+  .section-service {
+    background: var(--neutral-20, #ededee);
+  
+    .service-description {
+      color: $text-category;
+      font-size: 1rem;
+      font-style: normal;
+  
+      .service-title {
+        font-weight: 700;
+      }
+  
+      .service-typo {
+        font-weight: 400;
+      }
+    }
+  }
+  
+  .section-footer {
+    h2 {
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      color: $text-category;
+    }
+  
+    p {
+      color: $text-carousel;
+  
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 400;
+    }
+  
+    a {
+      text-decoration: none;
+    }
+  
+    
+    .col-lg-40 {
+      flex: 0 0 auto;
+      width: 30%;
+    }
+    .footer-copyright {
+      background: var(--neutral-20, #ededee);
+    }
+  }

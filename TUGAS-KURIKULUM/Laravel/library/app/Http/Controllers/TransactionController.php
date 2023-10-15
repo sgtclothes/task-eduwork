@@ -46,52 +46,52 @@ class TransactionController extends Controller
      * Show the form for creating a new resource.
      */
     public function api() 
-{
-    $transactions = Transaction::leftJoin('members', 'transactions.member_id', '=', 'members.id')
-        ->leftJoin('books', 'transactions.book_id', '=', 'books.id')
-        ->selectRaw('
-            transactions.id,
-            members.name as member_name,
-            GROUP_CONCAT(transactions.date_start) as date_starts,
-            GROUP_CONCAT(transactions.date_end) as date_ends,
-            GROUP_CONCAT(transactions.status) as statuses,
-            COUNT(transactions.book_id) as total_books
-        ')
-        ->groupBy('transactions.id', 'members.name')
-        ->get();
+    {
+        $transactions = Transaction::leftJoin('members', 'transactions.member_id', '=', 'members.id')
+            ->leftJoin('books', 'transactions.book_id', '=', 'books.id')
+            ->selectRaw('
+                transactions.id,
+                members.name as member_name,
+                GROUP_CONCAT(transactions.date_start) as date_starts,
+                GROUP_CONCAT(transactions.date_end) as date_ends,
+                GROUP_CONCAT(transactions.status) as statuses,
+                COUNT(transactions.book_id) as total_books
+            ')
+            ->groupBy('transactions.id', 'members.name')
+            ->get();
 
-    $datatables = datatables()->of($transactions)
-        ->addIndexColumn()
-        ->addColumn('date_starts', function ($transaction) {
-            return implode(', ', explode(',', $transaction->date_starts));
-        })
-        ->addColumn('date_ends', function ($transaction) {
-            return implode(', ', explode(',', $transaction->date_ends));
-        })
-        ->addColumn('statuses', function ($transaction) {
-            return implode(', ', explode(',', $transaction->statuses));
-        })
-        ->addColumn('total_books', function ($transaction) {
-            return $transaction->total_books;
-        })
-        ->addColumn('days', function ($transaction) {
-            $start = Carbon::parse(explode(',', $transaction->date_starts)[0]);
-            $end = Carbon::parse(explode(',', $transaction->date_ends)[0]);
-            $days = $start->diffInDays($end);
-            $days = $days . ' days';
-            return $days;
-        })
-        ->addColumn('status', function ($transaction) {
-            $statuses = explode(',', $transaction->statuses);
-            if (in_array('1', $statuses)) {
-                return "sudah dikembalikan";
-            } else {
-                return "belum dikembalikan";
-            }
-        });
+        $datatables = datatables()->of($transactions)
+            ->addIndexColumn()
+            ->addColumn('date_starts', function ($transaction) {
+                return implode(', ', explode(',', $transaction->date_starts));
+            })
+            ->addColumn('date_ends', function ($transaction) {
+                return implode(', ', explode(',', $transaction->date_ends));
+            })
+            ->addColumn('statuses', function ($transaction) {
+                return implode(', ', explode(',', $transaction->statuses));
+            })
+            ->addColumn('total_books', function ($transaction) {
+                return $transaction->total_books;
+            })
+            ->addColumn('days', function ($transaction) {
+                $start = Carbon::parse(explode(',', $transaction->date_starts)[0]);
+                $end = Carbon::parse(explode(',', $transaction->date_ends)[0]);
+                $days = $start->diffInDays($end);
+                $days = $days . ' days';
+                return $days;
+            })
+            ->addColumn('status', function ($transaction) {
+                $statuses = explode(',', $transaction->statuses);
+                if (in_array('1', $statuses)) {
+                    return "sudah dikembalikan";
+                } else {
+                    return "belum dikembalikan";
+                }
+            });
 
-    return $datatables->make(true);
-}
+        return $datatables->make(true);
+    }
 
 
     public function create()

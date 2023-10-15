@@ -1,0 +1,429 @@
+body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  
+  .section-hero {
+    position: relative;
+    background-image: linear-gradient(0deg, #1d2227 0%, rgba(29, 34, 39, 0) 67.05%), url("../img/hero.png");
+    background-size: auto;
+    background-color: #cccccc;
+    min-height: 570px;
+    max-height: 670px;
+    border-bottom-right-radius: 150px;
+    width: auto;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+    white-space: normal;
+    box-sizing: content-box;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero {
+      overflow-wrap: break-word;
+      border-bottom-right-radius: 100px;
+    }
+  }
+  .section-hero .text-copy .text-seller {
+    margin-top: 200px;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    color: #fff;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero .text-copy .text-seller {
+      margin-top: 120px;
+      font-size: 1rem;
+    }
+  }
+  .section-hero .text-copy .text-title {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    color: #fff;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero .text-copy .text-title {
+      font-size: 2rem;
+    }
+  }
+  .section-hero .text-copy .text-description {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.8rem;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero .text-copy .text-description {
+      overflow-wrap: break-word;
+      font-size: 0.8rem;
+    }
+  }
+  .section-hero .text-copy .text-price {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    color: #ea3a3d;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero .text-copy .text-price {
+      font-size: 1.1rem;
+    }
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero .btn-buy-now {
+      padding: 5px 10px 5px 10px !important;
+    }
+  }
+  .section-hero .img-iphone {
+    margin-left: 80px;
+    margin-top: 80px;
+    height: 70%;
+    width: auto;
+  }
+  
+  .section-carousel .item {
+    width: 250px;
+    height: 170px;
+  }
+  .section-carousel .img-carousel {
+    width: 100% !important;
+    height: 170px !important;
+  }
+  .section-carousel .card-product .card-category {
+    color: #6a6d71;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: -1px;
+  }
+  .section-carousel .card-product .card-title-product {
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .section-carousel .card-product .card-buy-now {
+    color: #ea3a3d;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+  
+  .section-category .row-gap-20 {
+    gap: 1.8rem !important;
+  }
+  .section-category .card-category {
+    min-height: 300px;
+  }
+  .section-category h2 {
+    font-size: 2.3rem;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .section-category .card-text {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #1d2227;
+  }
+  .section-category .card-amount-product {
+    color: #6a6d71;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  .section-promo .promo-laptop {
+    background: var(--neutral-100, #1d2227);
+    max-width: 540px;
+    width: 100%;
+    height: 480px;
+    color: white;
+    text-align: center;
+  }
+  .section-promo .promo-laptop .img-laptop {
+    width: 50%;
+    height: 50%;
+  }
+  .section-promo .promo-laptop .describe-laptop {
+    text-align: left;
+  }
+  .section-promo .promo-laptop .describe-laptop .text-discount {
+    color: #ea3a3d;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+  }
+  .section-promo .promo-laptop .describe-laptop .text-title {
+    font-size: 2.3rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-promo .promo-laptop .describe-laptop .text-buy {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-promo .promo-laptop-small {
+    color: #fff;
+    background: var(--neutral-100, #1d2227);
+    max-width: 270px;
+    width: auto;
+    height: 240px;
+  }
+  .section-promo .promo-laptop-small .text-discount {
+    text-align: center;
+    color: #ea3a3d;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+  }
+  .section-promo .promo-laptop-small .text-title {
+    font-size: 1.4rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-promo .promo-laptop-small .text-buy {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-promo .promo-phone-small {
+    background: var(--neutral-20, #dadada);
+    max-width: 270px;
+    width: auto;
+    height: 240px;
+  }
+  .section-promo .promo-phone-small .text-discount {
+    color: #ea3a3d;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+  }
+  .section-promo .promo-phone-small .text-title {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-promo .promo-nintendo-small {
+    background: var(--neutral-20, #d3d3d3);
+    width: 545px;
+    height: 224px;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-promo .promo-nintendo-small {
+      max-width: 545px;
+      width: auto;
+      height: 224px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+    .section-promo .promo-nintendo-small {
+      width: 270px;
+      height: 224px;
+    }
+  }
+  .section-promo .promo-nintendo-small .text-discount {
+    color: #ea3a3d;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+  }
+  .section-promo .promo-nintendo-small .text-title {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  
+  .section-hero-second {
+    background: var(--neutral-100, #1d2227);
+    max-width: 1125px;
+    width: auto;
+    height: 400px;
+  }
+  @media (min-width: 768px) and (max-width: 992px) {
+    .section-hero-second {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero-second {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .section-hero-second .headphone-description {
+    color: #fff;
+  }
+  .section-hero-second .headphone-description .text-audio {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero-second .headphone-description .text-audio {
+      font-size: 1rem;
+    }
+  }
+  .section-hero-second .headphone-description .headphone-name {
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero-second .headphone-description .headphone-name {
+      font-size: 1.8rem;
+    }
+  }
+  .section-hero-second .headphone-description .headphone-price {
+    color: #ea3a3d;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  @media (min-width: 300px) and (max-width: 576px) {
+    .section-hero-second .headphone-description .headphone-price {
+      font-size: 1rem;
+    }
+  }
+  
+  .section-list-product .text-list-product {
+    margin: 60px 0 60px 0;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-list-product .card-list {
+    min-height: 390px !important;
+  }
+  .section-list-product .card-list-product .card-text {
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #1d2227;
+    margin-bottom: 5px;
+  }
+  .section-list-product .card-list-product .rating-number {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+  .section-list-product .card-list-product .rating-people {
+    color: #85888a;
+    font-family: Poppins;
+    font-size: 0.8rem;
+    font-style: normal;
+  }
+  .section-list-product .card-list-product .price-product {
+    color: #ea3a3d;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+  .section-list-product .card-list-product .to-cart {
+    background-color: #1d2227;
+    color: #fff;
+    border-radius: 0;
+  }
+  .section-list-product .btn-other-product {
+    background-color: #d8d8d8;
+    border: none;
+  }
+  .section-list-product .btn-other-product:hover {
+    background-color: rgb(199, 199, 199);
+    color: #1d2227;
+    border: none;
+  }
+  
+  .section-brand .brand-text {
+    color: #161d25;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .section-brand .brand-list {
+    margin-top: 40px;
+  }
+  .section-brand .brand-card {
+    min-height: 160px;
+  }
+  .section-brand .card-mi {
+    background-color: #f49342;
+  }
+  .section-brand .card-wacom {
+    background-color: rgb(184, 233, 174);
+  }
+  .section-brand .card-asus {
+    background-color: #b1e0ff;
+  }
+  .section-brand .card-sony {
+    background-color: #ffe6d2;
+  }
+  .section-brand .card-amd {
+    background-color: #ea3a3d;
+  }
+  .section-brand .card-samsung {
+    background-color: #006fbb;
+  }
+  .section-brand .card-jbl {
+    background-color: #cfecff;
+  }
+  .section-brand .brand-typo {
+    color: #959ead;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  .section-service {
+    background: var(--neutral-20, #ededee);
+  }
+  .section-service .service-description {
+    color: #1d2227;
+    font-size: 1rem;
+    font-style: normal;
+  }
+  .section-service .service-description .service-title {
+    font-weight: 700;
+  }
+  .section-service .service-description .service-typo {
+    font-weight: 400;
+  }
+  
+  .section-footer h2 {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    color: #1d2227;
+  }
+  .section-footer p {
+    color: #6a6d71;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .section-footer a {
+    text-decoration: none;
+  }
+  .section-footer .col-lg-40 {
+    flex: 0 0 auto;
+    width: 30%;
+  }
+  .section-footer .footer-copyright {
+    background: var(--neutral-20, #ededee);
+  }/*# sourceMappingURL=main.css.map */

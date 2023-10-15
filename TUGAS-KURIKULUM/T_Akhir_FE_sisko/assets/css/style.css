@@ -1,0 +1,32 @@
+.card-row {
+    margin-bottom: 20px;
+}
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.navbar {
+    font-size: 18px;
+}
+.navbar-nav {
+    margin-right: 20px;
+}
+.banner_s {
+    background-image: url('assetsU/bg.png');
+    background-size: cover;
+    background-position: center; 
+    color: #fff; 
+    text-align: center; 
+    padding: 20px; 
+    height: 100vh; 
+}
