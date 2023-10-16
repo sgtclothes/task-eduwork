@@ -1,0 +1,5 @@
+1. UPDATE `t_pasien` SET nama_pasien = 'Paijo' WHERE id_pasien = 2;
+2. UPDATE `t_pasien` SET `nama_pasien`='Singgih' WHERE nama_pasien LIKE "%g";
+3. DELETE FROM `t_pasien` WHERE t_pasien.id_pasien=2;
+4. DELETE FROM `t_pasien` WHERE t_pasien.nama_pasien LIKE "%h";
+5. DELETE FROM `t_pasien` WHERE t_pasien.id_pasien > 9;
