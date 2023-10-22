@@ -12,7 +12,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return view('admin.author.index');
+        $authors = Author::all();
+
+        return view('admin.author.index', compact('authors'));
     }
 
     /**
@@ -28,7 +30,17 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'addres' => ['required'], 
+    
+    ]);
+
+        Author::create($request->all());
+
+        return redirect ('authors');
     }
 
     /**
@@ -52,7 +64,17 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'addres' => ['required'], 
+    
+    ]);
+
+        $author->update($request->all());
+
+        return redirect ('authors');
     }
 
     /**
@@ -60,6 +82,6 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
     }
 }
