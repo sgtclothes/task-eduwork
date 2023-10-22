@@ -30,7 +30,17 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'addres' => ['required'], 
+    
+    ]);
+
+        Publisher::create($request->all());
+
+        return redirect ('publishers');
     }
 
     /**
@@ -54,7 +64,17 @@ class PublisherController extends Controller
      */
     public function update(Request $request, Publisher $publisher)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'addres' => ['required'], 
+    
+    ]);
+
+        $publisher->update($request->all());
+
+        return redirect ('publishers');
     }
 
     /**
@@ -62,6 +82,6 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
     }
 }
