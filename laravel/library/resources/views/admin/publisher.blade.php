@@ -2,7 +2,9 @@
 
 @section('header', 'Publisher')
 @section('css')
-    
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('content')
 <div id="controller">
@@ -12,15 +14,15 @@
                 <div class="card-header">
                     <a href="#" @click="addData()" class="btn btn-sm btn-primary pull-right">Create New Publisher</a>    
                 </div>
-                <div class="card-body p-0">
-                    <table id="example2" class="table table-striped">
+                <div class="card-body">
+                    <table id="datatable" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th style="width: 30px">No</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Phone Number</th>
-                                <th class="text-center">Address</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Address</th>
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
@@ -28,10 +30,10 @@
                             @foreach ($publishers as $key => $publisher)
                             <tr>
                                 <td class="text-center">{{ $key+1 }}</td>
-                                <td class="text-center">{{ $publisher->name }}</td>
-                                <td class="text-center">{{ $publisher->email }}</td>
+                                <td>{{ $publisher->name }}</td>
+                                <td>{{ $publisher->email }}</td>
                                 <td class="text-center">{{ $publisher->phone_number }}</td> 
-                                <td class="text-center">{{ $publisher->address }}</td> 
+                                <td>{{ $publisher->address }}</td> 
                                 <td class="text-center">
                                     <a href="#" @click="editData({{ $publisher }})" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="#" @click="deleteData({{ $publisher->id }})" class="btn btn-danger btn-sm">Delete</a>
@@ -88,6 +90,26 @@
 @endsection
 
 @section('js')
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script>
+    $(function () {
+        $("#datatable").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
     <script type="text/javascript">
         var controller = new Vue({
             el: '#controller',
