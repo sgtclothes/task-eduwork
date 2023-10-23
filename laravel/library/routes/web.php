@@ -21,10 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/publishers', [App\Http\Controllers\PublisherController::class, 'index']);
 Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
 
 Route::resource('/catalogs', App\Http\Controllers\CatalogController::class);
 Route::resource('/authors', App\Http\Controllers\AuthorController::class);
+Route::resource('/publishers', App\Http\Controllers\PublisherController::class);

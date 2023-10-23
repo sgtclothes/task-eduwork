@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $publishers = Publisher::with('books')->get();
-        return view('admin.publisher.index', compact('publishers'));
+        return view('admin.publisher', compact('publishers'));
     }
 
     /**
@@ -21,7 +24,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        return view('admin.publisher');
     }
 
     /**
@@ -29,19 +32,12 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        // validasi harus 2x pada frontend dan controller juga
         $this->validate($request, [
             'name' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
         ]);
-        // cara pertama untuk save data
-        // $catalog = new Catalog;
-        // $catalog->name = $request->name;
-        // $catalog->save();
-
-        // cara kedua jangan lupa model juga di tambahkan
         Publisher::create($request->all());
 
         return redirect('publishers');
