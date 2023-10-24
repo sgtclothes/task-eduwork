@@ -7,13 +7,26 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.member.index');
+        return view('admin.member');
     }
+
+    public function api()
+    {
+        $members = Member::all();
+        $datatables = datatables()->of($members)->addIndexColumn();
+
+        return $datatables->make(true);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +41,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required'],
+            'phone_number' => ['required'],
+            'email' => ['required'],
+            'address' => ['required'],
+            'gender' => ['required'],
+        ]);
+        Member::create($request->all());
+
+        return redirect('members');
     }
 
     /**
@@ -52,7 +74,16 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required'],
+            'phone_number' => ['required'],
+            'email' => ['required'],
+            'address' => ['required'],
+            'gender' => ['required'],
+        ]);
+        Member->update($request->all());
+
+        return redirect('members');
     }
 
     /**
@@ -60,6 +91,8 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+
+        return redirect('members');
     }
 }
