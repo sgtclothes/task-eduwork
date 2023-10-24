@@ -81,7 +81,7 @@ class MemberController extends Controller
             'address' => ['required'],
             'gender' => ['required'],
         ]);
-        Member->update($request->all());
+        $member->update($request->all());
 
         return redirect('members');
     }
