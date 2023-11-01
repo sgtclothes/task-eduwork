@@ -12,9 +12,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
-
-        return view('admin.author.index', compact('authors'));
+        return view('admin.author.index');
     }
 
     /**
@@ -46,6 +44,15 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      */
+
+     public function api()
+     {
+        $authors = Author::all();
+        $datatables = datatables()->of($authors)->addIndexColumn();
+
+        return $datatables->make(true);
+     }
+
     public function show(Author $author)
     {
         //

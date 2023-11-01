@@ -14,49 +14,33 @@
 
 <div id='controller'>
 
-Ini adalah halaman author <br><br>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+         <div class="card-header">
+            <a href="#" class="btn btn-sm btn-primary pull right" @click="addData()" >Create New Author</a>
+          </div>
+        
+         <div class="card-body">
+           <table id="datatable" class="table-bordered table-striped">
+               <thead>
+               <tr>
+               <th style="width: 10px">No</th>
+               <th class='text-center' >Name</th>
+               <th class='text-center' >Phone Number</th>
+               <th class='text-center'>Address</th>
+               <th class='text-center'>Email</th>
+               <th class='text-center'>Create At</th>
+               <th class='text-center'>Action</th>
+               </tr>
+               </thead>
+           </table>
+         </div>
+       </div>
+    </div>
+  </div>
 
-<div class="card">
-<div class="card-header">
-
-<a href="#" class="btn btn-sm btn-primary pull right" @click="addData()" >Create New Author</a>
-</div>
-
-<div class="card-body">
- <table id="tabledata" class="table-bordered table-striped">
-     <thead>
-     <tr>
-     <th style="width: 10px">No</th>
-     <th class='text-center' >Name</th>
-     <th class='text-center' >Phone Number</th>
-     <th class='text-center'>Address</th>
-     <th class='text-center'>Email</th>
-     <th class='text-center'>Create At</th>
-     <th class='text-center'>Action</th>
-     </tr>
-     </thead>
-     <tbody>
-        @foreach( $authors as $key => $author)
-          <tr>
-             <td class='text-center'>{{$key+1}}</td>
-             <td>{{$author->name}}</td>
-             <td class='text-center'> {{ $author -> phone_number}} </td>
-             <td class='text-center'> {{ $author -> addres}} </td>
-             <td class='text-center'> {{ $author -> email}} </td>
-             <td class='text-center'> {{ date('H:i:s - d M Y', strtotime($author->created_at))}} </div>
-             <td class='text-center'> 
-                <a href="#" @click="editData({{ $author }})" class="btn btn-warning btn-sm">Edit</a>
-                <a href="#" @click="deleteData({{ $author->id }})" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-             </div>
-             </td>
-         </tr>
-        @endforeach
-     </tbody>
- </table>
-</div>
-
-<div class="modal fade" id="modal-default">
+ <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
           <div class="modal-content">
             <form method="post" :action="actionUrl"  autocomplete="off">
@@ -121,10 +105,10 @@ Ini adalah halaman author <br><br>
 
 <script type="text/javascript">
   $(function () {
-    $("#tabledata").DataTable({
+    $("#datatable").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#tabledata_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#table1_wrapper .col-md-6:eq(0)');
     // $('#example2').DataTable({
     //   "paging": true,
     //   "lengthChange": false,
@@ -137,8 +121,40 @@ Ini adalah halaman author <br><br>
   });
 </script>
 
+<script type="text/javascript">
 
- <script type="text/javascript">
+    var actionUrl = '{{url('authors')}}';
+    var apiUrl = '{{url('api/authors')}}';
+
+    var columns = [
+      {data: 'DT_RowIndex', class: 'text-center', orderable: true },
+      {data: 'name', calss: 'text_center', orderable: true},
+      {data: 'phone_number', calss: 'text_center', orderable: true},
+      {data: 'addres', calss: 'text_center', orderable: true},
+      {data: 'email', calss: 'text_center', orderable: true},
+      {data: 'created_at', calss: 'text_center', orderable: true},
+      {render: function (index, row, data, meta){
+             return `
+             <a href="#" class="btn btn-warning brn-sm" onclick="controller.editData(event, ${meta.row})"> 
+                 Edit 
+             </a>
+
+             <a class="btn btn-danger brn-sm" onclick="controller.deleteData(event, ${data.id})"> 
+                 Delete
+             </a> `;
+        
+      }, orderable: false, width: '345px', class: 'text-center'},
+    ];
+
+</script>
+
+<script src="{{asset('js/data.js')}}"></script>
+
+
+
+
+
+ <!-- <script type="text/javascript">
     var controller = new Vue({
         el: '#controller',
         data: {
@@ -179,5 +195,5 @@ Ini adalah halaman author <br><br>
             }
         }
     });
- </script>
+ </script> -->
 @endsection

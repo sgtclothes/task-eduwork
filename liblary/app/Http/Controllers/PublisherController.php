@@ -12,9 +12,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = Publisher::all();
-
-        return view('admin.publisher.index', compact('publishers'));
+        return view('admin.publisher.index');
     }
 
     /**
@@ -46,6 +44,14 @@ class PublisherController extends Controller
     /**
      * Display the specified resource.
      */
+    public function api()
+    {
+       $publishers = Publisher::all();
+       $datatables = datatables()->of($publishers)->addIndexColumn();
+
+       return $datatables->make(true);
+    }
+
     public function show(Publisher $publisher)
     {
         //

@@ -39,10 +39,18 @@ Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 // Route::get('/publishers/{publisher}/edit', [App\Http\Controllers\PublisherController::class, 'edit']);
 // Route::delete('/publishers/{publisher}', [App\Http\Controllers\CatalogController::class, 'destroy']);
 
-Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
+// Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
 
 Route::resource('/authors', App\Http\Controllers\AuthorController::class);
 
 Route::resource('/catalogs', App\Http\Controllers\CatalogController::class);
 
 Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
+
+Route::resource('/members', App\Http\Controllers\MemberController::class);
+
+Route::get('api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
+
+Route::get('api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
+
+Route::get('api/members', [App\Http\Controllers\MemberController::class, 'api']);

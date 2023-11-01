@@ -14,8 +14,6 @@
 
 <div id="controller">
 
-Ini adalah halaman Publisher <br><br>
-
 <div class="card">
 <div class="card-header">
 
@@ -23,7 +21,7 @@ Ini adalah halaman Publisher <br><br>
 </div>
 
 <div class="card-body">
- <table id="table1" class="table-bordered table-striped">
+ <table id="datatable" class="table-bordered table-striped">
      <thead>
      <tr>
      <th style="width: 10px">No</th>
@@ -35,24 +33,6 @@ Ini adalah halaman Publisher <br><br>
      <th class='text-center'>Action</th>
      </tr>
      </thead>
-     <tbody>
-        @foreach( $publishers as $key => $publisher)
-          <tr>
-             <td class='text-center'>{{$key+1}}</td>
-             <td>{{$publisher->name}}</td>
-             <td class='text-center'> {{ $publisher -> phone_number}} </td>
-             <td class='text-center'> {{ $publisher -> addres}} </td>
-             <td class='text-center'> {{ $publisher -> email}} </td>
-             <td class='text-center'> {{ date('H:i:s - d M Y', strtotime($publisher->created_at))}} </div>
-             <td class='text-center'> 
-                <a href="#" @click="editData({{ $publisher }})" class="btn btn-warning btn-sm">Edit</a>
-                <a href="#" @click="deleteData({{ $publisher->id }})" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-             </div>
-             </td>
-         </tr>
-        @endforeach
-     </tbody>
  </table>
 </div>
 
@@ -123,7 +103,7 @@ Ini adalah halaman Publisher <br><br>
 
 <script type="text/javascript">
   $(function () {
-    $("#table1").DataTable({
+    $("#datatable").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#table1_wrapper .col-md-6:eq(0)');
@@ -139,7 +119,37 @@ Ini adalah halaman Publisher <br><br>
   });
 </script>
 
-<!-- CRUD JS -->
+<script type="text/javascript">
+
+    var actionUrl = '{{url('publishers')}}';
+    var apiUrl = '{{url('api/publishers')}}';
+
+    var columns = [
+      {data: 'DT_RowIndex', class: 'text-center', orderable: true },
+      {data: 'name', calss: 'text_center', orderable: true},
+      {data: 'phone_number', calss: 'text_center', orderable: true},
+      {data: 'addres', calss: 'text_center', orderable: true},
+      {data: 'email', calss: 'text_center', orderable: true},
+      {data: 'created_at', calss: 'text_center', orderable: true},
+      {render: function (index, row, data, meta){
+             return `
+             <a href="#" class="btn btn-warning brn-sm" onclick="controller.editData(event, ${meta.row})"> 
+                 Edit 
+             </a>
+
+             <a class="btn btn-danger brn-sm" onclick="controller.deleteData(event, ${data.id})"> 
+                 Delete
+             </a> `;
+        
+      }, orderable: false, width: '345px', class: 'text-center'},
+    ];
+
+</script>
+
+<script src="{{asset('js/data.js')}}"></script>
+
+
+<!-- CRUD JS
 <script type="text/javascript">
     var controller = new Vue({
         el: '#controller',
@@ -181,7 +191,7 @@ Ini adalah halaman Publisher <br><br>
             }
         }
     });
- </script>
+ </script> -->
 
 
 @endsection
