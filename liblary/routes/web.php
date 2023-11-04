@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 // Route::put('/catalogs/{catalog}', [App\Http\Controllers\CatalogController::class, 'update']);
 // Route::delete('/catalogs/{catalog}', [App\Http\Controllers\CatalogController::class, 'destroy']);
 
-Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
+// Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
 // Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index']);
 
 // Route::get('/publishers', [App\Http\Controllers\PublisherController::class, 'index']);
@@ -49,8 +49,12 @@ Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
 
 Route::resource('/members', App\Http\Controllers\MemberController::class);
 
+Route::resource('/books', App\Http\Controllers\BookController::class);
+
 Route::get('api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
 
 Route::get('api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
 
 Route::get('api/members', [App\Http\Controllers\MemberController::class, 'api']);
+
+Route::get('api/books', [App\Http\Controllers\BookController::class, 'api']);
