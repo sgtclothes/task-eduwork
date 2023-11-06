@@ -136,7 +136,7 @@
       {data: 'phone_number', calss: 'text-center', orderable: true},
       {data: 'addres', class: 'text-center', orderable: true},
       {data: 'email', class: 'text-center', orderable: true},
-      {data: 'created_at', class: 'text-center', orderable: true},
+      {data: 'date', class: 'text-center', orderable: true},
       {render: function (index, row, data, meta){
              return `
              <a href="#" class="btn btn-warning brn-sm" onclick="controller.editData(event, ${meta.row})"> 
