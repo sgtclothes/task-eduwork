@@ -4,34 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class MemberController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->gender) {
+            $datas = Member::where('gender', $request->gender)->get();
+            $datatables = datatables()->of($datas)->addIndexColumn();
+            return $datatables->make(true);
+        } else if (!$request->gender) {
+            $datas = Member::all();
+        }
+
         return view('admin.member');
     }
+
 
     public function api()
     {
         $members = Member::all();
-        $datatables = datatables()->of($members)
-        ->addColumn('date', function ($member) {
-            return convert_date($member->created_at);
-        })
-        ->addIndexColumn();
-
-        return $datatables->make(true);
+        $members = datatables()->of($members)
+            ->addColumn('date', function ($member) {
+                return convert_date($member->created_at);
+            })
+            ->addIndexColumn();
+        return $members->make(true);
     }
-
-
     /**
      * Show the form for creating a new resource.
      */
@@ -45,16 +48,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => ['required'],
-            'phone_number' => ['required'],
-            'email' => ['required'],
-            'address' => ['required'],
-            'gender' => ['required'],
+        $data = $request->validate([
+            "name" => "required|string",
+            "gender" => "required|string|in:L,P",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
         ]);
-        Member::create($request->all());
 
-        return redirect('members');
+        Member::create($data);
+        return redirect()->route('members.index');
     }
 
     /**
@@ -76,27 +79,27 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => ['required'],
-            'phone_number' => ['required'],
-            'email' => ['required'],
-            'address' => ['required'],
-            'gender' => ['required'],
+        $data = $request->validate([
+            "name" => "required|string",
+            "gender" => "required|string|in:L,P",
+            "email" => "required|email",
+            "phone_number" => "required|numeric",
+            "address" => "required|string"
         ]);
-        $member->update($request->all());
 
-        return redirect('members');
+        $members = Member::findOrFail($id);
+        $members->update($data);
+        return redirect()->route('members.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Member $member)
+    public function destroy($id)
     {
+        $member = Member::find($id);
         $member->delete();
-
-        return redirect('members');
     }
 }
