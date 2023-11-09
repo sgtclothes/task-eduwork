@@ -11,6 +11,7 @@ use App\Pengarang;
 use App\Peminjaman;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Spatie\Permission\Contracts\Permission;
 
 class AdminController extends Controller
 {
@@ -115,4 +116,23 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function test_spatie()
+    {
+        $role = Role::create(['name' => 'petugas']);
+        $permission = Permission::create(['name' => 'index peminjaman']);
+
+        $role->givePermissionTo($permission);
+        $permission->assignRole($role);
+
+        // $user = auth()->user();
+        // $user->assignRole('petugas');
+
+        // $user = user::with('roles')->get();
+        // return $user;
+
+        // $user = auth()->user();
+        // $user->removeRole('petugas');
+    }
 }
+
