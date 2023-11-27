@@ -14,23 +14,18 @@ class BookController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
         $publishers = Publisher::all();
         $authors = Author::all();
         $catalogs = Catalog::all();
-
-        return view('admin.book.index', compact('publishers','authors','catalogs'));
+        return view('admin.book.index', compact('publishers', 'authors', 'catalogs'));
     }
 
     public function api()
     {
-        $books = Book::all();
 
+        $books = Book::all();
         return json_encode($books);
     }
 
@@ -47,8 +42,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request,[
+        $this->validate($request, [
             'isbn' => ['required'],
             'title' => ['required'],
             'year' => ['required'],
@@ -59,6 +53,12 @@ class BookController extends Controller
             'price' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         Book::create($request->all());
 
         return redirect('books');
@@ -85,8 +85,7 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
-        $this->validate($request,[
+        $this->validate($request, [
             'isbn' => ['required'],
             'title' => ['required'],
             'year' => ['required'],
@@ -97,6 +96,12 @@ class BookController extends Controller
             'price' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         $book->update($request->all());
 
         return redirect('books');
@@ -107,7 +112,6 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
         $book->delete();
     }
 }

@@ -11,17 +11,15 @@ class MemberController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
         return view('admin.member.index');
     }
 
     public function api()
     {
+
         $members = Member::all();
         $datatables = datatables()->of($members)->addIndexColumn();
 
@@ -41,8 +39,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $this->validate($request,[
+         // validasi isian di form tidak boleh kosong (double protection)
+         $this->validate($request, [
             'name' => ['required'],
             'gender' => ['required'],
             'phone_number' => ['required'],
@@ -50,6 +48,12 @@ class MemberController extends Controller
             'email' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         Member::create($request->all());
 
         return redirect('members');
@@ -76,8 +80,8 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
-        $this->validate($request,[
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'gender' => ['required'],
             'phone_number' => ['required'],
@@ -85,10 +89,15 @@ class MemberController extends Controller
             'email' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         $member->update($request->all());
 
         return redirect('members');
-
     }
 
     /**
@@ -96,7 +105,6 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
         $member->delete();
     }
 }

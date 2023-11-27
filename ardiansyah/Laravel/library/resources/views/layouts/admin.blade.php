@@ -13,21 +13,10 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.min.css') }}">
     @yield('css')
 </head>
 
@@ -45,8 +34,7 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="index3.html" class="nav-link">Home</a>
@@ -176,8 +164,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
@@ -186,6 +173,7 @@
                         @csrf
                     </form>
                 </li>
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -229,59 +217,62 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="{{ url('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Home
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('transactions') }}" class="nav-link {{ request()->is('transactions') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('transactions') }}"
+                                class="nav-link {{ request()->is('transaction') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Transaction
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('books') }}" class="nav-link {{ request()->is('books') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('books') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Book
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('members') }}" class="nav-link {{ request()->is('members') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('members') }}"
+                                class="nav-link {{ request()->is('members') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Member
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('publishers') }}" class="nav-link {{ request()->is('publishers') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('publishers') }}"
+                                class="nav-link {{ request()->is('publishers') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file"></i>
                                 <p>
                                     Publisher
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('authors') }}" class="nav-link {{ request()->is('authors') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('authors') }}"
+                                class="nav-link {{ request()->is('authors') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-circle"></i>
                                 <p>
                                     Author
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('catalogs') }}" class="nav-link {{ request()->is('catalogs') ? 'active' : '' }}" >
-                                <i class="nav-icon fas fa-copy"></i>
+                            <a href="{{ url('catalogs') }}"
+                                class="nav-link {{ request()->is('catalogs') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Catalog
                                 </p>
@@ -343,31 +334,12 @@
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
-    <script src="{{ asset('assets/plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('assets/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('assets/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
-    <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}">
+    </script>
     <!-- AdminLTE App -->
     <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('assets/dist/js/pages/dashboard.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     @yield('js')
 </body>

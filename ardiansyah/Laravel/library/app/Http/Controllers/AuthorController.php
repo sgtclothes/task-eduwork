@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Author;
 use Illuminate\Http\Request;
 
@@ -11,28 +12,17 @@ class AuthorController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
-
         return view('admin.author.index');
     }
 
     public function api()
     {
+
         $authors = Author::all();
-
-        // foreach ($authors as $key => $author) {
-        //     # code...
-        //     $author->date = convert_date($author->created_at);
-        // }
-
-        $datatables = datatables()->of($authors)->addColumn('date', function($author){
-            return convert_date($author->created_at);
-        })->addIndexColumn();
+        $datatables = datatables()->of($authors)->addIndexColumn();
 
         return $datatables->make(true);
     }
@@ -49,13 +39,20 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         Author::create($request->all());
 
         return redirect('authors');
@@ -75,7 +72,6 @@ class AuthorController extends Controller
     public function edit(Author $author)
     {
         //
-
     }
 
     /**
@@ -83,13 +79,20 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $this->validate($request,[
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         $author->update($request->all());
 
         return redirect('authors');

@@ -11,34 +11,26 @@ class PublisherController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
-        // $publishers = Publisher::all();
         return view('admin.publisher.index');
     }
 
     public function api()
     {
+
         $publishers = Publisher::all();
-
-
-        $datatables = datatables()->of($publishers)->addColumn('date', function($publisher){
-            return convert_date($publisher->created_at);
-        })->addIndexColumn();
+        $datatables = datatables()->of($publishers)->addIndexColumn();
 
         return $datatables->make(true);
     }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('admin.publisher.create');
     }
 
     /**
@@ -46,13 +38,20 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
         ]);
 
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
         Publisher::create($request->all());
 
         return redirect('publishers');
@@ -71,7 +70,6 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
     }
 
     /**
@@ -79,14 +77,21 @@ class PublisherController extends Controller
      */
     public function update(Request $request, Publisher $publisher)
     {
-        $this->validate($request,[
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
         ]);
 
-        $publisher->update($request->all());
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
+        $publisher->create($request->all());
 
         return redirect('publishers');
     }

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('member_id')->references('id')->on('members');
-
         });
     }
 
