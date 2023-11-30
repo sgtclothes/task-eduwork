@@ -12,6 +12,8 @@
 
 @section('content')
 
+@role('petugas')
+
 <div id="controller">
 
 <div class="card">
@@ -87,6 +89,8 @@
       </div>
 
 </div>
+
+@endrole
 
 @endsection
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class MemberController extends Controller
 {
@@ -12,7 +15,15 @@ class MemberController extends Controller
      */
     public function index()
     {
+
+        if(auth()->user()->role('petugas')) {
+
+
         return view('admin.member.index');
+      } else {
+        return abort('403');
+    }
+      
     }
 
     /**
@@ -50,6 +61,19 @@ class MemberController extends Controller
         return $datatables->make(true);
      }
 
+     public function test_spatie()
+    {
+        // $role = Role::create(['name' => 'petugas']);
+        // $permission = Permission::create(['name' => 'index members']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        $user = auth()->user();
+        $user->assignRole('petugas');
+        return $user;
+
+    }
     /**
      * Display the specified resource.
      */
