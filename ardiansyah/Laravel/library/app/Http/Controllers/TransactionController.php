@@ -2,19 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
+    public function index()
+    {
+        $members = Member::all();
+        $transactions = Transaction::all();
+        return view('admin.transaction.transaction', compact('transactions', 'members'));
+    }
+
+    public function api()
+    {
+
+        $transactions = Transaction::all();
+
+        // foreach ($transactions as $key => $transaction) {
+        //     $transaction->date = convert_date($transaction->created_at);
+        // }
+
+        $datatables = datatables()->of($transactions)->addIndexColumn();
+
+        return $datatables->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +46,22 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
+            'member_id' => ['required'],
+            'date_start' => ['required'],
+            'date_end' => ['required'],
+        ]);
+
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
+        Transaction::create($request->all());
+
+        return redirect('transactions');
     }
 
     /**
@@ -52,7 +85,22 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
+            'member_id' => ['required'],
+            'date_start' => ['required'],
+            'date_end' => ['required'],
+        ]);
+
+        // cara pertama save sebuah data
+        // $catalog = new Catalog;
+        // $catalog->name = $request->name;
+        // $catalog->save();
+
+        // cara kedua save sebuah data tapi ada yg harus ditambahkan di model
+        $transaction->update($request->all());
+
+        return redirect('transactions');
     }
 
     /**
@@ -60,6 +108,6 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
     }
 }
