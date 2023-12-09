@@ -53,8 +53,9 @@
                         <div class="form-group">
                             <label>Member Id</label>
                             <select name="member_id" class="form-control">
-                                @foreach ($transactions as $transaction)
-                                <option :selected="data.member_id == {{ $member->id }}" value="{{ $member->id }}">{{ $member->name }}</option>
+                                <option value="">Select member</option>
+                                @foreach ($transaction_data as $transaction)
+                                <option :selected="data.member_id == {{ $transaction->member_id }}" value="{{ $transaction->member_id }}">{{ $transaction->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -112,5 +113,6 @@
             }, orderable: false, width: '200px', class: 'text-center'
         },
     ];
-</script>\
+</script>
 <script src="{{ asset('js/data.js') }}"></script>
+@endsection

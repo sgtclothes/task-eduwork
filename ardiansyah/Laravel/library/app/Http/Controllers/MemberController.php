@@ -12,10 +12,24 @@ class MemberController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->gender) {
+            # code...
+            $datas = Member::where('gender', $request->gender)->get();
+        } else {
+            $datas = Member::all();
+        }
+
+        $datatables = datatables()->of($datas)->addIndexColumn();
+
+        // return $datatables->make(true);
+
         return view('admin.member.index');
     }
+
+
 
     public function api()
     {
@@ -39,8 +53,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-         // validasi isian di form tidak boleh kosong (double protection)
-         $this->validate($request, [
+        // validasi isian di form tidak boleh kosong (double protection)
+        $this->validate($request, [
             'name' => ['required'],
             'gender' => ['required'],
             'phone_number' => ['required'],

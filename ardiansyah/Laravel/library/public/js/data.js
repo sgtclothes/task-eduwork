@@ -1,3 +1,4 @@
+
 var controller = new Vue({
     el: "#controller",
     data: {
@@ -8,9 +9,11 @@ var controller = new Vue({
         editStatus: false,
     },
     mounted: function () {
+        console.log('test');
         this.datatable();
     },
     methods: {
+
         datatable() {
             const _this = this;
             _this.table = $("#datatable")
@@ -23,6 +26,8 @@ var controller = new Vue({
                 })
                 .on("xhr", function () {
                     _this.datas = _this.table.ajax.json().data;
+
+                    // console.log(_this.datas);
                 });
         },
         addData() {

@@ -143,6 +143,7 @@
             },
             editData(book) {
                 this.book = book;
+                this.actionUrl = '{{ url('books') }}' + '/' + book.id;
                 this.editStatus = true;
                 $('#modal-default').modal();
             },

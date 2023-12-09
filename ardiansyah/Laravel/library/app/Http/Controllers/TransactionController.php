@@ -17,7 +17,10 @@ class TransactionController extends Controller
     {
         $members = Member::all();
         $transactions = Transaction::all();
-        return view('admin.transaction.transaction', compact('transactions', 'members'));
+        $transaction_data = Transaction::leftJoin('members', 'transactions.member_id', '=', 'members.id')->get();
+        // dd($transaction_data->toArray());
+        // dd($transactions->toArray());
+        return view('admin.transaction.transaction', compact('transactions', 'members', 'transaction_data'));
     }
 
     public function api()
