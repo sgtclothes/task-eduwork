@@ -37,7 +37,7 @@
                             <i class="fa fa-cube" aria-hidden="true"></i>
                             <p>Kategori</p>
                         </a>
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('produk.index') }}" class="nav-link">
                             <i class="fa fa-code" aria-hidden="true"></i>
                             <p>Produk</p>
                         </a>

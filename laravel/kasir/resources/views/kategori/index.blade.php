@@ -77,7 +77,7 @@
                             return;
                         });
                 }
-            })
+            });
         });
 
         function addForm(url) {
