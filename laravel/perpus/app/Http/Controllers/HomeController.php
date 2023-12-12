@@ -28,10 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books = Book::with('publisher')->get();
-
-        return $books;
-
         return view('home');
     }
 }
