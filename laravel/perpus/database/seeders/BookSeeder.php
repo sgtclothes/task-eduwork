@@ -17,13 +17,13 @@ class BookSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i=0; $i < 20; $i++) {
             $book = new Book;
 
             $book->isbn = $faker->randomNumber(8);
             $book->title = $faker->name;
             $book->year = rand(2010, 2023);
-            $book->publisher_id = rand(1, 10);
+            $book->publisher_id = rand(1, 20);
             $book->author_id = rand(1, 20);
             $book->catalog_id = rand(1, 5);
             $book->qty = rand(10, 20);
