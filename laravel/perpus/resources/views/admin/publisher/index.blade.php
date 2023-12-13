@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Data Publishers</h3>
+            <a href="{{ url('publishers/create') }}" class="btn btn-sm btn-primary pull-right">Create New Publisher</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -18,6 +18,7 @@
                         <th class="text-center">Phone Number</th>
                         <th class="text-center">Address</th>
                         <th class="text-center">Created At</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,8 +30,17 @@
                         <td class="text-center">{{ $publisher->phone_number }}</td>
                         <td>{{ $publisher->address }}</td>
                         <td class="text-center">{{ date('H:i:s - d/M/Y', strtotime($publisher->created_at)) }}</td>
-                    @endforeach
+                        <td>
+                            <a href="{{ url('publishers/'.$publisher->id.'/edit') }}" class="btn btn-warning btn-sm">Edit</a>
+
+                            <form action="{{ url('publishers', ['id' => $publisher->id]) }}" method="POST">
+                                <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are You Sure ??')">
+                                @method('delete')
+                                @csrf
+                            </form>
+                        </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
