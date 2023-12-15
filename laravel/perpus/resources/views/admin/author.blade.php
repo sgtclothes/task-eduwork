@@ -3,7 +3,10 @@
 @section('header', 'Author')
 
 @section('css')
-
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -13,8 +16,8 @@
                 <a href="#" @click="addData()" class="btn btn-primary btn-sm pull-right">Create New Author</a>
             </div>
             <!-- /.card-header -->
-            <div class="card-body p-0">
-                <table class="table table-striped">
+            <div class="card-body">
+                <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th style="width: 10px">No</th>
@@ -33,9 +36,11 @@
                                 <td>{{ $author->email }}</td>
                                 <td class="text-center">{{ $author->phone_number }}</td>
                                 <td>{{ $author->address }}</td>
-                                <td class="text-right">
-                                    <a href="#" @click="editData({{ $author }})" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="#" @click="deleteData({{ $author->id }})" class="btn btn-danger btn-sm">Delete</a>
+                                <td class="text-center">
+                                    <a href="#" @click="editData({{ $author }})"
+                                        class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="#" @click="deleteData({{ $author->id }})"
+                                        class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -95,6 +100,26 @@
 @endsection
 
 @section('js')
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+        $(function() {
+            $("#datatable").DataTable({});
+        });
+    </script>
+
+    <!-- Script CRUD VueJS -->
     <script type="text/javascript">
         var controller = new Vue({
             el: '#controller',
@@ -114,14 +139,16 @@
                 },
                 editData(data) {
                     this.data = data;
-                    this.actionUrl = '{{ url('authors') }}'+'/'+data.id;
+                    this.actionUrl = '{{ url('authors') }}' + '/' + data.id;
                     this.editStatus = true;
                     $('#modal-default').modal();
                 },
                 deleteData(id) {
-                    this.actionUrl = '{{ url('authors') }}'+'/'+id;
+                    this.actionUrl = '{{ url('authors') }}' + '/' + id;
                     if (confirm("Are You Sure ?")) {
-                        axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {
+                        axios.post(this.actionUrl, {
+                            _method: 'DELETE'
+                        }).then(response => {
                             location.reload();
                         });
                     }
