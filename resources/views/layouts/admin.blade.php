@@ -159,7 +159,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="{{  url('home')}}" class="nav-link active {{request()->is('home') ? 'active' : ''}}">
+                            <a href="{{  url('home')}}" class="nav-link active {{ request()->is('home') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Home
@@ -167,15 +167,15 @@
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="{{url('catalogs')}}" class="nav-link active {{request()->is('catalogs') ? 'active' : ''}}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="{{url('catalogs')}}" class="nav-link active {{request()->is('catalog') ? 'active' : ''}}">
+                                <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     Catalog
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item menu-open">
-                            <a href="{{url('publishers')}}" class="nav-link active {{request()->is('publishers') ? 'active' : ''}}">
+                            <a href="{{url('publishers')}}" class="nav-link active {{request()->is('publisher') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Publisher

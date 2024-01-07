@@ -33,7 +33,7 @@ class AuthorController extends Controller
         //     $author->date = convert_date($author->created_at);
         // }
 
-        // cara yajra table
+        // cara function yajra datatable
         $datatables = datatables()->of($authors)
             ->addColumn('date', function ($author) {
                 return convert_date($author->created_at);
