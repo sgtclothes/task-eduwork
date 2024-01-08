@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+.img-header {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.menu-header {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+}
+
+.menu-header>a {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: black;
+    transition: ease-in 0.3s;
+}
+
+.menu-header>a:hover {
+    font-size: 1.2rem;
+    color: rgb(235, 66, 224);
+    font-weight: bold;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.filter-img{
+    width: 100%;
+    height: 114vh;
+     background-image: url(perpus.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(40%);
+    position: absolute;
+}
+
+.content-edit {
+    position: relative;
+    width: 100%;
+    height: 114vh;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-edit>div{
+    width: 40%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.content-edit>div>a{
+    margin-top:20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(60, 60, 255);
+    transition: ease 0.3s;
+}
+
+.content-edit>div>a:hover{
+    font-weight: bold;
+    color: rgb(22, 22, 251);
+}
+
+/* .filter-img-new{
+    width: 100%;
+    height: 100vh;
+     background-image: url(perpus.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(40%);
+    position: absolute;
+}
+
+.content-edit-new {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-edit-new>div{
+    width: 40%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.content-edit-new>div>a{
+    margin-top:20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(60, 60, 255);
+    transition: ease 0.3s;
+}
+
+.content-edit-new>div>a:hover{
+    font-weight: bold;
+    color: rgb(22, 22, 251);
+} */
