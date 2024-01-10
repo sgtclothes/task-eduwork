@@ -51,20 +51,19 @@
 <h2>Daftar Nilai</h2>
 
 <?php
-// Membaca data dari file JSON
+
 $json_data = file_get_contents('data.json');
 $data = json_decode($json_data, true);
 
-// Fungsi untuk menghitung umur berdasarkan tanggal lahir
-function hitungUmur($tanggal_lahir) {
+
+function hitung_umur($tanggal_lahir) {
     $tgl_lahir = new DateTime($tanggal_lahir);
     $sekarang = new DateTime();
     $umur = $sekarang->diff($tgl_lahir);
     return $umur->y;
 }
 
-// Fungsi untuk menentukan kategori nilai
-function kategoriNilai($nilai) {
+function kategori_nilai($nilai) {
     if ($nilai >= 90) {
         return 'A';
     } elseif ($nilai >= 80) {
@@ -76,12 +75,6 @@ function kategoriNilai($nilai) {
     }
 }
 
-// // Mengurutkan data berdasarkan nama
-// usort($data, function($a, $b) {
-//     return strcmp($a['nama'], $b['nama']);
-// });
-
-// Membuat tabel HTML dengan zebra stripe
 echo '<table>';
 echo '<tr>
         <th>No.</th>
@@ -96,10 +89,9 @@ echo '<tr>
 
 foreach ($data as $key => $item) {
     $no_urut = $key + 1;
-    $umur = hitungUmur($item['tanggal_lahir']);
-    $kategori_nilai = kategoriNilai($item['nilai']);
+    $umur = hitung_umur($item['tanggal_lahir']);
+    $kategori_nilai = kategori_nilai($item['nilai']);
 
-    // Menampilkan data dalam bentuk tabel
     echo '<tr class="' . ($key % 2 == 0 ? 'even' : 'odd') . '">';
     echo '<td>' . $no_urut . '</td>';
     echo '<td>' . $item['nama'] . '</td>';
