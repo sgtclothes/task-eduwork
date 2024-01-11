@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2024 at 08:09 PM
+-- Generation Time: Jan 11, 2024 at 10:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `apotekbase1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detailpenjualan`
+--
+
+CREATE TABLE `detailpenjualan` (
+  `idDetailP` int(11) NOT NULL,
+  `obat_idObat` int(11) NOT NULL,
+  `penjualan_idPenjualan` int(11) NOT NULL,
+  `karyawan_idKaryawan` int(11) NOT NULL,
+  `harga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detailrestock`
+--
+
+CREATE TABLE `detailrestock` (
+  `idDetailR` int(11) NOT NULL,
+  `obat_idObat` int(11) NOT NULL,
+  `restock_idRestock` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,20 +141,10 @@ INSERT INTO `pelanggan` (`idPelanggan`, `namaPelanggan`, `passwordPelanggan`, `t
 
 CREATE TABLE `penjualan` (
   `idPenjualan` int(11) NOT NULL,
-  `obat_idObat` int(11) NOT NULL,
   `jumlahObat` int(11) NOT NULL,
-  `karyawan_idKaryawan` int(11) NOT NULL,
   `pelanggan_idPelanggan` int(11) NOT NULL,
   `tanggalJual` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `penjualan`
---
-
-INSERT INTO `penjualan` (`idPenjualan`, `obat_idObat`, `jumlahObat`, `karyawan_idKaryawan`, `pelanggan_idPelanggan`, `tanggalJual`) VALUES
-(1, 2, 2, 1, 1, '2024-01-11 19:03:39'),
-(2, 2, 5, 1, 1, '2024-01-11 19:05:52');
 
 -- --------------------------------------------------------
 
@@ -138,7 +154,6 @@ INSERT INTO `penjualan` (`idPenjualan`, `obat_idObat`, `jumlahObat`, `karyawan_i
 
 CREATE TABLE `restock` (
   `idRestock` int(11) NOT NULL,
-  `obat_idObat` int(11) NOT NULL,
   `karyawan_idKaryawan` int(11) NOT NULL,
   `tanggalRestock` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `hrg_jual` int(11) NOT NULL,
@@ -147,15 +162,23 @@ CREATE TABLE `restock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `restock`
---
-
-INSERT INTO `restock` (`idRestock`, `obat_idObat`, `karyawan_idKaryawan`, `tanggalRestock`, `hrg_jual`, `hrg_beli`, `stock`) VALUES
-(1, 2, 1, '2024-01-11 19:01:25', 6000, 4500, 20);
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `detailpenjualan`
+--
+ALTER TABLE `detailpenjualan`
+  ADD KEY `fk_obatDP` (`obat_idObat`),
+  ADD KEY `fk_penjualanDP` (`penjualan_idPenjualan`),
+  ADD KEY `fk_karyawanDP` (`karyawan_idKaryawan`);
+
+--
+-- Indexes for table `detailrestock`
+--
+ALTER TABLE `detailrestock`
+  ADD KEY `fk_obatDR` (`obat_idObat`),
+  ADD KEY `fk_restockDR` (`restock_idRestock`);
 
 --
 -- Indexes for table `karyawan`
@@ -174,7 +197,7 @@ ALTER TABLE `kategoriobat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`idObat`),
-  ADD KEY `fk_kategoriobat` (`kategori_idKategori`);
+  ADD KEY `kategori_idKategori` (`kategori_idKategori`);
 
 --
 -- Indexes for table `pelanggan`
@@ -187,17 +210,14 @@ ALTER TABLE `pelanggan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`idPenjualan`),
-  ADD KEY `fk_pelanggan` (`pelanggan_idPelanggan`),
-  ADD KEY `fk_obatPenjualan` (`obat_idObat`),
-  ADD KEY `fk_obatKaryawan` (`karyawan_idKaryawan`);
+  ADD KEY `fk_penjualan` (`pelanggan_idPelanggan`);
 
 --
 -- Indexes for table `restock`
 --
 ALTER TABLE `restock`
   ADD PRIMARY KEY (`idRestock`),
-  ADD KEY `fk_karyawan` (`karyawan_idKaryawan`),
-  ADD KEY `fk_obat` (`obat_idObat`);
+  ADD KEY `fk_karyawanR` (`karyawan_idKaryawan`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -228,29 +248,47 @@ ALTER TABLE `pelanggan`
   MODIFY `idPelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  MODIFY `idPenjualan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `detailpenjualan`
+--
+ALTER TABLE `detailpenjualan`
+  ADD CONSTRAINT `fk_karyawanDP` FOREIGN KEY (`karyawan_idKaryawan`) REFERENCES `karyawan` (`idKaryawan`),
+  ADD CONSTRAINT `fk_obatDP` FOREIGN KEY (`obat_idObat`) REFERENCES `obat` (`idObat`),
+  ADD CONSTRAINT `fk_penjualanDP` FOREIGN KEY (`penjualan_idPenjualan`) REFERENCES `penjualan` (`idPenjualan`);
+
+--
+-- Constraints for table `detailrestock`
+--
+ALTER TABLE `detailrestock`
+  ADD CONSTRAINT `fk_obatDR` FOREIGN KEY (`obat_idObat`) REFERENCES `obat` (`idObat`),
+  ADD CONSTRAINT `fk_restockDR` FOREIGN KEY (`restock_idRestock`) REFERENCES `restock` (`idRestock`);
 
 --
 -- Constraints for table `obat`
 --
 ALTER TABLE `obat`
-  ADD CONSTRAINT `fk_kategoriobat` FOREIGN KEY (`kategori_idKategori`) REFERENCES `kategoriobat` (`idKategori`);
+  ADD CONSTRAINT `obat_ibfk_1` FOREIGN KEY (`kategori_idKategori`) REFERENCES `kategoriobat` (`idKategori`);
 
 --
 -- Constraints for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD CONSTRAINT `fk_obatKaryawan` FOREIGN KEY (`karyawan_idKaryawan`) REFERENCES `karyawan` (`idKaryawan`),
-  ADD CONSTRAINT `fk_obatPenjualan` FOREIGN KEY (`obat_idObat`) REFERENCES `obat` (`idObat`),
-  ADD CONSTRAINT `fk_pelanggan` FOREIGN KEY (`pelanggan_idPelanggan`) REFERENCES `pelanggan` (`idPelanggan`);
+  ADD CONSTRAINT `fk_penjualan` FOREIGN KEY (`pelanggan_idPelanggan`) REFERENCES `pelanggan` (`idPelanggan`);
 
 --
 -- Constraints for table `restock`
 --
 ALTER TABLE `restock`
-  ADD CONSTRAINT `fk_karyawan` FOREIGN KEY (`karyawan_idKaryawan`) REFERENCES `karyawan` (`idKaryawan`),
-  ADD CONSTRAINT `fk_obat` FOREIGN KEY (`obat_idObat`) REFERENCES `obat` (`idObat`);
+  ADD CONSTRAINT `fk_karyawanR` FOREIGN KEY (`karyawan_idKaryawan`) REFERENCES `karyawan` (`idKaryawan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
