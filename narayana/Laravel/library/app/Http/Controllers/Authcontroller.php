@@ -12,7 +12,7 @@ class Authcontroller extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.author.index');
     }
 
     /**
@@ -52,7 +52,7 @@ class Authcontroller extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        return view('admin.catalog.index');
     }
 
     /**

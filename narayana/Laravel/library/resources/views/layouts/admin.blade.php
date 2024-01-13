@@ -78,7 +78,7 @@
                     <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                 </div>
             </div>
 
@@ -100,10 +100,50 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <a href="{{ url('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-home"></i>
                             <p>
-                                Dashboard
+                                Home
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('catalog') }}" class="nav-link {{ request()->is('catalog') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-edit"></i> 
+                            <p>
+                                Catalog
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('publisher') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-user"></i> 
+                            <p>
+                                Publisher
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('author') }}" class="nav-link {{ request()->is('author') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-at"></i> 
+                            <p>
+                                Author
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-book"></i> 
+                            <p>
+                                Book
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="{{ url('member') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-users"></i> 
+                            <p>
+                                Member
                             </p>
                         </a>
                     </li>
@@ -120,7 +160,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Perpustakaan</h1>
+                        <h1 class="m-0">@yield('header')</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

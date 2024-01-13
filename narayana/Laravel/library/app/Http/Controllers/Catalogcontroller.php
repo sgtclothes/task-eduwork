@@ -12,7 +12,7 @@ class Catalogcontroller extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.catalog.index');
     }
 
     /**
