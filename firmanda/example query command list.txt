@@ -1,0 +1,12 @@
+1. SELECT * FROM `detailpenjualan` WHERE harga >8000
+2. SELECT * FROM `detailpenjualan` WHERE penjualan_idPenjualan = 1
+3. SELECT * FROM `obat` WHERE hrgJual >8000 AND hrgBeli < 10000
+4. SELECT  obat.namaObat,kategoriobat.namaKategori FROM obat, kategoriobat
+5. SELECT  obat.namaObat,kategoriobat.namaKategori FROM obat, kategoriobat WHERE namaKategori = "obat cair"
+6.SELECT  obat.namaObat,pelanggan.namaPelanggan,karyawan.namaKaryawan FROM obat,pelanggan,karyawan
+7. SELECT  obat.namaObat,pelanggan.namaPelanggan,karyawan.namaKaryawan FROM obat,pelanggan,karyawan,detailpenjualan WHERE penjualan_idPenjualan =1
+8. SELECT  obat.namaObat,pelanggan.namaPelanggan,karyawan.namaKaryawan,detailpenjualan.harga FROM obat,pelanggan,karyawan,detailpenjualan WHERE detailpenjualan.jumlahObat =5
+9. SELECT  obat.namaObat,pelanggan.namaPelanggan,karyawan.namaKaryawan,detailpenjualan.harga FROM obat,pelanggan,karyawan,detailpenjualan WHERE detailpenjualan.harga =40000
+
+10. SELECT  obat.namaObat,karyawan.namaKaryawan,detailrestock.stock FROM obat,pelanggan,karyawan,detailrestock WHERE detailrestock.restock_idRestock=1
+
