@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2024 at 07:46 AM
+-- Generation Time: Jan 14, 2024 at 05:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -120,8 +120,7 @@ INSERT INTO `karyawan` (`idKaryawan`, `namaKaryawan`, `passwordKaryawan`) VALUES
 (1, 'bambak panuroto', 'bambank123'),
 (2, 'yasuo suyanto', 'yasuo123'),
 (3, 'dina fitriani', 'dina123'),
-(4, 'ari setiawan', 'ari123'),
-(5, 'hadi saputra', 'hadi123'),
+(4, 'ari setiawan', 'setiawan123'),
 (6, 'siska amelia', 'siska123');
 
 -- --------------------------------------------------------
@@ -166,24 +165,22 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`idObat`, `namaObat`, `stock`, `hrgJual`, `hrgBeli`, `kategori_idKategori`) VALUES
-(1, 'paramex', 10, 10000, 8000, 4),
-(2, 'komix', 10, 5000, 4000, 4),
-(3, 'ibuprofen', 10, 15000, 10000, 4),
-(4, 'cetirizine', 10, 20000, 15000, 4),
-(5, 'omeprazole', 10, 15000, 12000, 3),
-(6, 'ranitidine', 10, 13000, 10000, 4),
-(7, 'amoxcilin', 10, 25000, 20000, 4),
-(8, 'metamizole', 10, 10000, 8000, 4),
-(9, 'aspirin', 10, 12000, 7000, 4),
-(10, 'loratadine', 0, 8000, 5000, 4),
-(11, 'ibuprofen', 10, 15000, 10000, 4),
-(12, 'cetirizine', 10, 20000, 15000, 4),
-(13, 'omeprazole', 10, 15000, 12000, 3),
-(14, 'ranitidine', 10, 13000, 10000, 4),
-(15, 'amoxcilin', 10, 25000, 20000, 4),
-(16, 'metamizole', 10, 10000, 8000, 4),
-(17, 'aspirin', 10, 12000, 7000, 4),
-(18, 'loratadine', 10, 8000, 5000, 4);
+(1, 'paramex', 40, 10000, 8000, 4),
+(2, 'komix', 40, 5000, 4000, 4),
+(3, 'ibuprofen', 40, 15000, 10000, 4),
+(4, 'cetirizine', 40, 20000, 15000, 4),
+(5, 'omeprazole', 40, 15000, 12000, 3),
+(6, 'ranitidine', 40, 13000, 10000, 4),
+(7, 'amoxcilin', 40, 25000, 20000, 4),
+(8, 'metamizole', 40, 10000, 8000, 4),
+(9, 'alkohol', 40, 12000, 7000, 4),
+(11, 'ibuprofen', 40, 15000, 10000, 4),
+(12, 'cetirizine', 40, 20000, 15000, 4),
+(13, 'omeprazole', 40, 15000, 12000, 3),
+(14, 'ranitidine', 40, 13000, 10000, 4),
+(15, 'amoxcilin', 40, 25000, 20000, 4),
+(16, 'metamizole', 40, 10000, 8000, 4),
+(17, 'alkohol', 40, 12000, 7000, 4);
 
 -- --------------------------------------------------------
 
@@ -231,7 +228,7 @@ INSERT INTO `penjualan` (`idPenjualan`, `pelanggan_idPelanggan`, `tanggalJual`, 
 (1, 1, '2024-01-13 05:26:17', 1),
 (2, 2, '2024-01-13 05:26:17', 2),
 (3, 3, '2024-01-13 05:26:17', 6),
-(4, 4, '2024-01-13 05:26:17', 5),
+(4, 4, '2024-01-14 16:02:37', 6),
 (5, 5, '2024-01-13 05:26:17', 6);
 
 -- --------------------------------------------------------
