@@ -16,11 +16,11 @@
                 <div class="card-header">
                     <a href="#" @click="addData()" class="btn btn-sm btn-primary pull-right">Create New Member</a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <select class="form-control" name="gender">
                         <option value="0">Semua Jenis Kelamin</option>
+                        <option value="L">Laki - Laki</option>
                         <option value="P">Perempuan</option>
-                        <option value="L">Laki-laki</option>
                     </select>
                 </div>
                 <!-- /.card-header -->
@@ -100,14 +100,7 @@
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
 <script type="text/javascript">
     var actionUrl = '{{ url('members') }}';
     var apiUrl = '{{ url('api/members') }}';
@@ -130,6 +123,7 @@
     ];
 </script>
 <script src="{{ asset('js/data.js') }}"></script>
+
 <script type="text/javascript">
     $('select[name=gender]').on('change', function() {
         gender = $('select[name=gender]').val();
@@ -141,61 +135,4 @@
         }
     });
 </script>
-{{--
-<!-- Page specific script -->
-<script type="text/javascript">
-    $(function () {
-        $("#datatable").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        //   $('#example2').DataTable({
-        //     "paging": true,
-        //     "lengthChange": false,
-        //     "searching": false,
-        //     "ordering": true,
-        //     "info": true,
-        //     "autoWidth": false,
-        //     "responsive": true,
-        //   });
-    });
-</script> --}}
-{{-- CRUD VUE JS --}}
-{{--
-<script>
-    var controller = new Vue({
-        el: '#controller',
-        data: {
-            data: {},
-            actionUrl: '{{ url('authors') }}',
-            editStatus: false
-        },
-        mounted: function () {
-
-        },
-        methods: {
-            addData() {
-                this.data = {};
-                this.actionUrl = '{{ url('authors') }}';
-                this.editStatus = false;
-                $('#modal-default').modal();
-            },
-            editData(data) {
-                this.data = data;
-                this.actionUrl = '{{ url('authors') }}' + '/' + data.id;
-                this.editStatus = true;
-                $('#modal-default').modal();
-            },
-            deleteData(id) {
-                this.actionUrl = '{{ url('authors') }}' + '/' + id;
-                if (confirm('Apakah kamu yakin ?')) {
-                    axios.post(this.actionUrl, { _method: 'DELETE' }).then(response => {
-                        location.reload();
-                    })
-                }
-            }
-        }
-    });
-
-</script> --}}
 @endsection

@@ -14,7 +14,6 @@ class MemberController extends Controller
 
     public function index(Request $request)
     {
-
         if ($request->gender) {
             # code...
             $datas = Member::where('gender', $request->gender)->get();
