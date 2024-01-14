@@ -24,4 +24,10 @@ untuk query 2
 10.SELECT penjualan_idPenjualan, SUM(harga) AS total FROM detailpenjualan WHERE harga = 40000 GROUP BY penjualan_idPenjualan ORDER BY penjualan_idPenjualan DESC; 
 11.SELECT obat_idObat, SUM(stock) AS total, SUM(hrg_beli) AS hartot FROM detailrestock WHERE hrg_jual>7000 GROUP BY obat_idObat; 
 
+untuk query 3
+1. DELETE FROM karyawan WHERE karyawan.namaKaryawan LIKE "%hadi%"; 
+2. DELETE FROM obat WHERE obat.namaObat LIKE "%loratadine%"; 
+3. UPDATE obat SET obat.stock = 40 WHERE obat.stock = 10; 
+4. UPDATE obat SET obat.namaObat = "alkohol" WHERE obat.namaObat = "aspirin"
+5. UPDATE karyawan SET karyawan.passwordKaryawan = "setiawan123" WHERE karyawan.namaKaryawan LIKE "%setiawan%"; 
 
