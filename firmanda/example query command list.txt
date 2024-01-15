@@ -31,3 +31,9 @@ untuk query 3
 4. UPDATE obat SET obat.namaObat = "alkohol" WHERE obat.namaObat = "aspirin"
 5. UPDATE karyawan SET karyawan.passwordKaryawan = "setiawan123" WHERE karyawan.namaKaryawan LIKE "%setiawan%"; 
 
+untuk query 4
+1.  SELECT detailpenjualan.harga,detailpenjualan.jumlahObat,obat.namaObat FROM detailpenjualan JOIN obat on detailpenjualan.obat_idObat = obat.idObat ORDER BY detailpenjualan.idDetailP ASC;
+2. SELECT detailpenjualan.harga,detailpenjualan.jumlahObat,obat.namaObat FROM detailpenjualan RIGHT JOIN obat on detailpenjualan.obat_idObat = obat.idObat ORDER BY detailpenjualan.idDetailP ASC;
+3. SELECT detailpenjualan.harga,detailpenjualan.jumlahObat,obat.namaObat FROM detailpenjualan LEFT JOIN obat on detailpenjualan.obat_idObat = obat.idObat ORDER BY detailpenjualan.idDetailP ASC;
+4.  SELECT detailpenjualan.harga,detailpenjualan.jumlahObat,obat.namaObat FROM detailpenjualan JOIN obat on detailpenjualan.obat_idObat = obat.idObat WHERE detailpenjualan.harga = 40000 ORDER BY detailpenjualan.idDetailP ASC;
+5.  SELECT detailpenjualan.harga,detailpenjualan.jumlahObat,obat.namaObat FROM detailpenjualan JOIN obat on detailpenjualan.obat_idObat = obat.idObat WHERE obat.namaObat LIKE "%paramex%" ORDER BY detailpenjualan.idDetailP ASC;
