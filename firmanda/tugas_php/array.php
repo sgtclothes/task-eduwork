@@ -21,20 +21,17 @@
         $listSiswa = json_decode($data,true);
         
         $a=0;
-        for($i=0;$i<6;$i++){
-            
-            $a = $a+1 ;
+        foreach($listSiswa as $key => $value){
+            $a++;
             echo "<tr>";
             echo "<td> $a.</td>";
-            echo "<td>".$listSiswa[$i]["nama"]."</td>";
-            echo "<td>".$listSiswa[$i]["kelas"]."</td>";
-            echo "<td>".$listSiswa[$i]["alamat"]."</td>";
-            echo "<td>".$listSiswa[$i]["tanggal_lahir"]."</td>";
-            echo "<td>".$listSiswa[$i]["nilai"]."</td>";
+            echo "<td>".$value["nama"]."</td>";
+            echo "<td>".$value["kelas"]."</td>";
+            echo "<td>".$value["alamat"]."</td>";
+            echo "<td>".$value["tanggal_lahir"]."</td>";
+            echo "<td>".$value["nilai"]."</td>";
             echo "</tr>";
-
         }
-        
         ?>
     </table>
 </body>
