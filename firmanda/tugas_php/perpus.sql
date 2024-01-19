@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 07:10 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Jan 19, 2024 at 08:53 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `anggota` (
   `email` varchar(255) NOT NULL,
   `tgl_entry` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `role` varchar(12) NOT NULL DEFAULT 'USER'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `anggota`
@@ -76,7 +76,7 @@ CREATE TABLE `buku` (
   `id_katalog` varchar(3) DEFAULT NULL,
   `qty_stok` int(11) DEFAULT 0,
   `harga_pinjam` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `buku`
@@ -92,6 +92,13 @@ INSERT INTO `buku` (`isbn`, `judul`, `tahun`, `id_penerbit`, `id_pengarang`, `id
 ('774-211', 'Laravel Part 1', 2018, 'PN03', 'PG05', 'KG1', 5, 4500),
 ('777-380', 'Mongo DB Lanjut', 2020, 'PN01', 'PG03', 'KG2', 7, 10000),
 ('777-381', 'MySQL Lanjut', 2021, 'PN01', 'PG04', 'KG0', 9, 8000),
+('777-779', 'buku memasak gedang', 1956, 'PN01', 'PG01', 'KG0', 11, 12000),
+('777-780', 'buku memasak bikang', 1956, 'PN03', 'PG04', 'KG2', 11, 12000),
+('777-788', 'buku memasak bika ambon', 1956, 'PN01', 'PG01', 'KG0', 14, 13000),
+('777-789', 'buku memasak bika ', 1956, 'PN01', 'PG01', 'KG0', 14, 13000),
+('777-793', 'buku memasak lemper', 1956, 'PN01', 'PG01', 'KG0', 14, 13000),
+('777-798', 'buku memasak hongkong', 1956, 'PN01', 'PG01', 'KG0', 14, 14000),
+('777-799', 'buku memasak bikang kukus', 1956, 'PN01', 'PG01', 'KG0', 14, 14000),
 ('882-191', 'Belajar CSS', 2020, 'PN03', 'PG05', 'KG0', 8, 12000),
 ('882-291', 'Belajar Laravel', 2020, 'PN03', 'PG05', 'KG1', 3, 11500),
 ('902-191', 'CSS Part 2', 2020, 'PN04', 'PG05', 'KG0', 8, 15000),
@@ -109,7 +116,7 @@ CREATE TABLE `detail_peminjaman` (
   `id_pinjam` int(11) NOT NULL DEFAULT 0,
   `isbn` varchar(25) NOT NULL DEFAULT '',
   `qty` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `detail_peminjaman`
@@ -152,18 +159,19 @@ INSERT INTO `detail_peminjaman` (`id_pinjam`, `isbn`, `qty`) VALUES
 CREATE TABLE `katalog` (
   `id_katalog` varchar(3) NOT NULL,
   `nama` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `katalog`
 --
 
 INSERT INTO `katalog` (`id_katalog`, `nama`) VALUES
-('KG0', 'Buku Dewasa'),
+('KG0', 'Buku Dewasa banget'),
 ('KG1', 'Buku Anak'),
 ('KG2', 'Buku Belajar'),
 ('KG3', 'Buku Belajar Agama'),
-('KG4', 'Buku Kesehatan');
+('KG4', 'Buku Kesehatan'),
+('KG5', 'Buku Kesenian');
 
 -- --------------------------------------------------------
 
@@ -176,7 +184,7 @@ CREATE TABLE `peminjaman` (
   `id_anggota` int(11) DEFAULT NULL,
   `tgl_pinjam` date DEFAULT NULL,
   `tgl_kembali` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `peminjaman`
@@ -206,19 +214,20 @@ CREATE TABLE `penerbit` (
   `email` varchar(50) DEFAULT NULL,
   `telp` varchar(12) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `penerbit`
 --
 
 INSERT INTO `penerbit` (`id_penerbit`, `nama_penerbit`, `email`, `telp`, `alamat`) VALUES
-('PN01', 'Penerbit 01', 'penerbit@perpus.co.id', '0219999333', 'Surabaya'),
+('PN01', 'Penerbit 01', 'penerbit@perpus.co.id', '0219999333', 'Surabaya selatan'),
 ('PN02', 'Penerbit 02', 'penerbit2@gmail.com', '08765158111', 'Bandung'),
 ('PN03', 'Penerbit 03', 'penerbit3@gmail.com', NULL, 'Jakarta Barat'),
 ('PN04', 'Penerbit 04', 'penerbit4@gmail.com', '08972017209', 'Jakarta Selatan'),
 ('PN05', 'Penerbit 05', 'penerbit5@gmail.com', '08972187209', 'Jakarta Selatan'),
-('PN06', 'Penerbit 06', 'penerbit6@gmail.com', '08112187209', 'Jakarta Barat');
+('PN06', 'Penerbit 06', 'penerbit6@gmail.com', '08112187209', 'Jakarta Barat'),
+('PN07', 'bambank Panuroto', 'panuroto@gmail.com', '0812345678', 'bojonegoro');
 
 -- --------------------------------------------------------
 
@@ -232,20 +241,21 @@ CREATE TABLE `pengarang` (
   `email` varchar(50) DEFAULT NULL,
   `telp` varchar(12) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `pengarang`
 --
 
 INSERT INTO `pengarang` (`id_pengarang`, `nama_pengarang`, `email`, `telp`, `alamat`) VALUES
-('PG01', 'Pengarang 01', 'pengarang1@perpus.co.id', '0929211', 'Bandung'),
+('PG01', 'Pengarang 01', 'pengarang1@perpus.co.id', '0929211', 'Bandung selatan'),
 ('PG02', 'Pengarang 02', 'pengarang2@perpus.co.id', '0929211222', 'Yogyakarta'),
 ('PG03', 'Pengarang 03', 'pengarang3@perpus.co.id', '092921199', 'Banten'),
 ('PG04', 'Pengarang 04', 'pengarang4@perpus.co.id', '93938199', 'Jakarta'),
 ('PG05', 'Pengarang 05', 'pengarang5@perpus.co.id', '93938199', 'Cimahi'),
 ('PG06', 'Pengarang 06', 'pengarang6@perpus.co.id', '0818176111', 'Cimahi'),
-('PG07', 'Pengarang 07', 'pengarang7@perpus.co.id', '08181762291', 'Semarang');
+('PG07', 'Pengarang 07', 'pengarang7@perpus.co.id', '08181762291', 'Semarang'),
+('PG08', 'badak djawa', 'badak@gmail.com', '089791234', 'GKJW');
 
 --
 -- Indexes for dumped tables

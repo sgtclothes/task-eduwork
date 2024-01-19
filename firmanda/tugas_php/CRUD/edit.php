@@ -18,7 +18,7 @@ while ($buku_data = mysqli_fetch_array($buku)){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
     
     <title>Edit Buku</title>
@@ -26,11 +26,11 @@ while ($buku_data = mysqli_fetch_array($buku)){
 <body>
     <a href="index.php">Go Home</a>
 
-    <form action="edit.php?isbn<?php echo $isbn; ?>" method="post">
-        <table border="1">
+    <form action="edit.php?isbn=<?php echo $isbn; ?>" method="post">
+        <table >
             <tr>
                 <td>ISBN</td>
-                <td style="font-size: 11pt;"><?php $isbn; ?></td>
+                <td style="font-size: 11pt;"><?php echo $isbn; ?></td>
             </tr>
             <tr>
                 <td>judul</td>
@@ -83,27 +83,27 @@ while ($buku_data = mysqli_fetch_array($buku)){
             </tr>
             <tr>
             <td>Harga Pinjaman</td>
-                <td><input type="text" name="Harga_pinjam" value="<?php echo $harga_pinjam; ?>"></td>
+                <td><input type="text" name="harga_pinjam" value="<?php echo $harga_pinjam; ?>"></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="text" name="update" value="update"></td>
+                <td><input type="submit" name="update" value="update"></td>
             </tr>
         </table>
     </form>
     <?php 
     if(isset($_POST['update'])){
         $isbn = $_GET['isbn'];
-        $judul = $_GET['judul'];
+        $judul = $_POST['judul'];
         $tahun = $_POST['tahun'];
-        $id_penerbit = $_POST['$id_penerbit'];
-        $id_pengarang = $_POST['$id_pengarang'];
-        $id_katalog = $_POST['$id_katalog'];
-        $qty_stok = $_POST['$qty_stok'];
-        $harga_pinjam = $_POST['$harga_pinjam'];
+        $id_penerbit = $_POST['id_penerbit'];
+        $id_pengarang = $_POST['id_pengarang'];
+        $id_katalog = $_POST['id_katalog'];
+        $qty_stok = $_POST['qty_stok'];
+        $harga_pinjam = $_POST['harga_pinjam'];
         include_once("connect.php");
         $result = mysqli_query($conn, "UPDATE buku SET judul = '$judul', tahun = '$tahun', id_penerbit = '$id_penerbit', id_pengarang = '$id_pengarang', id_katalog = '$id_katalog', qty_stok = '$qty_stok', harga_pinjam = '$harga_pinjam' WHERE isbn = '$isbn';");
-        header("Location: index.php");
+        header("Location:index.php");
     }
     ?>
 

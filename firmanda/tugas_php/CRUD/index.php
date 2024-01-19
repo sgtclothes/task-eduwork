@@ -28,7 +28,7 @@ include_once("connect.php");
             <th>Judul</th>
             <th>Tahun</th>
             <th>Pengarang</th>
-            <th>Penerbi</th>
+            <th>Penerbit</th>
             <th>Katalog</th>
             <th>Stock</th>
             <th>Harga Pinjam</th>
