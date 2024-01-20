@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <title>Percobaan Vue JS</title>
+</head>
+<body>
+    <div id="app" >
+        <p v-if="status == 'tampilkan'">{{message}}</p>
+        <p v-else>tidak terdeteksi</p>
+        <ul>
+            <li v-for="user in users">nama pengguna{{user.name}} dengan alamat {{user.alamat}}</li>
+        </ul>
+        
+    </div>
+</body>
+</html>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                message:"halo dunia",
+                status: "tampilkan",
+                users:[
+                {
+                    name:'bambank',
+                    alamat:'purwokerto'
+                },
+                {
+                    name:'kukang',
+                    alamat:'jajag'
+                },
+                {
+                    name:"yanto",
+                    alamat:'purwoharjo'
+                }
+
+                ]
+            }
+        }
+    })
+    app.mount("#app")
+</script>
