@@ -19,8 +19,9 @@ while($penerbit_data = mysqli_fetch_array($penerbit)){
     
     <title>Edit Penerbit</title>
 </head>
-<body>
-    <a href="penerbit.php">Go Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+    <h5 class="card-header" >Edit Penerbit</h5>
+    <a href="penerbit.php" class="btn btn-outline-primary"><-Go Home</a>
     <form action="editPenerbit.php?id_penerbit=<?php echo$id_penerbit?>" method="post">
         <table>
             <tr>
@@ -45,7 +46,7 @@ while($penerbit_data = mysqli_fetch_array($penerbit)){
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="update" value="update"></td>
+                <td><input type="submit" name="update" value="update" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

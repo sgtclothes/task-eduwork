@@ -10,8 +10,9 @@
     
     <title>tambah Penerbit</title>
 </head>
-<body>
-    <a href="penerbit.php"> Go Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+<h5 class="card-header">tambahkan penerbit baru</h5>
+    <a href="penerbit.php" class="btn btn-outline-primary"><-Go Home</a>
     <form action="addPenerbit.php" method="post">
         <table>
             <tr>
@@ -36,7 +37,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="submit" value="Add"></td>
+                <td><input type="submit" name="submit" value="Add" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

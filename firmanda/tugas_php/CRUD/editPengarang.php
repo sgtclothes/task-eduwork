@@ -19,8 +19,9 @@
     
     <title>Edit Pengarang</title>
 </head>
-<body>
-    <a href="pengarang.php">Go Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+    <h5 class="card-header">Edit Pengarang</h5>
+    <a href="pengarang.php" class="btn btn-outline-primary"><-Go Home</a>
     <form action="editPengarang.php?id_pengarang=<?php echo $id_pengarang?>" method="post">
         <table>
             <tr>
@@ -45,7 +46,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="update" value="update"></td>
+                <td><input type="submit" name="update" value="update" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

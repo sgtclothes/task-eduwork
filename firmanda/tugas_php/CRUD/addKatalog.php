@@ -6,10 +6,14 @@ include_once("connect.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
     <title>Add Katalog</title>
 </head>
-<body>
-    <a href="katalog.php"> Go to Katalog's Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+    <h5 class="card-header">tambahkan katalog baru</h5>
+    <a href="katalog.php" class="btn btn-outline-primary"><-Go to Home</a>
     
     <form action="addKatalog.php" method="post" name="formKatalog1">
         <table >
@@ -23,7 +27,7 @@ include_once("connect.php");
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="Submit" value="Add"></td>
+                <td><input type="submit" name="Submit" value="Add" class="btn btn-primary"></td>
             </tr>
         </table>
         

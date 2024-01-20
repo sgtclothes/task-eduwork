@@ -11,12 +11,15 @@ while($katalog_data = mysqli_fetch_array($katalog)){
 ?>
 <!DOCTYPE html>
 <head>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
     <title>Edit Katalog</title>
 </head>
 
-<body>
-    <a href="katalog.php">GO to Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+    <h5 class="card-header">Edit Katalog</h5>
+    <a href="katalog.php" class="btn btn-outline-primary"><-GO to Home</a>
     <form action="editKatalog.php?id_katalog=<?php echo $id_katalog; ?>" method="post">
         <table>
             <tr>
@@ -29,7 +32,7 @@ while($katalog_data = mysqli_fetch_array($katalog)){
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="update" value="update"></td>
+                <td><input type="submit" name="update" value="update" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

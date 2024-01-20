@@ -20,11 +20,14 @@ while ($buku_data = mysqli_fetch_array($buku)){
 <!DOCTYPE html>
 
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     
     <title>Edit Buku</title>
 </head>
-<body>
-    <a href="index.php">Go Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+    <h5 class="card-header">Edit Buku</h5>
+    <a href="index.php" class="btn btn-outline-primary"><-Go Home</a>
 
     <form action="edit.php?isbn=<?php echo $isbn; ?>" method="post">
         <table >
@@ -87,7 +90,7 @@ while ($buku_data = mysqli_fetch_array($buku)){
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="update" value="update"></td>
+                <td><input type="submit" name="update" value="update" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

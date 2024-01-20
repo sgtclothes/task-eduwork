@@ -12,35 +12,51 @@ $penerbit = mysqli_query($conn,"SELECT * FROM penerbit");
     
     <title>Penerbit</title>
 </head>
-<body>
-    <center>
-        <a href="index.php">Buku</a>
-        <a href="penerbit.php">Penerbit</a>
-        <a href="pengarang.php">Pengarang</a>
-        <a href="katalog.php">Katalog</a>
-    </center>
-    <a href="addPenerbit.php">Tambah Penerbit</a>
-    <table border="1">
-        <tr>
-            <th>Id Penerbit</th>
-            <th>Nama Penerbit</th>
-            <th>Email Penerbit</th>
-            <th>Telepon Penerbit</th>
-            <th>Alamat Penerbit</th>
-            <th>Aksi</th>
-        </tr>
-        <?php 
-        while($penerbit_data = mysqli_fetch_array($penerbit)){
-            echo "<tr>";
-            echo "<td>".$penerbit_data['id_penerbit']."</td>";
-            echo "<td>".$penerbit_data['nama_penerbit']."</td>";
-            echo "<td>".$penerbit_data['email'] ."</td>";
-            echo "<td>".$penerbit_data['telp'] ."</td>";
-            echo "<td>".$penerbit_data['alamat'] ."</td>";
-            echo "<td> <a class= 'btn btn-primary' href= 'editPenerbit.php?id_penerbit=$penerbit_data[id_penerbit]'> Edit penerbit </a> | <a class='btn btn-danger' href='deletePenerbit.php?id_penerbit=$penerbit_data[id_penerbit]'> Delete Penerbit</a></td>";
-            echo "</tr>";
-        }
-        ?>
-    </table>
+<body class="card text-center">
+    <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a href="index.php" class="nav-link">Buku</a>
+                </li>
+                <li class="nav-item">
+                    <a href="penerbit.php" class="nav-link active">Penerbit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pengarang.php" class="nav-link">Pengarang</a>
+                </li>
+                <li class="nav-item">
+                    <a href="katalog.php" class="nav-link">Katalog</a>
+                </li>
+
+            </ul>
+       
+    </div>
+    <div class="card-body">
+
+        <h5 class="card-title"> table content penerbit</h5>
+        <a href="addPenerbit.php" class="btn btn-outline-primary">Tambah Penerbit</a>
+        <table border="1" class="table table-striped table-hover">
+            <tr>
+                <th>Id Penerbit</th>
+                <th>Nama Penerbit</th>
+                <th>Email Penerbit</th>
+                <th>Telepon Penerbit</th>
+                <th>Alamat Penerbit</th>
+                <th>Aksi</th>
+            </tr>
+            <?php 
+            while($penerbit_data = mysqli_fetch_array($penerbit)){
+                echo "<tr>";
+                echo "<td>".$penerbit_data['id_penerbit']."</td>";
+                echo "<td>".$penerbit_data['nama_penerbit']."</td>";
+                echo "<td>".$penerbit_data['email'] ."</td>";
+                echo "<td>".$penerbit_data['telp'] ."</td>";
+                echo "<td>".$penerbit_data['alamat'] ."</td>";
+                echo "<td> <a class= 'btn btn-primary' href= 'editPenerbit.php?id_penerbit=$penerbit_data[id_penerbit]'> Edit penerbit </a> | <a class='btn btn-danger' href='deletePenerbit.php?id_penerbit=$penerbit_data[id_penerbit]'> Delete Penerbit</a></td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
+    </div>
 </body>
 </html>

@@ -8,8 +8,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <title>Tambah Pengarang</title>
 </head>
-<body>
-    <a href="pengarang.php">Go home</a>
+<body class="card border-primary mb-3" style="max-width: 20rem;">
+    <h5 class="card-header">tambahkan pengarang baru</h5>
+    <a href="pengarang.php" class="btn btn-outline-primary"><-Go home</a>
     <form action="addPengarang.php" method="post">
         <table>
             <tr>
@@ -34,7 +35,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="submit" value="add"></td>
+                <td><input type="submit" name="submit" value="add" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>

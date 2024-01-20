@@ -7,10 +7,15 @@ $katalog =mysqli_query($conn,"SELECT * FROM katalog");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   
     <title>Add Buku</title>
 </head>
-<body>
-    <a href="index.php">Go to Home</a>
+<body class="card border-primary mb-3" style="max-width: 18rem;">
+
+    <h5 class="card-header">tambahkan buku baru</h5>
+    <a href="index.php" class="btn btn-outline-primary"><-Go to Home</a>
     <form action="add.php" method="post" name="form1">
         <table>
             <tr>
@@ -74,7 +79,7 @@ $katalog =mysqli_query($conn,"SELECT * FROM katalog");
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="submit" value="Add"></td>
+                <td><input type="submit" name="submit" value="Add" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>
