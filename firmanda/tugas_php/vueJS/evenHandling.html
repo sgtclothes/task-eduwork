@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Event Handling</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<style>
+  #scrollable-container {
+    height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }
+  .list-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+</style>
+<body>
+    <div id="example-1">
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>The button above has been clicked {{counter}} times.</p>
+      </div>
+      <div id="example-2">
+        <button v-on:click="greet">Greeting</button>
+      </div>
+      <div id="example-3">
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+      </div>
+      <div id="example-4">
+        <button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+      </div>
+      <div id="example-5">
+        <button @click.once="ones">try one click</button>
+      </div>
+     
+      <div id="example-6">
+        <div id="scrollable-container" v-on:scroll.passive="onScroll">
+          <div v-for="item in items" :key="item.id" class="list-item">
+            {{ item.text }}
+          </div>
+        </div>
+      </div>
+      <div id="example-7">
+        <input type="text" name="" id="example-7" @keyup.enter="submit" placeholder="press enter">
+      </div>
+      <div id="example-8">
+        <input type="text" name="" id="example-8" @keyup.page-down="onPageDown" placeholder="press down button" >
+      </div>
+      <div id="example-9">
+        <input v-model="inputText" v-on:keyup.13="submit" placeholder="press enter">
+        <p>anda mengetik: {{inputText}}</p>
+        <p v-if="submited">anda telah menekan enter!</p>
+      </div>
+      <div id="example-10">
+        <input type="text" v-model="inputText">
+        <p v-if="f1presed">sudah ditekan</p>
+      </div>
+      <div id="example-11">
+        <input type="text" @keyup.alt.67="clear" placeholder="pelase press alt+c">
+      </div>
+      <div @click.ctrl="ngeklik" id="example-12">
+        doing something i think?
+      </div>
+      <div id="example-13">
+        <button @click.ctrl="ngeklik2">click button with control</button>
+      </div>
+      <div id="example-14">
+        <button @click.ctrl.exact="ngeklik3">click button with control without anything</button>
+      </div>
+      <div id="example-15">
+        <button @click.exact="ngeklik4">click without any combiantion</button>
+      </div>
+      <div id="example-16">
+        <button @click.left="onClickLeft">left click mouse</button>
+      </div>
+      <div id="example-17">
+        <button @contextmenu.right.prevent="onClickRight">right click mouse with prevent</button>
+      </div>
+      <div id="example-18">
+        <button @mouseup.middle="onMiddle">middle click mouse</button>
+      </div>
+</body>
+</html>
+
+<script>
+  Vue.config.keyCodes.f1 = 112;
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+          counter: 0
+        }
+      })
+      var example2 = new Vue({
+        el: '#example-2',
+        data:{
+          name:'vue.js'
+        },
+        methods:{
+          greet:function(event){
+            alert('hello ' +this.name+'!')
+            if(event){
+              alert(event.target.tagName)
+            }
+          }
+        }
+      })
+      var example3 = new Vue({
+        el:'#example-3',
+        methods:{
+          say: function(message){
+            alert(message);
+          }
+        }
+      })
+      var example4 = new Vue({
+        el: '#example-4',
+        methods:{
+          warn: function(message, event){
+            if(event){
+              event.preventDefault()
+            }
+            alert(message)
+          }
+        }
+      })
+      var example5 = new Vue({
+        el: '#example-5',
+        methods:{
+          ones: function(){
+            alert('one');
+          
+          }
+        }
+      })
+      var example6= new Vue({
+        el: '#example-6',
+        data: {
+          items: [
+            { id: 1, text: 'Item 1' },
+            { id: 2, text: 'Item 2' },
+            { id: 3, text: 'Item 3' },
+            { id: 4, text: 'Item 4' },
+            { id: 5, text: 'Item 5' },
+            { id: 6, text: 'Item 6' },
+            { id: 7, text: 'Item 7' },
+            { id: 8, text: 'Item 8' },
+            { id: 9, text: 'Item 9' },
+            { id: 10, text: 'Item 10' },
+          ],
+          scrollTop: 0
+        },
+        methods: {
+          onScroll: function (event) {
+            // Mendapatkan posisi scroll dari elemen scrollable
+            this.scrollTop = event.target.scrollTop;
+            console.log('Posisi Scroll:', this.scrollTop);
+          }
+        }
+      })
+      var example7 = new Vue({
+        el: '#example-7',
+        methods:{
+          submit: function(){
+            alert('enter')
+          }
+        }
+      })
+
+      var example8 = new Vue({
+        el: '#example-8',
+        methods:{
+          onPageDown: function(){
+            alert('page down');
+          }
+        }
+      })
+      var example9 = new Vue({
+        el: '#example-9',
+        data:{
+          inputText:'',
+          submited:false
+        
+        },
+        methods:{
+          submit:  function(){
+            alert('enter with allias')
+            this.submited =true;
+          }
+        }
+      })
+      var example10= new Vue({
+        el: '#example-10',
+        data:{
+          inputText:'',
+          f1presed:false
+        },
+        methods:{
+          onF1: function(){
+            this.f1presed = true;
+          }
+        },
+        created(){
+          window.addEventListener('keydown',(event) =>{
+            if(event.keyCode === 112){
+              this.onF1()
+            }
+          
+          })
+        }
+      
+      })
+      var example11 = new Vue({
+        el: '#example-11',
+        methods:{
+          clear: function(){
+            alert('clear')
+          }
+        }
+      })
+      var example12 = new Vue({
+        el:'#example-12',
+        methods:{
+          ngeklik: function(){
+            alert('ctrl+click')
+          }
+        }
+      })
+      var example13 = new Vue({
+        el: '#example-13',
+        methods:{
+          ngeklik2: function(){
+            alert('ctrl+click')
+          }
+        }
+      })
+      var example14 = new Vue({
+        el: '#example-14',
+        methods:{
+          ngeklik3: function(){
+            alert('ctrl+click3')
+          }
+        }
+      
+      })
+      var example15 = new Vue({
+        el: '#example-15',
+        methods:{
+          ngeklik4: function(){
+            alert('click2')
+          }
+        }
+      })
+      var example16 = new Vue({
+        el: '#example-16',
+        methods:{
+          onClickLeft: function(){
+            alert('left click')
+          }
+        }
+      
+      })
+      var example17 = new Vue({
+        el: '#example-17',
+        methods:{
+          onClickRight: function(){
+            alert('right click')
+          }
+        }
+      
+      })
+      var example18 = new Vue({
+        el: '#example-18',
+        methods:{
+          onMiddle: function(){
+            alert('middle click')
+          }
+        }
+      
+      })
+      <!-- example2.greet() -->
+</script>
