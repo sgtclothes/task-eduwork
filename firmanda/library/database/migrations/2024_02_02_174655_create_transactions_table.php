@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id');
-            $table->date('data_start');
+            $table->date('date_start');
             $table->date('date_end');
             $table->timestamps();
             $table->foreign('member_id')->references('id')->on('members');
