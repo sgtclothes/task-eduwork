@@ -1,8 +1,8 @@
 @extends('layouts.admin')
-@section('tittle','homePage')
+@section('tittle','bookPage')
 @section('header')
-home
+book
 @endsection
 @section('content')
-ini adalah halaman home
+ini adalah halaman book
 @endsection

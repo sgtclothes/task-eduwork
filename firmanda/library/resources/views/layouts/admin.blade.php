@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>@yield('tittle')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -146,14 +146,77 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          <li class="navbar-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="{{url('home')}}" class="nav-link {{request()->is('home')? 'active' : ''}}">
+                <i class="nav-icon fas fa-home"></i>
                 <p>
                     Home
                 </p>
             </a>
-            
          </li>
+
+         <li class="navbar-item">
+          <a href="{{url('catalog')}}" class="nav-link {{request()->is('catalog')? 'active' : ''}}">
+              <i class="nav-icon fas fa-clipboard"></i>
+              <p>
+                  catalog
+              </p>
+          </a>
+       </li>
+
+       <li class="navbar-item">
+        <a href="{{url('book')}}" class="nav-link {{request()->is('book')? 'active' : ''}}">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+                book
+            </p>
+        </a>
+     </li>
+
+     <li class="navbar-item">
+      <a href="{{url('publisher')}}" class="nav-link {{request()->is('publisher')? 'active' : ''}}">
+          <i class="nav-icon fas fa-feather"></i>
+          <p>
+              publisher
+          </p>
+      </a>
+   </li>
+
+   <li class="navbar-item">
+    <a href="{{url('author')}}" class="nav-link {{request()->is('author')? 'active' : ''}}">
+        <i class="nav-icon fas fa-pen-fancy"></i>
+        <p>
+            author
+        </p>
+    </a>
+ </li>
+
+ <li class="navbar-item">
+  <a href="{{url('transaction')}}" class="nav-link {{request()->is('home')? 'transaction' : ''}}" >
+      <i class="nav-icon fas fa-business-time"></i>
+      <p>
+          transaction
+      </p>
+  </a>
+</li>
+
+<li class="navbar-item">
+  <a href="{{url('transactionDetail')}}" class="nav-link {{request()->is('transactionDetail')? 'active' : ''}}">
+      <i class="nav-icon fas fa-truck"></i>
+      <p>
+          transaction detail
+      </p>
+  </a>
+</li>
+
+<li class="navbar-item">
+  <a href="{{url('member')}}" class="nav-link {{request()->is('member')? 'active' : ''}}">
+      <i class="nav-icon fas fa-user"></i>
+      <p>
+          member
+      </p>
+  </a>
+</li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -168,7 +231,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">@yield('header')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -183,6 +246,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        
         @yield('content')
       </div><!-- /.container-fluid -->
     </section>
