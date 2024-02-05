@@ -9,6 +9,8 @@ catalog
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">Catalog Data</h3>
+      <br>
+      <a href="{{url('catalogs/create')}}" class="btn btn-sm btn-primary pull-right"> create new catalog</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -19,6 +21,7 @@ catalog
             <th class="text-center">Name</th>
             <th class="text-center">Total Books</th>
             <th class="text-center">Date Created</th>
+            <th class="text-center">Action</th>
             
           </tr>
         </thead>
@@ -35,6 +38,15 @@ catalog
             <td class="text-center">
               
               {{  date('d/m/y - h:i:s', strtotime($catalog->created_at))}}
+            </td>
+            <td>
+              <a href="{{url('catalogs/'.$catalog->id.'/edit')}}" class="btn btn-warning ">Edit</a>
+
+              <form action="{{url('catalogs',['id'=>$catalog->id])}}" method="post">
+                @csrf
+                @method('delete')
+                <input class="btn btn-danger " type="submit" value="delete" onclick="return confirm('want to delete?')">
+              </form>
             </td>
            
           </tr>
