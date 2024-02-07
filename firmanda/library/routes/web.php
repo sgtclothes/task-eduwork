@@ -32,7 +32,12 @@ Route::delete('/catalogs/{catalog}', [App\Http\Controllers\CatalogController::cl
 // catalog end
 
 Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
-Route::get('/publishers', [App\Http\Controllers\PublisherController::class, 'index']);
+
+// publisher start
+
+Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
+// publisher end
+
 Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
 Route::get('/transactionDetails', [App\Http\Controllers\TransactionDetailController::class, 'index']);
 Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index']);
