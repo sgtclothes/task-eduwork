@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Http\Controllers\Controller;
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -15,7 +16,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        return view('admin.author.index');
+        $authors = Author::all();
+
+        return view('admin.author.index',compact("authors"));
         //
     }
 
