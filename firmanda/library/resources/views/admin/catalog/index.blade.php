@@ -64,6 +64,6 @@ catalog
         <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
       </ul>
     </div> --}}
-  </div>
+</div>
   <!-- /.card -->
 @endsection

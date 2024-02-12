@@ -13,7 +13,7 @@ publisher
     <form action="{{url('publishers/'.$publisher->id)}}" method="POST">
         @csrf
         {{method_field('PUT')}}
-        
+
       <div class="card-body">
         <div class="form-group">
           <label >Name</label>
@@ -25,7 +25,7 @@ publisher
           </div>
         <div class="form-group">
             <label >Phone Number</label>
-            <input type="text" class="form-control" name="phone_number" placeholder="Enter phone number" value="{{$publisher->phone_number}}">
+            <input type="number" class="form-control" name="phone_number" placeholder="Enter phone number" value="{{$publisher->phone_number}}">
           </div>
           <div class="form-group">
             <label >Address</label>
