@@ -43,6 +43,7 @@ Route::get('/transactionDetails', [App\Http\Controllers\TransactionDetailControl
 
 // authors start
 Route::resource('/authors',App\Http\Controllers\AuthorController::class);
+Route::get('/api/authors',[App\Http\Controllers\AuthorController::class,'api']);
 // authors end
 
 Route::get('/books', [App\Http\Controllers\BookController::class, 'index']);
