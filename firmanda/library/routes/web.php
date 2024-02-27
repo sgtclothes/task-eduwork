@@ -36,6 +36,7 @@ Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
 // publisher start
 
 Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
+Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class,'api']);
 // publisher end
 
 Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);

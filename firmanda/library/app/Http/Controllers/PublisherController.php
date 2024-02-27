@@ -33,7 +33,12 @@ class PublisherController extends Controller
         
         return view('admin.publisher.create');
     }
+    public function api(){
+        $publishers = Publisher::all();
+        $datatables = datatables()->of($publishers)->addIndexColumn();
 
+        return $datatables->make(true);
+    }
     /**
      * Store a newly created resource in storage.
      *
