@@ -18,7 +18,12 @@ class BookController extends Controller
         return view('admin.book.index');
         //
     }
+    public function api(){
+        $books = Book::all();
+        $datatables = datatables()->of($books)->addIndexColumn();
 
+        return $datatables->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      *
