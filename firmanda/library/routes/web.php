@@ -31,7 +31,12 @@ Route::delete('/catalogs/{catalog}', [App\Http\Controllers\CatalogController::cl
 
 // catalog end
 
-Route::get('/members', [App\Http\Controllers\MemberController::class, 'index']);
+
+// members start
+Route::resource('/members', App\Http\Controllers\MemberController::class);
+Route::get('/api/members', [App\Http\Controllers\MemberController::class,'api']);
+// members end
+
 
 // publisher start
 
