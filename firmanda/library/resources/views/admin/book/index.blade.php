@@ -30,7 +30,7 @@
         {{-- searche dn --}}
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
-        
+
         {{-- box --}}
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12" v-for="book in filteredList">
@@ -54,7 +54,7 @@
         <div class="modal fade" id="modal-xl">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <form :action="actionUrl" method="post" autocomplete="off">
+                    <form :action="actionUrl" method="post" autocomplete="off" >
                         <div class="modal-header">
                             <h4 class="modal-title">Create new Author</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,21 +66,25 @@
                             <input type="hidden" name="_method" value="PUT" v-if='editStatus'>
                             <div class="form-group">
                                 <label>ISBN</label>
-                                <input type="number" name="isbn" required="" :value="data.isbn" class="form-control">
+                                <input type="number" name="isbn" required="" :value="data.isbn"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>title</label>
-                                <input type="text" name="title" required="" :value="data.title" class="form-control">
+                                <input type="text" name="title" required="" :value="data.title"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>year</label>
-                                <input type="number" name="year" required="" :value="data.year" class="form-control">
+                                <input type="number" name="year" required="" :value="data.year"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>publisher</label>
                                 <select class="form-control" aria-label="Default select example" name="publisher_id">
                                     @foreach ($publishers as $publisher)
-                                        <option :selected="data.publisher_id == {{ $publisher->id }}" value="{{ $publisher->id }}">
+                                        <option :selected="data.publisher_id == {{ $publisher->id }}"
+                                            value="{{ $publisher->id }}">
                                             {{ $publisher->name }};
                                         </option>
                                     @endforeach
@@ -92,7 +96,8 @@
                                 <label>author</label>
                                 <select class="form-control" aria-label="Default select example" name="author_id">
                                     @foreach ($authors as $author)
-                                        <option :selected="data.author_id == {{$author->id}}" value="{{ $author->id }}">
+                                        <option :selected="data.author_id == {{ $author->id }}"
+                                            value="{{ $author->id }}">
                                             {{ $author->name }};
                                         </option>
                                     @endforeach
@@ -105,7 +110,8 @@
                                 <label>catalog</label>
                                 <select class="form-control" aria-label="Default select example" name="catalog_id">
                                     @foreach ($catalogs as $catalog)
-                                        <option  :selected="data.catalog_id == {{$catalog->id}}" value="{{ $catalog->id }}">
+                                        <option :selected="data.catalog_id == {{ $catalog->id }}"
+                                            value="{{ $catalog->id }}">
                                             {{ $catalog->name }};
                                         </option>
                                     @endforeach
@@ -116,16 +122,19 @@
                             </div>
                             <div class="form-group">
                                 <label>quantity stock</label>
-                                <input type="number" name="qty" required="" :value="data.qty" class="form-control">
+                                <input type="number" name="qty" required="" :value="data.qty"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="number" name="price" required="" :value="data.price" class="form-control">
+                                <input type="number" name="price" required="" :value="data.price"
+                                    class="form-control">
                             </div>
 
                         </div>
                         <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"  v-if='editStatus' @click="deleteData(data.id)">Delete</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" v-if='editStatus'
+                                @click="deleteData(data.id)">Delete</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                 </div>
@@ -141,16 +150,16 @@
 
 @section('js')
     <script type="text/javascript">
-        // var actionUrl = "{{ url('books') }}";
+        var actionUrl = "{{ url('books') }}";
         var apiUrl = "{{ url('api/books') }}";
         var app = new Vue({
             el: "#controller",
             data: {
-                actionUrl : "{{ url('books') }}",
-                // apiUrl : "{{ url('api/books') }}",
+                actionUrl,
+                apiUrl,
                 books: [],
                 search: '',
-                data:{},
+                data: {},
                 editStatus: false,
             },
             mounted: function() {
@@ -176,30 +185,43 @@
                 },
                 addData() {
                     $("#modal-xl").modal();
-                    this.data={};
+                    this.data = {};
                     this.actionUrl = "{{ url('books') }}";
-                    console.log( this.actionUrl);
+                    console.log(this.actionUrl);
                     this.editStatus = false;
+
                 },
                 editData(data) {
                     $("#modal-xl").modal();
-                    this.actionUrl = "{{ url('books') }}" +"/"+data.id;
+                    this.actionUrl = "{{ url('books') }}" + "/" + data.id;
                     this.data = data;
                     console.log(this.actionUrl);
                     this.editStatus = true;
                 },
                 deleteData(id) {
-                    this.actionUrl = "{{ url('books') }}" +"/"+id;
+                    this.actionUrl = "{{ url('books') }}" + "/" + id;
                     console.log(this.actionUrl);
                     this.editStatus = false;
-                    if(confirm("wanna delete this data?")){
-                        axios.post(this.actionUrl, {_method: 'DELETE'}).then(response =>{
+                    if (confirm("wanna delete this data?")) {
+                        axios.post(this.actionUrl, {
+                            _method: 'DELETE'
+                        }).then(response => {
                             location.reload();
                             // alert("Successfully deleted");
                         })
-                    
+
                     }
                 },
+                // submitForm(event) {
+                //     event.preventDefault();
+                //     const _this = this;
+                //     var actionUrl = !this.editStatus ? this.actionUrl : this.actionUrl + '/' + id;
+                //     axios.post(actionUrl, new FormData($(event.target)[0])).then(response => {
+                //         $('#modal-xl').modal('hide');
+                //         _this.books.ajax.reload();
+                //     });
+
+                // },
 
             },
             computed: {

@@ -37,7 +37,7 @@ catalog
             </td>
             <td class="text-center">
               
-              {{  date('d/m/y - h:i:s', strtotime($catalog->created_at))}}
+              {{  date_convert($catalog->created_at)}}
             </td>
             <td>
               <a href="{{url('catalogs/'.$catalog->id.'/edit')}}" class="btn btn-warning ">Edit</a>

@@ -163,7 +163,7 @@
                 orderable: true
             },
             {
-                data: 'created_at',
+                data: 'date',
                 class: 'text-center',
                 orderable: true
             },

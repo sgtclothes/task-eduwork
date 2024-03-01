@@ -38,7 +38,7 @@ var controller = new Vue({
         },
         editData(event, row) {
             this.data = this.datas[row];
-            console.log(this.data);
+            console.log(event);
             // this.data = data;
 
             this.editStatus = true;
