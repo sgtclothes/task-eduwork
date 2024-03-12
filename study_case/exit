@@ -1,0 +1,32 @@
+[33mcommit 533faa2c5b2a12bfecd66cd05c48af479cf62604[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/bayu_ramadhon[m[33m, [m[1;32mbayu_ramadhon[m[33m)[m
+Author: unknown <bayuamdan@gmail.com>
+Date:   Tue Mar 12 14:56:22 2024 +0700
+
+    study case
+
+[33mcommit 1c958429179aa4a596832f4c985b0da47409c782[m
+Merge: 2211578 bfbc344
+Author: Bayu Ramadhon <47633489+bayuramadhon@users.noreply.github.com>
+Date:   Sat Feb 17 14:52:39 2024 +0700
+
+    Merge pull request #1 from bayuramadhon/feat/add-transactions
+    
+    Add Transaction
+
+[33mcommit bfbc344c6cb94c8617033dcf03120866a9b3482f[m[33m ([m[1;31morigin/feat/add-transactions[m[33m)[m
+Author: Bagus Sadewo <bagus.sadewo@bfi.co.id>
+Date:   Sat Feb 17 13:32:49 2024 +0700
+
+    Add Transaction
+
+[33mcommit 22115780e82935c66b1e0f0fbf3213ac8213d630[m
+Author: unknown <bayuamdan@gmail.com>
+Date:   Wed Feb 14 14:38:14 2024 +0700
+
+    date picker
+
+[33mcommit cd139ab76ea6180b097dfe8973e3af88e49e3f04[m
+Author: unknown <bayuamdan@gmail.com>
+Date:   Sun Jan 7 15:46:25 2024 +0700
+
+    tugas
