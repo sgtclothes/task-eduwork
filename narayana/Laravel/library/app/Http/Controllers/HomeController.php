@@ -142,16 +142,16 @@ class HomeController extends Controller
         //                 ->where('authors.id', '11')
         //                 ->get();
 
-        $data20 = Member::select('*')
-                        ->whereMonth('members.created_at', '=', 6)
-                        ->get();
+        // $data20 = Member::select('*')
+        //                 ->whereMonth('members.created_at', '=', 6)
+        //                 ->get();
 
 
 
 
 
 
-        return $data20;
+        // return $data20;
 
 
         return view('home');
