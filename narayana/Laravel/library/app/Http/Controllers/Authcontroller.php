@@ -12,7 +12,13 @@ class Authcontroller extends Controller
      */
     public function index()
     {
-        return view('admin.author.index');
+        // $author = Author::select('books.titile', 'authors.id', 'authors.name', 'authors.email', 'authors.phone_number', 'authors.address')
+        // ->join('books', 'author_id','=','authors.id')
+        // ->get();
+
+        $author = Author::with('books')->get();
+        // return $author;
+        return view('admin.author.index', compact('author'));
     }
 
     /**
@@ -20,7 +26,7 @@ class Authcontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.author.create');
     }
 
     /**
@@ -28,7 +34,16 @@ class Authcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'      =>['required'],
+            'email'      =>['required'],
+            'phone_number'      =>['required'],
+            'address'      =>['required']
+        ]);
+        Author::create($request->all());
+
+
+        return redirect('authors');
     }
 
     /**
@@ -44,7 +59,7 @@ class Authcontroller extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('admin.author.edit', compact('author'));
     }
 
     /**
@@ -52,7 +67,16 @@ class Authcontroller extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        return view('admin.catalog.index');
+        $this->validate($request,[
+            'name'      =>['required'],
+            'email'      =>['required'],
+            'phone_number'      =>['required'],
+            'address'      =>['required']
+        ]);
+        $author->update($request->all());
+
+
+        return redirect('authors');
     }
 
     /**
@@ -60,6 +84,8 @@ class Authcontroller extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        $author->delete();
+
+        return redirect('authors');
     }
 }
