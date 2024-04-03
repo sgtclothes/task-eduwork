@@ -10,15 +10,12 @@ class Authcontroller extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        // $author = Author::select('books.titile', 'authors.id', 'authors.name', 'authors.email', 'authors.phone_number', 'authors.address')
-        // ->join('books', 'author_id','=','authors.id')
-        // ->get();
-
         $author = Author::with('books')->get();
-        // return $author;
-        return view('admin.author.index', compact('author'));
+        // return $catalogs;
+        return view('admin.author', compact('author'));
     }
 
     /**
@@ -26,7 +23,7 @@ class Authcontroller extends Controller
      */
     public function create()
     {
-        return view('admin.author.create');
+        //
     }
 
     /**
@@ -35,13 +32,18 @@ class Authcontroller extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'      =>['required'],
-            'email'      =>['required'],
-            'phone_number'      =>['required'],
-            'address'      =>['required']
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'phone_number' => 'required|numeric',
+            'address' => 'required|max:256'
         ]);
-        Author::create($request->all());
-
+        // Author::create($request->all());
+        Author::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+        ]);
 
         return redirect('authors');
     }
@@ -59,7 +61,7 @@ class Authcontroller extends Controller
      */
     public function edit(Author $author)
     {
-        return view('admin.author.edit', compact('author'));
+        //
     }
 
     /**
@@ -67,14 +69,13 @@ class Authcontroller extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        $this->validate($request,[
-            'name'      =>['required'],
-            'email'      =>['required'],
-            'phone_number'      =>['required'],
-            'address'      =>['required']
+        $this->validate($request, [
+            'name'      => ['required'],
+            'phone_number'      => ['required'],
+            'email'      => ['required'],
+            'address'      => ['required'],
         ]);
         $author->update($request->all());
-
 
         return redirect('authors');
     }
@@ -85,7 +86,5 @@ class Authcontroller extends Controller
     public function destroy(Author $author)
     {
         $author->delete();
-
-        return redirect('authors');
     }
 }

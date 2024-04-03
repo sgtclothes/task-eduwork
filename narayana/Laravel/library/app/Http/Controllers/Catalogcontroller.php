@@ -35,7 +35,8 @@ class Catalogcontroller extends Controller
         // $catalog->save();
 
         $this->validate($request,[
-            'name'      =>['required']
+            'name'      =>['required', 'string', 'max:255'],
+            'email'      =>['required', 'email']
         ]);
         Catalog::create($request->all());
 

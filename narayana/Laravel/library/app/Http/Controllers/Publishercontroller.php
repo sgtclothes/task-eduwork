@@ -13,8 +13,7 @@ class Publishercontroller extends Controller
     public function index()
     {
         $publishers = publisher::with('books')->get();
-        // return $publishers;
-        return view('admin.publisher.index', compact('publishers'));
+        return view('admin.publisher', compact('publishers'));
     }
 
     /**
@@ -22,7 +21,7 @@ class Publishercontroller extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        //
     }
 
     /**
@@ -31,20 +30,18 @@ class Publishercontroller extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'      =>['required'],
-            'email'      =>['required'],
-            'phone_number'      =>['required'],
-            'address'      =>['required']
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'phone_number' => 'required|numeric',
+            'address' => 'required|max:256'
         ]);
-        Publisher::create($request->all());
-
-        // $catalog = new Publisher;
-        // $catalog->name = $request->name;
-        // $catalog->email = $request->email;
-        // $catalog->phone_number = $request->phone_number;
-        // $catalog->address = $request->address;
-        // $catalog->save();
-
+        // Publisher::create($request->all());
+        Publisher::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+        ]);
         return redirect('publishers');
     }
 
@@ -61,7 +58,7 @@ class Publishercontroller extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        return view('admin.publisher.edit', compact('publisher'));
+        //
     }
 
     /**
@@ -87,7 +84,5 @@ class Publishercontroller extends Controller
     public function destroy(Publisher $publisher)
     {
         $publisher->delete();
-
-        return redirect('publishers');
     }
 }
