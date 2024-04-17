@@ -2,15 +2,17 @@
 @section('header', 'Publisher')
 
 @section('css')
-
+<!-- Data Table Plugin -->
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
 <div id='controller-anjay'>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card" style="width: 1050px;">
+<div class="row">
+            <div class="col-12">
+                <div class="card">
                     <div class="card-header">
                     @if($errors->any())
                         <div>
@@ -26,7 +28,7 @@
                         <a href="#" @click="addData()" class="btn btn-primary pull-right">Create New Publisher</a>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table id="datatable" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">No</th>
@@ -34,7 +36,7 @@
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Phone Number</th>
                                     <th class="text-center">Adress</th>
-                                    <th class="text-center">Created At</th>
+                                    <!-- <th class="text-center">Created At</th> -->
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -46,7 +48,7 @@
                                     <td class="text-center">{{ $publishers->email }}</td>
                                     <td class="text-center">{{ $publishers->phone_number }}</td>
                                     <td class="text-center">{{ $publishers->address }}</td>
-                                    <td class="text-center">{{ date('d/m/Y', strtotime($publishers->created_at))  }}</td>
+                                    <!-- <td class="text-center">{{ date('d/m/Y', strtotime($publishers->created_at))  }}</td> -->
                                     <td class="text-center">
                                         <a href="#" @click="editData({{ $publishers }})" class="btn btn-warning btn-sm">Edit</a>
                                         <a href="#" @click="deleteData({{ $publishers->id }})" class="btn btn-danger btn-sm" >Delete</a>
@@ -103,6 +105,27 @@
 
 
     @section('js')
+<!-- Data Table Plugin -->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<!-- Plugin Data Table - JS -->
+<script type="text/javascript">
+  $(function () {
+    $("#datatable").DataTable();
+  });
+</script>
+
+<!-- CURD -->
     <script type="text/javascript">
         var controller = new Vue({
             el: '#controller-anjay',
