@@ -27,3 +27,7 @@ Route::get('/transactions', [App\Http\Controllers\Transactioncontroller::class, 
 Route::resource('/authors', App\Http\Controllers\AuthController::class);
 Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
 Route::resource('/catalogs', App\Http\Controllers\CatalogController::class);
+
+
+Route::get('/api/authors', [App\Http\Controllers\AuthController::class, 'api']);
+Route::get('/api/publishers', [App\Http\Controllers\Publishercontroller::class, 'api']);

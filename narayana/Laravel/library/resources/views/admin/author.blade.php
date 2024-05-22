@@ -37,26 +37,10 @@
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Phone Number</th>
                                     <th class="text-center">Adress</th>
-                                    <th class="text-center">Created At</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach($author as $key => $author)
-                                <tr>
-                                    <td class="text-center">{{ $key+1 }}</td>
-                                    <td class="text-center">{{ $author->name }}</td>
-                                    <td class="text-center">{{ $author->email }}</td>
-                                    <td class="text-center">{{ $author->phone_number }}</td>
-                                    <td class="text-center">{{ $author->address }}</td>
-                                    <td class="text-center">{{ date('d/m/Y', strtotime($author->created_at))  }}</td>
-                                    <td class="text-center">
-                                        <a href="#" @click="editData({{ $author }})" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="#" @click="deleteData({{ $author->id }})" class="btn btn-danger btn-sm" >Delete</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -65,7 +49,7 @@
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form method="post" :action="actionUrl" autocomplete="off">
+                            <form method="post" :action="actionUrl" autocomplete="off" @submit="submitForm($event, data.id)">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Author</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,12 +84,10 @@
                         </div>
                     </div>
                 </div>
-                @endsection
+@endsection
 
 
-
-
-    @section('js')
+@section('js')
 <!-- Data Table Plugin -->
 <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -125,9 +107,31 @@
     $("#datatable").DataTable();
   });
 </script>
+<script type="text/javascript">
+var actionUrl = '{{ url('authors') }}';
+var apiUrl = '{{ url('api/authors') }}';
+
+var columns = [
+    {data: 'DT_RowIndex', class: 'text-center', orderable: true},
+    {data: 'name', class: 'text-center', orderable: true},
+    {data: 'email', class: 'text-center', orderable: true},
+    {data: 'phone_number', class: 'text-center', orderable: true},
+    {data: 'address', class: 'text-center', orderable: true},
+    {render: function (index, row, data, meta){
+        return `
+        <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData(event, ${meta.row})">
+        Edit
+        </a>
+        <a href="#" class="btn btn-danger btn-sm" onclick="controller.deleteData(event, ${data.id})">
+        Delete
+        </a>`;
+    }, orderable: false, width: '200px', class: 'text-center'},
+];
+</script>
+<script src="{{ asset('js/data.js') }}"></script>
 
 <!-- Curd -->
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var controller = new Vue({
             el: '#controller',
             data: {
@@ -162,5 +166,5 @@
                 }
             }
         });
-    </script>
+    </script> -->
     @endsection

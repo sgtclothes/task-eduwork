@@ -211,7 +211,7 @@
 
     <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
-    <script src="{{ asset('assets/plugins/jquery-mousewheel/jquery.mousewheel.j') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
     <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
