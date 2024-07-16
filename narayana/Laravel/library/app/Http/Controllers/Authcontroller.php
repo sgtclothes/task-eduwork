@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Authcontroller extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.author->date = '0';
      */
 
     public function index()
@@ -18,8 +18,12 @@ class Authcontroller extends Controller
 
     public function api()
     {
-        $author = Author::all();
-        $datatables = datatables()->of($author)->addIndexColumn();
+        $authors = Author::all();
+        foreach ($authors as $key => $author) {
+            $author->created_at = convert_date($author->created_at);
+        }
+
+        $datatables = datatables()->of($authors)->addIndexColumn();
 
         return $datatables->make(true);
     }
