@@ -109,6 +109,14 @@
                         </a>
                     </li>
                     <li class="nav-item menu-open">
+                        <a href="{{ url('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }} ">
+                            <i class="nav-icon fas fa-users"></i> 
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
                         <a href="{{ url('catalogs') }}" class="nav-link {{ request()->is('catalogs') ? 'active' : '' }} ">
                             <i class="nav-icon fas fa-edit"></i> 
                             <p>
