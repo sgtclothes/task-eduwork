@@ -85,7 +85,7 @@
                                     @foreach ($publishers as $publisher)
                                         <option :selected="data.publisher_id == {{ $publisher->id }}"
                                             value="{{ $publisher->id }}">
-                                            {{ $publisher->name }};
+                                            {{ $publisher->name }}
                                         </option>
                                     @endforeach
 
@@ -98,7 +98,7 @@
                                     @foreach ($authors as $author)
                                         <option :selected="data.author_id == {{ $author->id }}"
                                             value="{{ $author->id }}">
-                                            {{ $author->name }};
+                                            {{ $author->name }}
                                         </option>
                                     @endforeach
 
@@ -112,7 +112,7 @@
                                     @foreach ($catalogs as $catalog)
                                         <option :selected="data.catalog_id == {{ $catalog->id }}"
                                             value="{{ $catalog->id }}">
-                                            {{ $catalog->name }};
+                                            {{ $catalog->name }}
                                         </option>
                                     @endforeach
 
@@ -137,6 +137,7 @@
                                 @click="deleteData(data.id)">Delete</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
+                    <form >
                 </div>
                 <!-- /.modal-content -->
             </div>

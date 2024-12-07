@@ -44,8 +44,20 @@ Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
 Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class,'api']);
 // publisher end
 
+
+// transaction start
 Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
-Route::get('/transactionDetails', [App\Http\Controllers\TransactionDetailController::class, 'index']);
+Route::get('/transactions/create', [App\Http\Controllers\TransactionController::class, 'create']);
+Route::get('/transactions/cari', [App\Http\Controllers\TransactionController::class, 'cari'])->name('transactions.cari');
+// Route::get('/save-borrowed-books', [App\Http\Controllers\TransactionController::class, 'store']);
+Route::post('/transactions', [App\Http\Controllers\TransactionController::class, 'store']);
+Route::get('/findMember', [App\Http\Controllers\TransactionController::class, 'findMember'])->name("findMember");
+// transaction end
+
+// transactionDetails start
+Route::resource('/transactionDetails', App\Http\Controllers\TransactionDetailController::class);
+Route::get('/api/transactionDetails',[App\Http\Controllers\TransactionDetailController::class,'api']);
+// transactionDetails end
 
 // authors start
 Route::resource('/authors',App\Http\Controllers\AuthorController::class);

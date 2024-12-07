@@ -200,14 +200,14 @@
   </a>
 </li>
 
-<li class="navbar-item">
+{{-- <li class="navbar-item">
   <a href="{{url('transactionDetails')}}" class="nav-link {{request()->is('transactionDetails')? 'active' : ''}}">
       <i class="nav-icon fas fa-truck"></i>
       <p>
           transaction detail
       </p>
   </a>
-</li>
+</li> --}}
 
 <li class="navbar-item">
   <a href="{{url('members')}}" class="nav-link {{request()->is('members')? 'active' : ''}}">

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Publisher;
 use App\Models\Member;
 use App\Models\Transaction;
@@ -158,6 +158,37 @@ class HomeController extends Controller
         ->get();
         
         // return $data20;
-        return view('home');
+
+        $transactions = Transaction::all();
+        $books = Book::all();
+        $members = Member::all();
+        $authors = Author::all();
+        // total
+        $transaction_total = Transaction::count();
+        $book_total = Book::count();
+        $member_total = Member::count();
+        $author_total = Author::count();
+        // donut
+        $data_donut = Book::select(DB::raw("COUNT(publisher_id) as total"))->groupBy('publisher_id')->orderBy("publisher_id","asc")->pluck("total");
+        $label_donut = Publisher::orderBy("publishers.id","asc")->join("books","books.publisher_id","=","publishers.id")->groupBy("publishers.name")->pluck("publishers.name");
+        // return $label_donut;
+
+        // bar
+        $label_bar = ["peminjaman"];
+        $data_bar=[];
+
+        foreach($label_bar as $key => $value){
+            $data_bar[$key]['label'] = $label_bar[$key];
+            $data_bar[$key]['backgroundColor'] = 'rgba(60,141,188,0.9';
+            $data_month = [];
+
+            foreach(range(1,12) as $month){
+                $data_month[]= Transaction::select(DB::raw("count(*) as total"))-> whereMonth('date_start',$month)->first()->total;
+
+            }
+            $data_bar[$key]['data']= $data_month;
+        }
+        // return $data_month;
+        return view('home',compact("transactions","books","members","authors","transaction_total","book_total","member_total","author_total","data_donut","label_donut",'data_bar'));
     }
 }

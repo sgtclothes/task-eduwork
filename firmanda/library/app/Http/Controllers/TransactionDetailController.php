@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\TransactionDetail;
+use App\Models\Transaction;
+use App\Models\Book;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,10 +17,21 @@ class TransactionDetailController extends Controller
      */
     public function index()
     {
-        return view('admin.transactionDetail.index');
+        $transactions = Transaction::all();
+        $books = Book::all();
+        return view('admin.transactionDetail.index', compact('transactions','books'));
         //
     }
+    public function api(){
+        $transactionDetails = TransactionDetail::all();
+        $datatables = datatables()->of($transactionDetails)
+        ->addColumn('date',function($transactionDetails){
+            return date_convert($transactionDetails->created_at);
+        })
+        ->addIndexColumn();
 
+        return $datatables->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      *
