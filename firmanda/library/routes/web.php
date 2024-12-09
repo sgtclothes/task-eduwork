@@ -56,6 +56,7 @@ Route::get('/findMember', [App\Http\Controllers\TransactionController::class, 'f
 
 // return start 
 Route::get('/transactions/{transaction}/return', [App\Http\Controllers\TransactionController::class, 'edit']);
+Route::put('/transactions/{transaction}', [App\Http\Controllers\TransactionController::class, 'update']);
 // return end
 
 // transactionDetails start

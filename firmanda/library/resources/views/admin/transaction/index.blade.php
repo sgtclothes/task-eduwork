@@ -9,6 +9,23 @@ transaction
       <h3 class="card-title">Catalog Data</h3>
       <br>
       <a href="{{url('transactions/create')}}" class="btn btn-sm btn-primary pull-right"> create new catalog</a>
+      <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 150px;">
+          <select class="custom-select form-control-border" id="exampleSelectBorder">
+            <option>Value 1</option>
+            <option>Value 2</option>
+            <option>Value 3</option>
+          </select>
+          <select class="custom-select form-control-border" id="exampleSelectBorder">
+            <option>Value 1</option>
+            <option>Value 2</option>
+            <option>Value 3</option>
+          </select>
+          </div>
+          
+        </div>
+        
+      </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -19,6 +36,7 @@ transaction
             <th class="text-center">Member ID</th>
             <th class="text-center">Tanggal Pinjam</th>
             <th class="text-center">Tanggal Harus Dikembalikan</th>
+            <th class="text-center">Status</th>
            <th class="text-center">Action</th>
             
           </tr>

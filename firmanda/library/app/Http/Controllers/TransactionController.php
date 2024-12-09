@@ -66,6 +66,13 @@ class TransactionController extends Controller
 
                 'transaction_id' => $transaction->id,
                 'qty' => $datas['book_qty'][$i],
+                'status' => 'borrowed',
+            ]);
+            $book =  Book::find($datas['book_id'][$i]);
+            $qtyBook = $datas['book_qty'][$i];
+            $totalBook = $book->qty - $qtyBook;
+            $book->update([
+                'qty' => $totalBook, 
             ]);
         }
         // return redirect('transactions'); 
@@ -104,8 +111,11 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
-        return view(('admin.transaction.return'));
+        $books = Transaction::with('transactionDetails.book')->findOrFail($transaction->id);
+        $transactionDetails = $transaction->transactionDetails;
+        // return $transactionDetails;
+        // return $books;
+        return view(('admin.transaction.return'), compact('transaction', 'books', 'transactionDetails'));
     }
 
     /**
@@ -117,7 +127,39 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        // dd($request->all());
+        $selectedBooks = $request->book_id;
+        list($book_id, $transactionDetail_id) = explode('|', $selectedBooks);
+        
+        $transactionDetail = TransactionDetail::find($transactionDetail_id);
+        $transactionDetail = $transactionDetail->where('book_id','=' ,$book_id)->first();
+        $books = Book::find($book_id);
+        if ($book_id && $transactionDetail_id) {
+            if($request->status == 'returned'){
+                // return $books->qty +$transactionDetail->qty;
+                $books->update([
+                    'qty' => $books->qty + $transactionDetail->qty,
+                ]);
+                $transactionDetail->update([
+                    'status' => $request->status,
+                    'date' => $request->date_end,
+                    'qty' => 0,
+                ]);
+            }
+            // Gunakan $bookId dan $transactionDetailId sesuai kebutuhan
+            // return response()->json([
+            //     'book_id' => $book_id,
+            //     'transaction_detail_id' => $transactionDetail_id,
+            //     'qty' => $transactionDetail->qty,
+            //     'status' => $request->status,
+            //     'date' => $request->date_end,
+            // ]);
+        }
+        return redirect('transactions');
+        
+        // return $transactionDetail->qty;
+
+        // return dd($request->all());
     }
 
     /**
