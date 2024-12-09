@@ -9,4 +9,11 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $fillable = ['book_id','qty','member_id',"date_start","date_end"];
+
+    public function member(){
+        return $this->belongsTo('App\Models\Member','member_id');
+    }
+    public function transactionDetails(){
+        return $this->hasMany('App\Models\TransactionDetail','transaction_id');
+    }
 }

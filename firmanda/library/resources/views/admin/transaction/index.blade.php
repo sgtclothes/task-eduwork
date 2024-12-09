@@ -19,7 +19,7 @@ transaction
             <th class="text-center">Member ID</th>
             <th class="text-center">Tanggal Pinjam</th>
             <th class="text-center">Tanggal Harus Dikembalikan</th>
-           
+           <th class="text-center">Action</th>
             
           </tr>
         </thead>
@@ -37,8 +37,12 @@ transaction
               
               {{  date_convert($transaction->date_end)}}
             </td>
+            <td>
+              <a href="{{url('transactions/'.$transaction->id.'/return')}}" class="btn btn-warning">Return</a> 
+              <a href="{{url('transactions/'.$transaction->id.'/detail')}}" class="btn btn-primary">detail</a> 
+              <a href="#" class="btn btn-danger">hapus</a>
+            </td>
             
-           
           </tr>
           
           @endforeach

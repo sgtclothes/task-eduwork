@@ -81,7 +81,19 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        // $transactions = Transaction::all();
+        $transactions  = Transaction::with('transactionDetails.book')->findOrFail($transaction->id);
+        $allBorrowed = $transactions->transactionDetails->every(function($detail){
+            return $detail->status === "borrowed";
+        });
+        $someBorrowed = $transactions->transactionDetails->contains(function($detail){
+            return $detail->status === "borrowed";
+        });
+        $allReturned = $transactions->transactionDetails->every(function($detail){
+            return $detail->status === "returned";
+        });
+        // return view('admin.transaction.detail',compact('transactions'));
+        return view('admin.transaction.detail',compact('transaction',"transactions","allBorrowed","someBorrowed","allReturned"));
     }
 
     /**
@@ -93,6 +105,7 @@ class TransactionController extends Controller
     public function edit(Transaction $transaction)
     {
         //
+        return view(('admin.transaction.return'));
     }
 
     /**
@@ -136,4 +149,11 @@ class TransactionController extends Controller
         $members = Member::where('name', 'LIKE', '%' . $finding . '%')->get(['id', 'name']);
         return response()->json($members);
     }
+
+    public function indexReturn(){
+        // $transactions = Transaction::where('status', 'borrowed')->get();
+        // return view('admin.transaction.return', compact('transactions'));
+        
+    }
+
 }

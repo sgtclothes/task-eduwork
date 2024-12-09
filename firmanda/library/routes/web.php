@@ -54,6 +54,14 @@ Route::post('/transactions', [App\Http\Controllers\TransactionController::class,
 Route::get('/findMember', [App\Http\Controllers\TransactionController::class, 'findMember'])->name("findMember");
 // transaction end
 
+// return start 
+Route::get('/transactions/{transaction}/return', [App\Http\Controllers\TransactionController::class, 'edit']);
+// return end
+
+// transactionDetails start
+Route::get('/transactions/{transaction}/detail', [App\Http\Controllers\TransactionController::class, 'show']);
+// transactionDetails end
+
 // transactionDetails start
 Route::resource('/transactionDetails', App\Http\Controllers\TransactionDetailController::class);
 Route::get('/api/transactionDetails',[App\Http\Controllers\TransactionDetailController::class,'api']);

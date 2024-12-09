@@ -12,4 +12,7 @@ class Member extends Model
     public function user(){
         return $this->hasOne('App\Models\User','member_id');
     }
+    public function transactions(){
+        return $this->hasMany('App\Models\Transaction','member_id');
+    }
 }
