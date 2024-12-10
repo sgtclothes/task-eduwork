@@ -98,30 +98,32 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($books as $key => $book)
-                                            <tr>
-                                                <td>
-                                                    {{ $books->firstItem() + $key }}
-                                                </td>
-                                                <td>
-                                                    {{ $book->id }}
-                                                </td>
-                                                <td>
-                                                    {{ $book->title }}
-                                                </td>
-                                                <td>
-                                                    {{ $book->price }}
-                                                </td>
-                                                <td>
-                                                    {{ $book->qty }}
-                                                </td>
-                                                <td>
-                                                    {{ $book->catalog->name ?? 'N/A' }}
-                                                </td>
-                                                <td>
-                                                    <button type="button"
-                                                        class="btn btn-primary  btn-pinjam">Pinjam</button>
-                                                </td>
-                                            </tr>
+                                            @if ($book->qty > 0)
+                                                <tr>
+                                                    <td>
+                                                        {{ $books->firstItem() + $key }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $book->id }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $book->title }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $book->price }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $book->qty }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $book->catalog->name ?? 'N/A' }}
+                                                    </td>
+                                                    <td>
+                                                        <button type="button"
+                                                            class="btn btn-primary  btn-pinjam">Pinjam</button>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -312,7 +314,7 @@
         // submit data
         $(document).on('click', '.btn-submit', function() {
             let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
-            
+
             let bookIds = borrowedBooks.map(book => book.id);
             let bookQty = borrowedBooks.map(book => book.qty);
             let userID = $('#user_id').val();
@@ -335,7 +337,7 @@
                 },
                 error: function(xhr, status, error) {
                     console.error("Terjadi kesalahan saat mengirim data:", xhr.responseText);
-                    
+
                 }
             });
         });

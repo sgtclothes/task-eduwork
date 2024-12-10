@@ -8,6 +8,7 @@ use App\Models\Member;
 use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -16,10 +17,42 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::all();
-        return view('admin.transaction.index', compact("transactions"));
+        $transactions  = Transaction::with('transactionDetails.book')->get();
+        $years = DB::table('transactions')
+            ->selectRaw('YEAR(date_start) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+        // $status = $request->query('status');
+        $query = Transaction::with('transactionDetails.book');
+        if ($request->has('status')) {
+            $status = $request->get('status');
+            // return $status;
+            if ($status === 'returnedAll') {
+                $query->whereDoesntHave('transactionDetails', function ($q) {
+                    $q->where('status', '!=', 'returned');
+                });
+            } elseif ($status === 'borrowed') {
+                $query->whereHas('transactionDetails', function ($q) {
+                    $q->where('status', 'borrowed');
+                });
+            } elseif ($status === 'borrowedAll') {
+                $query->whereDoesntHave('transactionDetails', function ($q) {
+                    $q->where('status', '!=', 'borrowed');
+                });
+            } elseif ($status === 'all') {
+                $query->whereHas('transactionDetails');
+            }
+        }
+        if ($request->has('year')) {
+            $query->whereYear('date_start', $request->get('year'));
+        }
+        $transactions = $query->get();
+
+        return view('admin.transaction.index', compact("transactions",'years'));
+
         //
     }
 
@@ -46,19 +79,19 @@ class TransactionController extends Controller
         // return response()->json(['message' => 'Data logged.']);
 
         $datas = $request->all();
-        
+
         // // $borrowedBooks = []; 
 
         $transaction = Transaction::create([
-            
+
             'member_id' => $datas['user_id'],
             'date_start' => now()->format('Y-m-d'),
             'date_end' => now()->addDays(14)->format('Y-m-d'),
-           
+
         ]);
 
-        for($i =0; $i < count($datas['book_id']); $i++){
-            
+        for ($i = 0; $i < count($datas['book_id']); $i++) {
+
             // $dataA = json_decode($data, true); 
             TransactionDetail::create([
                 'book_id' => $datas['book_id'][$i],
@@ -72,12 +105,11 @@ class TransactionController extends Controller
             $qtyBook = $datas['book_qty'][$i];
             $totalBook = $book->qty - $qtyBook;
             $book->update([
-                'qty' => $totalBook, 
+                'qty' => $totalBook,
             ]);
         }
         // return redirect('transactions'); 
         return response()->json(['message' => "data berhasil di simpan"]);
-
     }
 
     /**
@@ -90,17 +122,17 @@ class TransactionController extends Controller
     {
         // $transactions = Transaction::all();
         $transactions  = Transaction::with('transactionDetails.book')->findOrFail($transaction->id);
-        $allBorrowed = $transactions->transactionDetails->every(function($detail){
+        $allBorrowed = $transactions->transactionDetails->every(function ($detail) {
             return $detail->status === "borrowed";
         });
-        $someBorrowed = $transactions->transactionDetails->contains(function($detail){
+        $someBorrowed = $transactions->transactionDetails->contains(function ($detail) {
             return $detail->status === "borrowed";
         });
-        $allReturned = $transactions->transactionDetails->every(function($detail){
+        $allReturned = $transactions->transactionDetails->every(function ($detail) {
             return $detail->status === "returned";
         });
         // return view('admin.transaction.detail',compact('transactions'));
-        return view('admin.transaction.detail',compact('transaction',"transactions","allBorrowed","someBorrowed","allReturned"));
+        return view('admin.transaction.detail', compact('transaction', "transactions", "allBorrowed", "someBorrowed", "allReturned"));
     }
 
     /**
@@ -130,12 +162,12 @@ class TransactionController extends Controller
         // dd($request->all());
         $selectedBooks = $request->book_id;
         list($book_id, $transactionDetail_id) = explode('|', $selectedBooks);
-        
+
         $transactionDetail = TransactionDetail::find($transactionDetail_id);
-        $transactionDetail = $transactionDetail->where('book_id','=' ,$book_id)->first();
+        $transactionDetail = $transactionDetail->where('book_id', '=', $book_id)->first();
         $books = Book::find($book_id);
         if ($book_id && $transactionDetail_id) {
-            if($request->status == 'returned'){
+            if ($request->status == 'returned') {
                 // return $books->qty +$transactionDetail->qty;
                 $books->update([
                     'qty' => $books->qty + $transactionDetail->qty,
@@ -156,7 +188,7 @@ class TransactionController extends Controller
             // ]);
         }
         return redirect('transactions');
-        
+
         // return $transactionDetail->qty;
 
         // return dd($request->all());
@@ -192,10 +224,10 @@ class TransactionController extends Controller
         return response()->json($members);
     }
 
-    public function indexReturn(){
+    public function indexReturn()
+    {
         // $transactions = Transaction::where('status', 'borrowed')->get();
         // return view('admin.transaction.return', compact('transactions'));
-        
-    }
 
+    }
 }
