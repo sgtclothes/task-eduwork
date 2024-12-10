@@ -59,6 +59,10 @@ Route::get('/transactions/{transaction}/return', [App\Http\Controllers\Transacti
 Route::put('/transactions/{transaction}', [App\Http\Controllers\TransactionController::class, 'update']);
 // return end
 
+// test spatine start
+Route::get('/testSpatine',[App\Http\Controllers\HomeController::class,'testSpatine']);
+// test spatine end
+
 // transactionDetails start
 Route::get('/transactions/{transaction}/detail', [App\Http\Controllers\TransactionController::class, 'show']);
 // transactionDetails end
@@ -67,6 +71,7 @@ Route::get('/transactions/{transaction}/detail', [App\Http\Controllers\Transacti
 Route::resource('/transactionDetails', App\Http\Controllers\TransactionDetailController::class);
 Route::get('/api/transactionDetails',[App\Http\Controllers\TransactionDetailController::class,'api']);
 // transactionDetails end
+
 
 // authors start
 Route::resource('/authors',App\Http\Controllers\AuthorController::class);

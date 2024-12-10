@@ -9,7 +9,8 @@ use App\Models\User;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Catalog;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -190,5 +191,18 @@ class HomeController extends Controller
         }
         // return $data_month;
         return view('home',compact("transactions","books","members","authors","transaction_total","book_total","member_total","author_total","data_donut","label_donut",'data_bar'));
+    }
+
+    public function testSpatine(){
+        // $role = Role::create(['name' => 'petugas']);
+        // $permission = Permission::create(['name' => 'create transaction']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+        // $user = auth()->user();
+        // $user->assignRole('petugas');
+        $user = User::with('roles')->get();
+        return $user;
+        
     }
 }

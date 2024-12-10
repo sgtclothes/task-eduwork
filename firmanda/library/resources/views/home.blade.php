@@ -5,6 +5,8 @@
 @endsection
 @section('css')
 @endsection
+
+@can('create transaction')
 @section('content')
     <div id="controller">
         <div class="container-fluid">
@@ -131,6 +133,10 @@
 
     </div>
 @endsection
+
+@endcan
+
+
 @section('js')
     <!-- jQuery -->
     <script src={{ asset('assets/plugins/jquery/jquery.min.js') }}></script>
